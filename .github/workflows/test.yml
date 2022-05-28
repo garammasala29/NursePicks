@@ -22,19 +22,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set Timezone
+      uses: szenius/set-timezone@v1.1.2
+      with:
+        timezoneLinux: "Asia/Tokyo"
+    
     - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@2b019609e2b0f1ea1a2bc8ca11cb82ab46ada124
       with:
         ruby-version: 3.1.0
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        
     - name: Install dependencies
       run: bundle install
-    - name: yarn
+      
+    - name: yarn install
       run: yarn install
+
     - name: DB setup
       run: bundle exec rails db:setup
-    - name: rubocop
-      run: rubocop
+
     - name: RSpec
       run: bundle exec rspec
