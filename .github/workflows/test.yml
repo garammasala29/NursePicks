@@ -23,7 +23,7 @@ jobs:
 
     steps:
     - name: Set Timezone
-      uses: szenius/set-timezone@v1.1.2
+      uses: szenius/set-timezone@v1.0
       with:
         timezoneLinux: "Asia/Tokyo"
     
