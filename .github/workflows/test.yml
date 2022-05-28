@@ -18,8 +18,24 @@ permissions:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
+    
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://postgres:postgres@localhost/ci_test"
+
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - name: Set Timezone
@@ -27,9 +43,9 @@ jobs:
       with:
         timezoneLinux: "Asia/Tokyo"
     
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ｖ1
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.1.0'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
