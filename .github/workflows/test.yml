@@ -19,7 +19,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://postgres:postgres@localhost/ci_test"
@@ -42,7 +42,7 @@ jobs:
       uses: szenius/set-timezone@v1.0
       with:
         timezoneLinux: "Asia/Tokyo"
-    
+
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
@@ -50,8 +50,21 @@ jobs:
         ruby-version: '3.1.0'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '17.0.1'
+
+    - name: Cache node modules
+      uses: actions/cache@v2.1.4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - name: yarn install
-      run: yarn install
+      run:  yarn install --check-files
 
     - name: DB setup
       run: bundle exec rails db:setup
