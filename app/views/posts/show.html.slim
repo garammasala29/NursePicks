@@ -1,2 +1,15 @@
 h1 Posts#show
-p Find me in app/views/posts/show.html.slim
+p Title:
+= @post.title
+
+p Url:
+= @post.url
+
+p Image:
+= @post.image_url
+
+p Site:
+= @post.site_name
+
+p = link_to 'Back', posts_path
+p = link_to 'Delete', @post, method: :delete

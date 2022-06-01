@@ -1,2 +1,10 @@
 h1 Posts#index
-p Find me in app/views/posts/index.html.slim
+= link_to 'post', new_post_path
+table
+  - @posts.each do |post|
+    tr
+      td = post.title
+      td = post.url
+      td = post.image_url
+      td = post.site_name
+      td = link_to 'show', post

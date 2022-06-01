@@ -1,2 +1,6 @@
 h1 Posts#new
-p Find me in app/views/posts/new.html.slim
+= form_with(model: @post, local: true) do |form|
+  = form.label :url
+  = form.text_field :url
+  = form.submit
+= link_to 'Back', posts_path
