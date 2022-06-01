@@ -28,7 +28,8 @@ module Nursepicks
       g.test_framework :rspec,
         view_specs: false,
         helper_specs: false,
-        routing_specs: false
+        routing_specs: false,
+        request_specs: false
     end
     # Configuration for the application, engines, and railties goes here.
     #

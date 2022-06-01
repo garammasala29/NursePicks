@@ -1,0 +1,6 @@
+h1 Posts#new
+= form_with(model: @post, local: true) do |form|
+  = form.label :url
+  = form.text_field :url
+  = form.submit
+= link_to 'Back', posts_path

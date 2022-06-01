@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Post, type: :model do
   it 'has a valid factory' do
-    expect(FactoryBot.build(:user)).to be_valid
+    expect(FactoryBot.build(:post)).to be_valid
   end
 end
