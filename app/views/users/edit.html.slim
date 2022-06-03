@@ -1,2 +1,9 @@
 h1 Users#edit
-p Find me in app/views/users/edit.html.slim
+= form_with(model: @user, local: true) do |form|
+  = form.label :name
+  = form.text_field :name
+  = form.label :url
+  = form.text_field :url
+  = form.submit
+  = button_to 'Delete', root_path, method: :delete
+p = link_to 'Back', @user

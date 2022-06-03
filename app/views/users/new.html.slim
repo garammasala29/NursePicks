@@ -1,2 +1,8 @@
 h1 Users#new
-p Find me in app/views/users/new.html.slim
+= form_with(model: @user, local: true) do |form|
+  = form.label :name
+  = form.text_field :name
+  = form.label :url
+  = form.text_field :url
+  = form.submit
+= link_to 'Back', root_path
