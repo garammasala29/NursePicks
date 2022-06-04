@@ -5,5 +5,5 @@ h1 Users#edit
   = form.label :url
   = form.text_field :url
   = form.submit
-  = button_to 'Delete', root_path, method: :delete
+= button_to 'Delete', @user, method: :delete
 p = link_to 'Back', @user

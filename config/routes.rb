@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  get 'sessions/new'
   root 'posts#index'
-  resources :posts, except: %i(edit update)
+  resources :posts, except: %i[edit update]
   resources :users, except: :index
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
 end
