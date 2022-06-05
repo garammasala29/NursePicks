@@ -15,5 +15,7 @@ html
       ul
         - if signed_in?
           = button_to 'ログアウト', signout_path, method: :delete
+        - else
+          = link_to 'ログイン', signin_path
     .container
       = yield
