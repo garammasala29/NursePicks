@@ -1,5 +1,6 @@
-<template>
-  <p>{{ message }}</p>
+<template lang='pug'>
+.page-body
+  | {{ message }}
 </template>
 
 <script>
@@ -11,10 +12,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>
