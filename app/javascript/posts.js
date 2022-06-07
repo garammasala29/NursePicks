@@ -5,18 +5,16 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from '../app.vue'
+import { createApp } from 'vue'
+import Post from './posts.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    render: h => h(App)
-  }).$mount()
-  document.body.appendChild(app.$el)
-
-  console.log(app)
+  const selector = '#js-posts'
+  const posts = document.querySelector(selector)
+  if (posts) {
+    createApp(Post).mount(selector)
+  }
 })
-
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
