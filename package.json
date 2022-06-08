@@ -6,6 +6,7 @@
     "@rails/webpacker": "5.4.3",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
+    "rails-ujs": "^5.2.8",
     "turbolinks": "^5.2.0",
     "vue": "^3.2.36",
     "vue-loader": "^17.0.0",

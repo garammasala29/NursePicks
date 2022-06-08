@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     respond_to do |format|
       if @user.save!
-        session[:user_id] = @user.id
+        sign_in(@user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else

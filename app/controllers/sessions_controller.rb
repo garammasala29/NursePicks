@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     user = User.from_omniauth(auth_hash)
     if user
-      session[:user_id] = user.id
+      sign_in(user)
       redirect_to root_path, notice: 'ログインしました'
     else
       redirect_to signup_path(auth_hash)
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    sign_out
     redirect_to root_path, notice: 'ログアウトしました'
   end
 end
