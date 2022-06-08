@@ -52,7 +52,11 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'dotenv-rails'
 gem 'html2slim'
 gem 'metainspector'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'slim-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

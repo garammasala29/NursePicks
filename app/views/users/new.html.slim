@@ -1,0 +1,12 @@
+h1 Users#new
+= form_with(model: @user, local: true) do |form|
+  = form.label :name
+  = form.text_field :name
+  = form.label :url
+  = form.text_field :url
+  = form.label :icon_url
+  = form.text_field :icon_url
+  = form.hidden_field :provider
+  = form.hidden_field :uid
+  = form.submit
+= link_to 'Back', root_path

@@ -1,0 +1,9 @@
+h1 Users#edit
+= form_with(model: @user, local: true) do |form|
+  = form.label :name
+  = form.text_field :name
+  = form.label :url
+  = form.text_field :url
+  = form.submit
+= button_to 'Delete', @user, method: :delete
+p = link_to 'Back', @user

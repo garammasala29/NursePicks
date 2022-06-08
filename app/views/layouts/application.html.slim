@@ -9,4 +9,14 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    header
+    .container
+      = link_to 'NursePicks', root_path
+      ul
+        - if signed_in?
+          = link_to 'ログアウト', signout_path, method: :delete
+          = link_to image_tag(current_user.icon_url), current_user
+        - else
+          = link_to 'ログイン', signin_path
+    .container
+      = yield
