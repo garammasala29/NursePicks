@@ -1,6 +1,10 @@
-h1 Posts#new
+- if @post.errors.present?
+  ul
+    - @post.errors.full_messages.each do |message|
+      li = message
+
 = form_with(model: @post, local: true) do |form|
   = form.label :url
   = form.text_field :url
-  = form.submit
-= link_to 'Back', posts_path
+  = form.submit '記事の投稿'
+= link_to '戻る', posts_path

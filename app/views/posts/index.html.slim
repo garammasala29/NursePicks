@@ -1,12 +1,10 @@
-h1 Posts#index
-= link_to 'post', new_post_path
+= link_to '記事を投稿する', new_post_path
 table
   - @posts.each do |post|
     tr
-      td = post.title
-      td = post.url
-      td = post.image_url
+      td = image_tag(post.image_url)
+      td = link_to post.title, post.url
       td = post.site_name
-      td = link_to 'show', post
+      td = link_to '詳細', post
 
 p = button_to 'Googleでアカウント登録', '/auth/google_oauth2', method: :post, data: { turbo: false }

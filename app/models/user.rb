@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+
   def self.from_omniauth(auth_hash)
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]

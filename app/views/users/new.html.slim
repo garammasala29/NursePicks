@@ -1,12 +1,12 @@
-h1 Users#new
+h1 アカウント登録
 = form_with(model: @user, local: true) do |form|
-  = form.label :name
+  = form.label :name, 'アカウント名'
   = form.text_field :name
-  = form.label :url
+  = form.label :url, 'ホームページ(任意)'
   = form.text_field :url
   = form.label :icon_url
   = form.text_field :icon_url
   = form.hidden_field :provider
   = form.hidden_field :uid
   = form.submit
-= link_to 'Back', root_path
+= link_to '戻る', root_path
