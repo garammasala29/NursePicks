@@ -4,6 +4,6 @@
   = form.label :url, 'ホームページ(任意)'
   = form.text_field :url
   = form.submit 'アカウント更新'
-= button_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？'}
+= button_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？' }
 
 p = link_to '戻る', @user
