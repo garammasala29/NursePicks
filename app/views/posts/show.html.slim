@@ -1,15 +1,10 @@
-h1 Posts#show
-p Title:
-= @post.title
+table
+  tr
+    td = image_tag(@post.image_url)
+    td = link_to @post.title, @post.url
+    td = @post.site_name
+    td = link_to @post.user.name, user_path(@post.user_id)
 
-p Url:
-= @post.url
-
-p Image:
-= @post.image_url
-
-p Site:
-= @post.site_name
-
-p = link_to 'Back', posts_path
-p = link_to 'Delete', @post, method: :delete
+p = link_to '戻る', posts_path
+- if current_user == @post.user
+  p = link_to '削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？"}

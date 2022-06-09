@@ -1,9 +1,9 @@
-h1 Users#edit
 = form_with(model: @user, local: true) do |form|
-  = form.label :name
+  = form.label :name, 'アカウント名'
   = form.text_field :name
-  = form.label :url
+  = form.label :url, 'ホームページ(任意)'
   = form.text_field :url
-  = form.submit
-= button_to 'Delete', @user, method: :delete
-p = link_to 'Back', @user
+  = form.submit 'アカウント更新'
+= button_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？'}
+
+p = link_to '戻る', @user

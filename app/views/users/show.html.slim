@@ -1,5 +1,14 @@
 = image_tag @user.icon_url
 h1 = @user.name
-p = @user.url
-= link_to 'Edit', edit_user_path
-= link_to 'Back', root_path
+p = link_to @user.url
+
+table
+  - @user.posts.each do |post|
+    tr
+      td = link_to post.title, post
+      - if current_user == @user
+        td = button_to '削除', post, method: :delete
+
+- if current_user == @user
+  = link_to 'アカウント編集', edit_user_path
+= link_to '戻る', root_path

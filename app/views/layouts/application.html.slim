@@ -18,5 +18,8 @@ html
           = link_to image_tag(current_user.icon_url), current_user
         - else
           = link_to 'ログイン', signin_path
-    .container
+      - if notice.present?
+        = notice
+      - if alert.present?
+        = alert
       = yield
