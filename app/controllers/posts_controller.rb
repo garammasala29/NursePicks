@@ -12,7 +12,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
+  end
 
   def create
     @post = current_user.posts.create(post_params)
