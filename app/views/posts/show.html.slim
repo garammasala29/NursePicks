@@ -5,6 +5,8 @@ table
     td = @post.site_name
     td = link_to @post.user.name, user_path(@post.user_id)
 
+= render 'shared/comments'
+
 p = link_to '戻る', posts_path
 - if current_user == @post.user
   p = link_to '削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
