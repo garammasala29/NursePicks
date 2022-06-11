@@ -2,12 +2,23 @@
 h1 = @user.name
 p = link_to @user.url
 
-table
-  - @user.posts.each do |post|
-    tr
-      td = link_to post.title, post
-      - if current_user == @user
-        td = button_to '削除', post, method: :delete
+p
+  | 投稿した記事
+  ul
+    - @user.posts.each do |post|
+      li
+        p = link_to post.title, post
+        - if current_user == @user
+          p = button_to '削除', post, method: :delete
+
+p
+  | 投稿したコメント
+  ul
+    - @user.comments.each do |comment|
+      li
+        p = link_to comment.content, post_path(comment.post_id)
+        - if current_user == @user
+          p = button_to '削除', post_comment_path(comment.post_id, comment), method: :delete
 
 - if current_user == @user
   = link_to 'アカウント編集', edit_user_path
