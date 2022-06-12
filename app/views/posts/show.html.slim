@@ -4,6 +4,12 @@ table
     td = link_to @post.title, @post.url
     td = @post.site_name
     td = link_to @post.user.name, user_path(@post.user_id)
+    - if current_user
+      - if current_user.liked?(@post)
+        td = link_to '❤︎', post_likes_path(@post), method: :delete
+      - else
+        td = link_to '♡', post_likes_path(@post), method: :post
+    td = @post.likes.count
 
 = render 'shared/comments'
 

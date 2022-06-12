@@ -10,4 +10,8 @@ class User < ApplicationRecord
     uid = auth_hash[:uid]
     User.where(provider: provider, uid: uid).first
   end
+
+  def liked?(post)
+    likes.exists?(post_id: post.id)
+  end
 end
