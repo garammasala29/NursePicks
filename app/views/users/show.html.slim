@@ -20,6 +20,15 @@ p
         - if current_user == @user
           p = button_to '削除', post_comment_path(comment.post_id, comment), method: :delete
 
+p
+  | いいねした記事
+  ul
+    - @user.likes.each do |like|
+      li
+        p = link_to like.post.title, post_path(like.post_id)
+        - if current_user == @user
+          = link_to '❤︎', post_likes_path(like.post_id), method: :delete
+
 - if current_user == @user
   = link_to 'アカウント編集', edit_user_path
 = link_to '戻る', root_path
