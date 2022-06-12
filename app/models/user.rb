@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def self.from_omniauth(auth_hash)
     provider = auth_hash[:provider]
