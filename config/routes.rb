@@ -2,9 +2,9 @@
 
 Rails.application.routes.draw do
   root 'posts#index'
-  resources :posts, except: %i[edit update]
-  resources :posts do
+  resources :posts, except: %i[edit update] do
     resources :comments, only: %i(create destroy)
+    resource :likes, only: %i(create destroy)
   end
   resources :users, except: :index
   get '/signup', to: 'users#new'

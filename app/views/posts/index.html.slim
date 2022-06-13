@@ -6,5 +6,11 @@ table
       td = link_to post.title, post.url
       td = post.site_name
       td = link_to '詳細', post
+      - if current_user
+        - if current_user.liked?(post)
+          td = link_to '❤︎', post_likes_path(post), method: :delete
+        - else
+          td = link_to '♡', post_likes_path(post), method: :post
+      td = post.likes.count
 
 p = button_to 'Googleでアカウント登録', '/auth/google_oauth2', method: :post, data: { turbo: false }
