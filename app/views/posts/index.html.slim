@@ -14,3 +14,4 @@ table
       td = post.likes.count
 
 p = button_to 'Googleでアカウント登録', '/auth/google_oauth2', method: :post, data: { turbo: false }
+p = button_to 'Twitterでアカウント登録', '/auth/twitter', method: :post, data: { turbo: false }
