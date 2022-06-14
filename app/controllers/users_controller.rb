@@ -3,13 +3,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
-  def new
-    @user = User.new
-    @user.name = params[:info][:name]
-    @user.icon_url = params[:info][:image]
-    @user.provider = params[:provider]
-    @user.uid = params[:uid]
-  end
+  def new; end
 
   def show; end
 
@@ -35,7 +29,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    edirect_to root_path, notice: 'アカウントを削除しました'
+    redirect_to root_path, notice: 'アカウントを削除しました'
   end
 
   private

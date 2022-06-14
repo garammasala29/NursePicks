@@ -5,10 +5,19 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  def self.from_omniauth(auth_hash)
-    provider = auth_hash[:provider]
-    uid = auth_hash[:uid]
+  def self.find_from_omniauth(auth_hash)
+    provider = auth_hash.provider
+    uid = auth_hash.uid
     User.where(provider: provider, uid: uid).first
+  end
+
+  def self.new_from_omniauth(auth_hash)
+    User.new(
+      name: auth_hash.info.name,
+      icon_url: auth_hash.info.image,
+      provider: auth_hash.provider,
+      uid: auth_hash.uid
+    )
   end
 
   def liked?(post)
