@@ -5,12 +5,13 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
-    user = User.from_omniauth(auth_hash)
+    user = User.find_from_omniauth(auth_hash)
     if user
       sign_in(user)
       redirect_to root_path, notice: 'ログインしました'
     else
-      redirect_to signup_path(auth_hash)
+      @user = User.new_from_omniauth(auth_hash)
+      render 'users/new'
     end
   end
 
