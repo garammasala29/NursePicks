@@ -10,16 +10,10 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
+      = render 'shared/header'
+    - if notice.presence
+      = notice
+    - if alert.presence
+      = alert
     .container
-      = link_to 'NursePicks', root_path
-      ul
-        - if signed_in?
-          = link_to 'ログアウト', signout_path, method: :delete
-          = link_to image_tag(current_user.icon_url), current_user
-        - else
-          = link_to 'ログイン', signin_path
-      - if notice.presence
-        = notice
-      - if alert.presence
-        = alert
       = yield
