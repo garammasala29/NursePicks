@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      post: 役職  #g
+      user: ユーザー  #g
+
+    attributes:
+      post:
+        image_url: 画像のURL  #g
+        site_name: サイト名  #g
+        title: 題名  #g
+        url: URL  #g
+        user: :activerecord.models.user  #g
+
+      user:
+        icon_url: アイコンのURL  #g
+        name: 名前  #g
+        provider: プロバイダー  #g
+        uid: Uid  #g
+        url: URL  #g
