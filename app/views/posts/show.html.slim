@@ -1,18 +1,66 @@
-table
-  tr
-    td = image_tag(@post.image_url)
-    td = link_to @post.title, @post.url
-    td = @post.site_name
-    td = link_to @post.user.name, user_path(@post.user_id)
-    - if current_user
-      - if current_user.liked?(@post)
-        td = link_to '❤︎', post_likes_path(@post), method: :delete
-      - else
-        td = link_to '♡', post_likes_path(@post), method: :post
-    td = @post.likes.count
-
-= render 'shared/comments'
+.section
+  .content
+    .media
+      .media-left
+        .image.is-64x64
+          = image_tag(@post.image_url)
+      .media-content
+        .content
+          .title.is-5
+            = link_to @post.title, @post.url
+          .sub-title.is-8.has-text-justified
+            = link_to @post
+              i.fa-solid.fa-message
+            = link_to @post.comments.count, @post
+            = @post.site_name
+      .media-right
+        - if current_user
+          - if current_user.liked?(@post)
+            = link_to post_likes_path(@post), method: :delete
+              i.fa-solid.fa-heart.fa-2x
+          - else
+            = link_to post_likes_path(@post), method: :post
+              i.fa-regular.fa-heart.fa-2x
+        - else
+          i.fa-solid.fa-heart.fa-2x
+        p = @post.likes.count
+        - if current_user == @post.user
+          = link_to '記事の削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
+  .content
+    - if @comments.presence
+      - @comments.each do |comment|
+        .media
+          .media-content
+            .content
+              = comment.content
+              .sub-title
+                .image.is-32x32
+                  = link_to image_tag(comment.user.icon_url), comment.user
+                = link_to comment.user.name, user_path(comment.user_id)
+          .media-right
+            - if current_user == comment.user
+              = link_to '削除', [@post, comment], method: :delete, data: { confirm: "「#{comment.content}」を削除してもよろしいですか？" }
+    - else
+      p
+        | まだこの記事にコメントはありません
+  .content
+    - if signed_in?
+      = form_with(model: [@post, @comment], local: true) do |form|
+        .field.is-horizontal
+          .field.is-nomal
+            .label
+              = form.label :content, 'コメント'
+          .field-body
+            .field
+              .control
+                = form.text_area :content, class: 'textarea'
+        .field.is-horizontal
+          .field-body
+            .field.is-grouped.is-grouped-right
+              .control
+                = form.submit 'コメントの投稿', class: 'button'
+    - else
+      p
+        | ログインするとコメントすることができます
 
 p = link_to '戻る', posts_path
-- if current_user == @post.user
-  p = link_to '削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
