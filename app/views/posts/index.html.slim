@@ -1,17 +1,28 @@
 = link_to '記事を投稿する', new_post_path
-table
-  - @posts.each do |post|
-    tr
-      td = image_tag(post.image_url)
-      td = link_to post.title, post.url
-      td = post.site_name
-      td = link_to '詳細', post
+- @posts.each do |post|
+  .media
+    .media-left
+      .image.is-64x64
+        = image_tag(post.image_url)
+    .media-content
+      .content
+        .title.is-5
+          = link_to post.title, post.url
+        .sub-title.is-8.has-text-justified
+          = link_to post
+            i.fa-solid.fa-message
+          = link_to post.comments.count, post
+          = post.site_name
+    .media-right
       - if current_user
         - if current_user.liked?(post)
-          td = link_to '❤︎', post_likes_path(post), method: :delete
+          = link_to post_likes_path(post), method: :delete
+            i.fa-solid.fa-heart.fa-2x
         - else
-          td = link_to '♡', post_likes_path(post), method: :post
-      td = post.likes.count
+          = link_to post_likes_path(post), method: :post
+            i.fa-regular.fa-heart.fa-2x
+      = post.likes.count
 
-p = button_to 'Googleでアカウント登録', '/auth/google_oauth2', method: :post, data: { turbo: false }
-p = button_to 'Twitterでアカウント登録', '/auth/twitter', method: :post, data: { turbo: false }
+.buttons
+  p = button_to 'Googleでアカウント登録', '/auth/google_oauth2', method: :post, data: { turbo: false }
+  p = button_to 'Twitterでアカウント登録', '/auth/twitter', method: :post, data: { turbo: false }
