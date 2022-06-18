@@ -1,9 +1,24 @@
-= form_with(model: @user, local: true) do |form|
-  = form.label :name, 'アカウント名'
-  = form.text_field :name
-  = form.label :url, 'ホームページ(任意)'
-  = form.text_field :url
-  = form.submit 'アカウント更新'
-= button_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？' }
+.section
+  h3.title.is-3
+    | アカウント編集
+  .content
+    = form_with(model: @user, local: true) do |form|
+      .image.is-128x128
+        = image_tag(@user.icon_url)
+      .field
+        .label
+          = form.label :name, 'アカウント名'
+      .field
+        .control
+          = form.text_field :name, class: 'input'
+      .field
+        .label
+          = form.label :url, 'ホームページ(任意)'
+      .field
+        .control
+          = form.text_field :url, class: 'input'
+      .control
+        = form.submit 'アカウント更新', class: 'button'
+    = button_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？' }, class: 'button'
 
 p = link_to '戻る', @user

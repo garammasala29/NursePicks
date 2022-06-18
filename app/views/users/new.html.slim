@@ -1,12 +1,25 @@
-h1 アカウント登録
-= form_with(model: @user, local: true) do |form|
-  = form.label :name, 'アカウント名'
-  = form.text_field :name
-  = form.label :url, 'ホームページ(任意)'
-  = form.text_field :url
-  = form.label :icon_url
-  = form.text_field :icon_url
-  = form.hidden_field :provider
-  = form.hidden_field :uid
-  = form.submit
+.section
+  h3.title.is-3 アカウント登録
+  .content
+    = form_with(model: @user, local: true) do |form|
+      = form.hidden_field :provider
+      = form.hidden_field :uid
+      = form.hidden_field :icon_url
+      .image.is-128x128
+        = image_tag(@user.icon_url)
+      .field
+        .label
+          = form.label :name, 'アカウント名'
+      .field
+        .control
+          = form.text_field :name, class: 'input'
+      .field
+        .label
+          = form.label :url, 'ホームページ(任意)'
+      .field
+        .control
+          = form.text_field :url, class: 'input'
+      .control
+        = form.submit 'アカウント登録', class: 'button'
+
 = link_to '戻る', root_path
