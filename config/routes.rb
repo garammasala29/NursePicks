@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :comments, only: %i(create destroy)
     resource :likes, only: %i(create destroy)
   end
-  resources :users, except: :index
+  resources :users, except: %i[index new edit]
+  get '/current_user/edit', to: 'users#edit'
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   delete '/signout', to: 'sessions#destroy'

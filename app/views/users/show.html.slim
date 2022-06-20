@@ -30,5 +30,5 @@ p
           = link_to '❤︎', post_likes_path(like.post_id), method: :delete
 
 - if current_user == @user
-  = link_to 'アカウント編集', edit_user_path
+  = link_to 'アカウント編集', current_user_edit_path
 = link_to '戻る', root_path
