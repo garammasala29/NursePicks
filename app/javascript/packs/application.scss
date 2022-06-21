@@ -1,1 +1,35 @@
-@import '~bulma/css/bulma.min'
+@charset "utf-8";
+
+// Set your brand colors
+$blue: #1B67B2;
+$orange: #ED6C00;
+$white: #fff;
+$black: #000;
+$beige-light: #F7F7F7;
+$beige-lighter: #EFEFEF;
+
+// Update Bulma's global variables
+$family-sans-serif: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+$grey-dark: $black;
+$primary: $blue;
+$link: $blue;
+$info: $orange;
+
+// Update some of Bulma's component variables
+$body-background-color: $white;
+$control-border-width: 2px;
+$input-shadow: none;
+$navbar-breakpoint: 0px;
+@import '../stylesheets/description.scss';
+@import '../stylesheets/post_index.scss';
+
+
+// Import only what you need from Bulma
+@import "~bulma/sass/utilities/all";
+@import "~bulma/sass/base/all";
+@import "~bulma/sass/elements/all";
+@import "~bulma/sass/form/all";
+@import "~bulma/sass/components/all";
+@import "~bulma/sass/grid/all";
+@import "~bulma/sass/helpers/all";
+@import "~bulma/sass/layout/all";
