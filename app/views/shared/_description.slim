@@ -1,0 +1,21 @@
+.hero.cover.is-small
+  .hero-body.columns.is-centered
+    .image.column.is-half
+      = image_tag('nursepicks_top.png')
+  .hero-body.columns.is-centered
+    .column.is-5
+      .using
+        i.fa-solid.fa-eye.using-icon
+        .title.is-5.has-text-centered
+          p 読む
+        .subtitle.is-6
+          p 看護に関する記事や論文がすぐに見つかります<br>ログインなしでも「いいね」が押せます
+    .column.is-5
+      .using
+        i.fa-solid.fa-laptop-medical.using-icon
+        .title.is-5.has-text-centered
+          p 投稿する
+        .subtitle.is-6
+          p 看護師に役立つ記事・論文・Youtube・Tweetがあれば、なんでも投稿して下さい<br>(URLさえあれば登録できます)<br>記事を投稿するにはGoogleやTwitterでのアカウント登録が必要です
+  .hero-body.columns.is-centered
+    = link_to '記事を投稿する', new_post_path, class: 'button is-primary is-large'
