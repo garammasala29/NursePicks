@@ -47,7 +47,7 @@ article.section
     - if signed_in?
       = form_with(model: [@post, @comment], local: true) do |form|
         .field.is-horizontal
-          .field-label.is-nomal
+          .field-label.is-normal
             .label
               = form.label :content, 'コメント'
           .field-body
