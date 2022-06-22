@@ -17,16 +17,15 @@ article.section
           = link_to post.comments.count, post, style: 'margin: 0px 0px 0px 3px;'
           |  #{post.site_name}  #{l post.created_at}
       .media-right
-        .like
-          - if current_user
-            - if current_user.liked?(post)
-              = link_to post_likes_path(post), method: :delete
-                i.fa-solid.fa-heart.fa-2x.has-text-info
-            - else
-              = link_to post_likes_path(post), method: :post
-                i.fa-regular.fa-heart.fa-2x.has-text-info
+        - if current_user
+          - if current_user.liked?(post)
+            = link_to post_likes_path(post), method: :delete
+              i.fa-solid.fa-heart.fa-2x.has-text-info
           - else
-            i.fa-solid.fa-heart.fa-2x
+            = link_to post_likes_path(post), method: :post
+              i.fa-regular.fa-heart.fa-2x.has-text-info
+        - else
+          i.fa-solid.fa-heart.fa-2x
         p.has-text-centered
           = post.likes.count
 

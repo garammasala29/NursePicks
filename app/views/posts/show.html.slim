@@ -14,7 +14,7 @@ article.section
         = link_to image_tag(User.find(@post.user_id).icon_url, size: '28x28'), user_path(@post.user_id), style: 'margin-left: 3px;'
         = link_to User.find(@post.user_id).name, user_path(@post.user_id), style: 'margin: 0px 3px 0px 3px;'
         = l @post.created_at
-    .media-right
+    .media-right.has-text-centered
       - if current_user
         - if current_user.liked?(@post)
           = link_to post_likes_path(@post), method: :delete
@@ -24,8 +24,7 @@ article.section
             i.fa-regular.fa-heart.fa-2x.has-text-info
       - else
         i.fa-solid.fa-heart.fa-2x
-      p.has-text-centered
-        = @post.likes.count
+      p = @post.likes.count
       - if current_user == @post.user
         = link_to '記事の削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
   .section
