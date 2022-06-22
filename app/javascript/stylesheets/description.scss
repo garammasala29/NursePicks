@@ -1,0 +1,21 @@
+.using {
+  position: relative;
+  height: 100%;
+  background-color: $beige-light;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: $blue;
+  border-width: 2px;
+  padding: 50px;
+  z-index: 1;
+}
+
+.using-icon {
+  position: absolute;
+  font-size: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+  z-index: 2;
+}

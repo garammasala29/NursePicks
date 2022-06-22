@@ -1,0 +1,17 @@
+nav.navbar.is-bold
+  .container
+    .navbar-brand
+      .navbar-item
+        .image
+          = link_to image_tag('nursepicks_head.png'), root_path
+      .button.navbar-burger.menu
+    .navbar-menu
+      .navbar-end
+        - if signed_in?
+          .navbar-item.is-white
+            = link_to 'ログアウト', signout_path, method: :delete
+          .image.is-64x64
+            = link_to image_tag(current_user.icon_url), current_user
+        - else
+          .navbar-item.is-white
+            = link_to 'ログイン', signin_path

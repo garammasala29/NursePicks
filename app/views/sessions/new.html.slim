@@ -1,3 +1,5 @@
-h1 ログイン
-p = button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false }
-p = button_to 'Twitterでログイン', '/auth/twitter', method: :post, data: { turbo: false }
+.section
+  h3.title.is-3 ログイン
+  .buttons
+    p = button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false }
+    p = button_to 'Twitterでログイン', '/auth/twitter', method: :post, data: { turbo: false }

@@ -1,10 +1,14 @@
 - if @post.errors.present?
-  ul
-    - @post.errors.full_messages.each do |message|
-      li = message
-
-= form_with(model: @post, local: true) do |form|
-  = form.label :url
-  = form.text_field :url
-  = form.submit '記事の投稿'
+  - @post.errors.full_messages.each do |message|
+    = message
+.section
+  = form_with(model: @post, local: true) do |form|
+    .field
+      = form.label :url, class: 'label'
+    .field-body.is-grouped
+      .field.is-expanded
+        .control
+          = form.text_field :url, class: 'input'
+      .control
+        = form.submit '記事の投稿', class: 'button is-right'
 = link_to '戻る', posts_path

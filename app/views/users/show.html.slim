@@ -1,34 +1,42 @@
-= image_tag @user.icon_url
-h1 = @user.name
-p = link_to @user.url
+.section
+  .media
+    .media-left
+      .image.is-128x128
+        = image_tag @user.icon_url
+    .media-content
+        .title.is-3
+          = @user.name
+        .sub-title
+          = link_to @user.url, @user.url
+    .media-right
+      - if current_user == @user
+        = link_to 'アカウント編集', current_user_edit_path, class: 'button'
+  .content
+    p
+      | 投稿した記事
+      ul
+        - @user.posts.each do |post|
+          li
+            = link_to post.title, post
+            - if current_user == @user
+              = button_to '削除', post, method: :delete
+  .content
+    p
+      | 投稿したコメント
+      ul
+        - @user.comments.each do |comment|
+          li
+            = link_to comment.content, post_path(comment.post_id)
+            - if current_user == @user
+              = button_to '削除', post_comment_path(comment.post_id, comment), method: :delete
+  .content
+    p
+      | いいねした記事
+      ul
+        - @user.likes.each do |like|
+          li
+            = link_to like.post.title, post_path(like.post_id)
+            - if current_user == @user
+              = button_to 'いいねを外す', post_likes_path(like.post_id), method: :delete
 
-p
-  | 投稿した記事
-  ul
-    - @user.posts.each do |post|
-      li
-        p = link_to post.title, post
-        - if current_user == @user
-          p = button_to '削除', post, method: :delete
-
-p
-  | 投稿したコメント
-  ul
-    - @user.comments.each do |comment|
-      li
-        p = link_to comment.content, post_path(comment.post_id)
-        - if current_user == @user
-          p = button_to '削除', post_comment_path(comment.post_id, comment), method: :delete
-
-p
-  | いいねした記事
-  ul
-    - @user.likes.each do |like|
-      li
-        p = link_to like.post.title, post_path(like.post_id)
-        - if current_user == @user
-          = link_to '❤︎', post_likes_path(like.post_id), method: :delete
-
-- if current_user == @user
-  = link_to 'アカウント編集', current_user_edit_path
 = link_to '戻る', root_path

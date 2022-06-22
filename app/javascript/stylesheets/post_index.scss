@@ -1,0 +1,21 @@
+.rank-icon {
+  position: relative;
+  font-size: 50px;
+  color: $blue;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.rank-number {
+  position: absolute;
+  font-size: 15px;
+  color: $white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.sub-title {
+  margin-top: -10px;
+}
