@@ -15,7 +15,7 @@ article.section
           = link_to post
             i.fa-solid.fa-message
           = link_to post.comments.count, post, style: 'margin: 0px 0px 0px 3px;'
-          |  #{post.site_name}  #{l post.created_at}
+          |  #{post.site_name}  #{l post.created_at, format: :short}
       .media-right
         - if current_user
           - if current_user.liked?(post)
