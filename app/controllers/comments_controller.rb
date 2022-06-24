@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @post, notice: 'コメントを投稿しました'
     else
-      flash[:notice] = 'コメント投稿にを失敗しました'
+      flash[:notice] = 'コメント投稿に失敗しました'
       redirect_back(fallback_location: root_path)
     end
   end

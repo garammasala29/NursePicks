@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      post: 役職  #g
+      post: 投稿
       user: ユーザー  #g
 
     attributes:
@@ -13,8 +13,8 @@ ja:
         user: :activerecord.models.user  #g
 
       user:
-        icon_url: アイコンのURL  #g
-        name: 名前  #g
+        icon_url: アイコン画像
+        name: アカウント名
         provider: プロバイダー  #g
         uid: Uid  #g
         url: URL  #g

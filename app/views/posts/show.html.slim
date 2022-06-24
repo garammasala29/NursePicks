@@ -13,7 +13,7 @@ article.section
         |  #{@post.site_name}
         = link_to image_tag(User.find(@post.user_id).icon_url, size: '28x28'), user_path(@post.user_id), style: 'margin-left: 3px;'
         = link_to User.find(@post.user_id).name, user_path(@post.user_id), style: 'margin: 0px 3px 0px 3px;'
-        = l @post.created_at
+        = l @post.created_at, format: :short
     .media-right.has-text-centered
       - if current_user
         - if current_user.liked?(@post)
