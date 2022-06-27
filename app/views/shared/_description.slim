@@ -3,19 +3,19 @@
     .image.column.is-half
       = image_tag('nursepicks_top.png')
   .hero-body.columns.is-centered
-    .column.is-5
+    .column.is-5.is-centered
       .using
-        i.fa-solid.fa-eye.using-icon
         .title.is-5.has-text-centered
-          p 読む
+          p 探す・読む
+        = image_tag('128x128.png')
         .subtitle.is-6
-          p 看護に関する記事や論文がすぐに見つかります<br>ログインなしでも「いいね」が押せます
+          p 投稿されている看護記事や論文を気軽に読むことができます<br>記事に付けられたコメントを読むことができます<br>アカウント登録しなくても「いいね」が押せます
     .column.is-5
       .using
-        i.fa-solid.fa-laptop-medical.using-icon
         .title.is-5.has-text-centered
           p 投稿する
+        = image_tag('128x128.png')
         .subtitle.is-6
-          p 看護師に役立つ記事・論文・Youtube・Tweetがあれば、なんでも投稿して下さい<br>(URLさえあれば登録できます)<br>記事を投稿するにはGoogleやTwitterでのアカウント登録が必要です
+          p 看護師に役立つ記事・論文を投稿してください<br>YouTube・Tweeterなども登録できます(URLがあれば投稿できます)<br>記事を投稿にはGoogle、もしくはTwitterでのアカウント登録が必要です
   .hero-body.columns.is-centered
     = link_to '記事を投稿する', new_post_path, class: 'button is-primary is-large'
