@@ -18,12 +18,14 @@
   "version": "0.1.0",
   "devDependencies": {
     "eslint": "^8.19.0",
-    "eslint-plugin-vue": "^9.1.1",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-vue": "^9.1.1",
+    "prettier": "^2.7.1",
     "webpack-dev-server": "^4.9.2"
   }
 }

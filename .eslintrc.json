@@ -6,7 +6,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:vue/vue3-essential",
-        "standard"
+        "standard",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
