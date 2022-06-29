@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
 
   namespace :api do
-    resources :posts, only: %i(index)
+    resources :posts, only: %i(index) do
+      resources :likes, only: %i(create destroy)
+    end
   end
 end
