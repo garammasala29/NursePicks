@@ -1,6 +1,17 @@
-.hero {
+.description {
   background: url('../../assets/images/top_bg.png');
   background-size: cover;
+  padding: 40px 0px;
+}
+
+.top-title{
+  text-align: center;
+}
+
+.description-content {
+  max-width: 1280px;
+  padding: 50px;
+  margin: 20px auto;
 }
 
 .using {
@@ -10,5 +21,9 @@
   border-radius: 8px;
   border-color: $blue;
   border-width: 2px;
-  padding: 30px;
+  padding: 20px;
+}
+
+.post-button {
+  text-align: center;
 }
