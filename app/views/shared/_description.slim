@@ -22,3 +22,27 @@
             p 看護師に役立つ記事・論文を投稿してください<br>YouTube・Twitterなども登録できます(URLがあれば投稿できます)<br>記事を投稿にはGoogle、もしくはTwitterでのアカウント登録が必要です
   .post-button
     = link_to '記事を投稿する', new_post_path, class: 'button is-primary is-large'
+    #show-modal
+      button 記事を投稿する
+
+  .modal.is-active
+    .modal-background
+    .modal-card
+      .modal-card-head
+        p.modal-card-title
+          | 記事を投稿する
+        button.delete aria-label="close"
+      = form_with(model: @post, local: true) do |form|
+        .modal-card-body
+          .content
+            / - if @post.errors.present?
+            /   - @post.errors.full_messages.each do |message|
+            /     = message
+            .field
+              = form.label :url, class: 'label'
+            .field-body.is-grouped
+              .field.is-expanded
+                .control
+                  = form.text_field :url, class: 'input'
+              .control
+                = form.submit '記事の投稿', class: 'button is-right'
