@@ -1,21 +1,29 @@
+.description {
+  background: url('../../assets/images/top_bg.png');
+  background-size: cover;
+  padding: 40px 0px;
+}
+
+.top-title{
+  text-align: center;
+}
+
+.description-content {
+  max-width: 1280px;
+  padding: 50px;
+  margin: 20px auto;
+}
+
 .using {
-  position: relative;
   height: 100%;
   background-color: $beige-light;
   border-style: solid;
   border-radius: 8px;
   border-color: $blue;
   border-width: 2px;
-  padding: 50px;
-  z-index: 1;
+  padding: 20px;
 }
 
-.using-icon {
-  position: absolute;
-  font-size: 100px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.1;
-  z-index: 2;
+.post-button {
+  text-align: center;
 }
