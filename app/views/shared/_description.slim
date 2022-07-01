@@ -1,6 +1,7 @@
 .description
-  .top-title
-    = image_tag('nursepicks_top.png')
+  - if page_category == 'posts-index'
+    .top-title
+      = image_tag('nursepicks_top.png')
   .description-content
     .columns
       .column

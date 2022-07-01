@@ -1,10 +1,10 @@
 nav.navbar.is-bold
   .container
-    .navbar-brand
-      .navbar-item
-        .image
-          = link_to image_tag('nursepicks_head.png'), root_path
-      .button.navbar-burger.menu
+    - unless page_category == 'posts-index'
+      .navbar-brand
+        .navbar-item
+          .image
+            = link_to image_tag('nursepicks_head.png'), root_path
     .navbar-menu
       .navbar-end
         - if signed_in?
