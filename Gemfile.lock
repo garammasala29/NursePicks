@@ -298,6 +298,8 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
+    rubocop-rspec (2.11.1)
+      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -393,6 +395,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-fjord
   rubocop-rails
+  rubocop-rspec
   sass-rails (>= 6)
   slim-rails
   slim_lint
