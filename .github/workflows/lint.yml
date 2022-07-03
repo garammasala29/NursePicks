@@ -41,8 +41,11 @@ jobs:
     - name: yarn install
       run:  yarn install --check-files
 
-    - name: Slim lint
-      run: bundle exec slim-lint app/views
-
-    - name: Run tests
+    - name: Rubocop
       run: bundle exec rubocop
+
+    - name: Slim lint
+      run: bundle exec slim-lint app/views -c config/slim_lint.yml
+
+    - name: JS Lint
+      run: bin/yarn lint
