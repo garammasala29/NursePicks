@@ -1,4 +1,4 @@
-<template lang='pug'>
+<template lang="pug">
 .page-body
   | {{ message }}
 </template>
@@ -7,7 +7,7 @@
 export default {
   data: function () {
     return {
-      message: "Hello Vue!"
+      message: 'Hello Vue!'
     }
   }
 }
