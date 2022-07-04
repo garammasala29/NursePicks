@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :signin_required, only: %i[new create edit update destroy]
+  before_action :signin_required, only: %i[new edit update destroy]
   before_action :set_user, only: %i[show update destroy]
 
   def new; end
