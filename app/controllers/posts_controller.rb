@@ -2,14 +2,11 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
-  before_action :signin_required, only: %i[new create destroy]
+  before_action :signin_required, only: %i[create destroy]
 
   def index
-    @posts = Post.all
-  end
-
-  def new
     @post = Post.new
+    @posts = Post.all
   end
 
   def show
@@ -28,7 +25,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
     else
-      render :new
+      redirect_back(fallback_location: root_path)
     end
   end
 
