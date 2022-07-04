@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   root 'posts#index'
-  resources :posts, except: %i[edit update] do
+  resources :posts, except: %i[new edit update] do
     resources :comments, only: %i(create destroy)
     resource :likes, only: %i(create destroy)
   end
