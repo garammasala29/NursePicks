@@ -21,15 +21,15 @@
           .subtitle.is-6
             p 看護師に役立つ記事・論文を投稿してください<br>YouTube・Twitterなども登録できます(URLがあれば投稿できます)<br>記事を投稿にはGoogle、もしくはTwitterでのアカウント登録が必要です
   .post-button
-    button.button.is-primary.is-large#js-modal
+    button.button.is-primary.is-large#js-modal data-modal='post-modal'
       | 記事を投稿する
-    .modal#page-modal
-      .modal-background#js-modal
+    .modal#post-modal
+      .modal-background#js-modal data-modal='post-modal'
       .modal-card
         .modal-card-head
           p.modal-card-title
             | 記事を投稿する
-          button.delete#js-modal aria-label="close"
+          button.delete#js-modal aria-label="close" data-modal='post-modal'
         = form_with(model: @post, local: true) do |form|
           .modal-card-body
             .content

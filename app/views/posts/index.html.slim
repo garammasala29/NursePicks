@@ -28,7 +28,3 @@ article.section
           i.fa-solid.fa-heart.fa-2x
         p.has-text-centered
           = post.likes.count
-
-.buttons.is-centered
-  = button_to 'Googleでアカウント登録', '/auth/google_oauth2', method: :post, data: { turbo: false }, class: 'button'
-  = button_to 'Twitterでアカウント登録', '/auth/twitter', method: :post, data: { turbo: false }, class: 'button'

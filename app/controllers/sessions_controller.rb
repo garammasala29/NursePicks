@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  def new; end
-
   def create
     auth_hash = request.env['omniauth.auth']
     user = User.find_from_omniauth(auth_hash)
