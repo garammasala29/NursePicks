@@ -14,15 +14,15 @@ nav.navbar.is-bold
             = link_to image_tag(current_user.icon_url), current_user
         - else
           .navbar-item.is-white
-            button.button.is-info.is-small#js-modal
+            button.button.is-info.is-small#js-modal data-modal='signin'
               | ログイン
-            .modal#page-modal
-              .modal-background#js-modal
+            .modal#signin
+              .modal-background#js-modal data-modal='signin'
               .modal-card
                 .modal-card-head
                   p.modal-card-title
                     | ログイン
-                  button.delete#js-modal aria-label="close"
+                  button.delete#js-modal aria-label="close" data-modal='signin'
                 .modal-card-body
                   .buttons.is-centered
                     .button.is-large.is-primary
