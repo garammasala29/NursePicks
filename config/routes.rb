@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :users, except: %i[index new edit]
   get '/current_user/edit', to: 'users#edit'
   get '/signup', to: 'users#new'
-  get '/signin', to: 'sessions#new'
   delete '/signout', to: 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
