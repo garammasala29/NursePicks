@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+
+  namespace :api do
+    resources :posts, only: %i(index)
+  end
 end
