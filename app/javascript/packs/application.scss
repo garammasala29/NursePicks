@@ -20,10 +20,10 @@ $info: $orange;
 $body-background-color: $white;
 $control-border-width: 2px;
 $input-shadow: none;
-$navbar-breakpoint: 0px;
 @import '../stylesheets/description.scss';
 @import '../stylesheets/post_index.scss';
 @import '../stylesheets/modal.scss';
+@import '../stylesheets/header.scss';
 
 // Import only what you need from Bulma
 @import "~bulma/sass/utilities/all";
