@@ -1,16 +1,13 @@
-class Api::LikesController < ApplicationController
-  # def index
-  # end
+# frozen_string_literal: true
 
+class Api::LikesController < ApplicationController
   def create
-    post = Post.find(params[:id])
-    current_user.likes.create!(post: post)
-    head :ok
+    @like = current_user.likes.create!(post_id: params[:post_id])
+    render status: :created, json: @like
   end
 
   def destroy
-    like = current_user.likes.find(params[:id])
-    like.destroy!
-    head :ok
+    current_user.likes.find(params[:id]).destroy!
+    head :no_content
   end
 end
