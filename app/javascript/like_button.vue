@@ -12,7 +12,7 @@
 export default {
   name: 'LikeButton',
   props: {
-    post: { type: Array, default: () => [] },
+    post: { type: Object, default: () => {} },
     currentUserId: { type: String, default: '' }
   },
   data() {
@@ -36,8 +36,10 @@ export default {
       this.likeCount = this.likeUsers.length
     },
     findLikeId(userId) {
-      if (!this.isLiked) { return null }
-      return this.post.likes.find(like => like.user_id === userId).id
+      if (!this.isLiked) {
+        return null
+      }
+      return this.post.likes.find((like) => like.user_id === userId).id
     },
     addLike() {
       fetch(`/api/posts/${this.post.id}/likes`, {
@@ -45,13 +47,15 @@ export default {
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
           'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
-        },
+          'X-CSRF-Token': document
+            .querySelector('meta[name="csrf-token"]')
+            ?.getAttribute('content')
+        }
       })
-        .then(response => {
+        .then((response) => {
           return response.json()
         })
-        .then(json => {
+        .then((json) => {
           this.likeId = json.id
           this.isLiked = true
           ++this.likeCount
@@ -63,15 +67,16 @@ export default {
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
           'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
-        },
+          'X-CSRF-Token': document
+            .querySelector('meta[name="csrf-token"]')
+            ?.getAttribute('content')
+        }
+      }).then(() => {
+        this.isLiked = false
+        this.likeId = null
+        --this.likeCount
       })
-        .then(() => {
-          this.isLiked = false
-          this.likeId = null
-          --this.likeCount
-        })
-    },
+    }
   }
 }
 </script>

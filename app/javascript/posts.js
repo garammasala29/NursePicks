@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const posts = document.querySelector(selector)
   if (posts) {
     const currentUserId = posts.getAttribute('data-current-user-id')
-    createApp(Post,{
-      currentUserId,
+    createApp(Post, {
+      currentUserId
     }).mount(selector)
   }
 })

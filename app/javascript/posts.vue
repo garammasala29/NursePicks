@@ -29,11 +29,11 @@ export default {
     likeButton: LikeButton
   },
   props: {
-    currentUserId: { type: String, default: '' },
+    currentUserId: { type: String, default: '' }
   },
-  data () {
+  data() {
     return {
-      posts: [],
+      posts: []
     }
   },
   created() {
@@ -48,8 +48,8 @@ export default {
           'X-Requested-With': 'XMLHttpRequest'
         }
       })
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
           this.posts = json.posts
         })
     }
