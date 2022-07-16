@@ -1,1 +1,4 @@
-#js-posts(data-current-user-id=current_user.id)
+- if current_user
+  #js-posts(data-current-user-id=current_user.id)
+- else
+  #js-posts
