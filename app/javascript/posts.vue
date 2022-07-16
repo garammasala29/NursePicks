@@ -1,6 +1,6 @@
 <template lang="pug">
 article.section
-  .media(v-for='(post, index) in posts')
+  .media(v-for='(post, index) in posts' :key='post.id')
     .media-left
       i.fa-solid.fa-circle.rank-icon
         .rank-number
@@ -16,31 +16,24 @@ article.section
             | {{ post.comments_count }}
         | {{ post.site_name }}
         | {{ post.date }}
-      //- .media-right
-      //-   - if current_user
-      //-     - if current_user.liked?(post)
-      //-       = link_to post_likes_path(post), method: :delete
-      //-         i.fa-solid.fa-heart.fa-2x.has-text-info
-      //-     - else
-      //-       = link_to post_likes_path(post), method: :post
-      //-         i.fa-regular.fa-heart.fa-2x.has-text-info
-      //-   - else
-      //-     i.fa-solid.fa-heart.fa-2x
-      //-   p.has-text-centered
-      //-     = post.likes.count
+    .media-right
+      likeButton(:post='post', :currentUserId='this.currentUserId')
 </template>
 
 <script>
+import LikeButton from 'like_button.vue'
+
 export default {
   name: 'Posts',
-  data: function () {
+  components: {
+    likeButton: LikeButton
+  },
+  props: {
+    currentUserId: { type: String, default: '' }
+  },
+  data() {
     return {
       posts: []
-    }
-  },
-  computed: {
-    url() {
-      return `/api/posts`
     }
   },
   created() {
@@ -48,7 +41,7 @@ export default {
   },
   methods: {
     getPosts() {
-      fetch(this.url, {
+      fetch('/api/posts', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
