@@ -1,46 +1,46 @@
-.description
-  - if page_category == 'posts-index'
+- if page_category == 'posts-index'
+  .description
     .top-title
       = image_tag('nursepicks_top.png')
-  .description-content
-    .columns
-      .column
-        .using
-          .title.is-5.has-text-centered
-            p 探す・読む
-          .has-text-centered
-            = image_tag('128x128.png')
-          .subtitle.is-6
-            p 投稿されている看護記事や論文を気軽に読むことができます<br>記事に付けられたコメントを読むことができます<br>アカウント登録しなくても「いいね」が押せます
-      .column
-        .using
-          .title.is-5.has-text-centered
-            p 投稿する
-          .has-text-centered
-            = image_tag('128x128.png')
-          .subtitle.is-6
-            p 看護師に役立つ記事・論文を投稿してください<br>YouTube・Twitterなども登録できます(URLがあれば投稿できます)<br>記事を投稿にはGoogle、もしくはTwitterでのアカウント登録が必要です
-  .post-button
-    button.button.is-primary.is-large#js-modal data-modal='post-modal'
-      | 記事を投稿する
-    .modal#post-modal
-      .modal-background#js-modal data-modal='post-modal'
-      .modal-card
-        .modal-card-head
-          p.modal-card-title
-            | 記事を投稿する
-          button.delete#js-modal aria-label="close" data-modal='post-modal'
-        = form_with(model: @post, local: true) do |form|
-          .modal-card-body
-            .content
-              / - if @post.errors.present?
-              /   - @post.errors.full_messages.each do |message|
-              /     = message
-              .field.has-text-left
-                = form.label :url, class: 'label'
-              .field-body.is-grouped
-                .field.is-expanded
+    .description-content
+      .columns
+        .column
+          .using
+            .title.is-5.has-text-centered
+              p 探す・読む
+            .has-text-centered
+              = image_tag('read_icon.png', size: '128x128')
+            .subtitle.is-6
+              p 投稿されている看護記事や論文を気軽に読むことができます<br>記事に付けられたコメントを読むことができます<br>アカウント登録しなくても「いいね」が押せます
+        .column
+          .using
+            .title.is-5.has-text-centered
+              p 投稿する
+            .has-text-centered
+              = image_tag('post_icon.png', size: '128x128')
+            .subtitle.is-6
+              p 看護師に役立つ記事・論文を投稿してください<br>YouTube・Twitterなども登録できます(URLがあれば投稿できます)<br>記事を投稿にはGoogle、もしくはTwitterでのアカウント登録が必要です
+    .post-button
+      button.button.is-primary.is-large#js-modal data-modal='post-modal'
+        | 記事を投稿する
+      .modal#post-modal
+        .modal-background#js-modal data-modal='post-modal'
+        .modal-card
+          .modal-card-head
+            p.modal-card-title
+              | 記事を投稿する
+            button.delete#js-modal aria-label="close" data-modal='post-modal'
+          = form_with(model: @post, local: true) do |form|
+            .modal-card-body
+              .content
+                / - if @post.errors.present?
+                /   - @post.errors.full_messages.each do |message|
+                /     = message
+                .field.has-text-left
+                  = form.label :url, class: 'label'
+                .field-body.is-grouped
+                  .field.is-expanded
+                    .control
+                      = form.text_field :url, class: 'input'
                   .control
-                    = form.text_field :url, class: 'input'
-                .control
-                  = form.submit '記事の投稿', class: 'button is-right is-primary'
+                    = form.submit '記事の投稿', class: 'button is-right is-primary'
