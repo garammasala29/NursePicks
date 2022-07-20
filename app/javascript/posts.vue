@@ -1,5 +1,13 @@
 <template lang="pug">
 article.section
+  .tabs.is-centered.is-medium
+    ul
+      li(:class="{'is-active': isOrder == 'popular'}")
+        a(@click='sortPopular()')
+          | 人気順
+      li(:class="{'is-active': isOrder == 'newest'}")
+        a(@click='sortNewest()')
+          | 新着順
   .media(v-for='(post, index) in posts' :key='post.id')
     .media-left
       i.fa-solid.fa-circle.rank-icon
@@ -33,7 +41,8 @@ export default {
   },
   data() {
     return {
-      posts: []
+      posts: [],
+      isOrder: 'popular'
     }
   },
   created() {
@@ -52,6 +61,18 @@ export default {
         .then((json) => {
           this.posts = json.posts
         })
+    },
+    sortNewest() {
+      this.posts = this.posts.sort((a, b) => {
+        return new Date(a.created_at) > new Date(b.created_at) ? -1 : 1
+      })
+      this.isOrder = 'newest'
+    },
+    sortPopular() {
+      this.posts = this.posts.sort((a, b) => {
+        return a.likes_count > b.likes_count ? -1 : 1
+      })
+      this.isOrder = 'popular'
     }
   }
 }

@@ -42,6 +42,8 @@ export default {
       return this.post.likes.find((like) => like.user_id === userId).id
     },
     addLike() {
+      this.isLiked = true
+      ++this.likeCount
       fetch(`/api/posts/${this.post.id}/likes`, {
         method: 'POST',
         headers: {
@@ -57,11 +59,11 @@ export default {
         })
         .then((json) => {
           this.likeId = json.id
-          this.isLiked = true
-          ++this.likeCount
         })
     },
     deleteLike() {
+      this.isLiked = false
+      --this.likeCount
       fetch(`/api/posts/${this.post.id}/likes/${this.likeId}`, {
         method: 'DELETE',
         headers: {
@@ -72,9 +74,7 @@ export default {
             ?.getAttribute('content')
         }
       }).then(() => {
-        this.isLiked = false
         this.likeId = null
-        --this.likeCount
       })
     }
   }
