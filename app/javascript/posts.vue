@@ -64,12 +64,14 @@ export default {
     },
     sortNewest() {
       this.posts = this.posts.sort((a, b) => {
-        return (new Date(a.created_at) > new Date(b.created_at) ? -1 : 1)
+        return new Date(a.created_at) > new Date(b.created_at) ? -1 : 1
       })
       this.isOrder = 'newest'
     },
     sortPopular() {
-      this.getPosts()
+      this.posts = this.posts.sort((a, b) => {
+        return a.likes_count > b.likes_count ? -1 : 1
+      })
       this.isOrder = 'popular'
     }
   }
