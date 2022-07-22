@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :posts, only: %i(index) do
       resources :likes, only: %i(create destroy)
     end
+    resources :users, only: %i(show)
   end
 end
