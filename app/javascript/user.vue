@@ -1,23 +1,26 @@
 <template lang='pug'>
 article.section
-  .tabs.is-centered.is-medium
+  .tabs.is-centered.is-medium.is-boxed
     ul
       li(:class="{'is-active': isSelect == 'posts'}")
         a(@click="isSelect='posts'")
           | 投稿した記事
+          i.fa-solid.fa-file-medical
       li(:class="{'is-active': isSelect == 'comments'}")
         a(@click="isSelect='comments'")
           | コメント
+          i.fa-solid.fa-message
       li(:class="{'is-active': isSelect == 'likes'}")
         a(@click="isSelect='likes'")
           | いいねした記事
+          i.fa-solid.fa-thumbs-up
   .tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
       ul(v-for='post in posts' :key='post.id')
         li
           a(:href='post.path') {{ post.title }}
               //- - if current_user == @user
-              //-   = button_to '削除', post, method: :delete
+                = button_to '削除', post, method: :delete
     .content(:class="{'is-active': isSelect == 'comments'}")
       ul(v-for='comment in comments')
         li
