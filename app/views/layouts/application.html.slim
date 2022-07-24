@@ -14,10 +14,12 @@ html
     header
       = render 'shared/header'
     main
+      - if notice.presence
+        .notification.is-primary
+          = notice
+      - if alert.presence
+        .notification.is-danger
+          = alert
       = render 'shared/description'
-    - if notice.presence
-      = notice
-    - if alert.presence
-      = alert
     .container
       = yield
