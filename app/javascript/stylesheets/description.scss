@@ -2,7 +2,7 @@
   background: url('../../assets/images/top_bg.png');
   background-size: cover;
   padding: 80px 0px 50px 0px;
-  margin-top: -50px;
+  margin-top: -20px;
   position: relative;
 }
 
@@ -24,6 +24,10 @@
   border-color: $blue;
   border-width: 2px;
   padding: 20px;
+}
+
+.using-image{
+  margin-bottom: 1.5rem;
 }
 
 .post-button {

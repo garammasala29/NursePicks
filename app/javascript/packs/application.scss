@@ -14,6 +14,7 @@ $grey-dark: $black;
 $primary: $blue;
 $link: $blue;
 $info: $orange;
+$danger: $orange;
 .link-button { color: white }
 
 // Update some of Bulma's component variables
@@ -24,6 +25,7 @@ $input-shadow: none;
 @import '../stylesheets/post_index.scss';
 @import '../stylesheets/modal.scss';
 @import '../stylesheets/header.scss';
+@import '../stylesheets/notification.scss';
 
 // Import only what you need from Bulma
 @import "~bulma/sass/utilities/all";
