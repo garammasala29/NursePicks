@@ -16,26 +16,44 @@ article.section
           i.fa-solid.fa-thumbs-up
   .tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
-      ul(v-for='post in posts' :key='post.id')
-        li
-          a(:href='post.path') {{ post.title }}
-              //- - if current_user == @user
-                = button_to '削除', post, method: :delete
+      table.table.is-striped
+        tbody
+          tr(v-for='(post, index) in posts' :key='post.id')
+            th
+              | {{ index + 1 }}
+            td
+              a(:href='post.path') {{ post.title }}
+            td(v-if='currentUserId == userId')
+              i.fa-solid.fa-trash-can.has-text-info
+              //- button.button.is-info.is-outlined(v-if='currentUserId == userId')
     .content(:class="{'is-active': isSelect == 'comments'}")
-      ul(v-for='comment in comments')
-        li
-          a(:href='comment.postPath') {{ comment.content }} ーーー {{ comment.post_title }}
-        //-     - if current_user == @user
-        //-       = button_to '削除', post_comment_path(comment.post_id, comment), method: :delete
+      table.table.is-striped
+        tbody
+          tr(v-for='(comment, index) in comments')
+            th
+              | {{ index + 1 }}
+            td
+              a(:href='comment.postPath') {{ comment.content }}
+            td
+              | {{ comment.post_title }}
+            td(v-if='currentUserId == userId')
+              i.fa-solid.fa-trash-can.has-text-info
+            //- post_comment_path(comment.post_id, comment), method: :delete
     .content(:class="{'is-active': isSelect == 'likes'}")
-      ul(v-for='like in likes')
-        li
-          a(:href='like.postPath') {{ like.title }}
-      //-       - if current_user == @user
-      //-         = button_to 'いいねを外す', post_likes_path(like.post_id), method: :delete
+      table.table.is-striped
+        tbody
+          tr(v-for='(like, index) in likes')
+            th
+              | {{ index + 1 }}
+            td
+              a(:href='like.postPath') {{ like.title }}
+            //- td(v-if='currentUserId == userId')
+            //-   likeButton(:post='post', :currentUserId='currentUserId')
 </template>
 
 <script>
+import LikeButton from 'like_button.vue'
+
 export default {
   name: 'UserPosts',
   props: {
@@ -52,6 +70,9 @@ export default {
   },
   created() {
     this.getPosts()
+  },
+  components: {
+    likeButton: LikeButton
   },
   methods: {
     getPosts() {
