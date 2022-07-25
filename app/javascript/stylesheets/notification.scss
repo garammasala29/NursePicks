@@ -2,3 +2,11 @@
   text-align: center;
   margin-bottom: 3.5rem;
 }
+
+.v-toast__item--success {
+  background-color: $blue;
+}
+
+.v-toast__item--error {
+  background-color: $orange;
+}
