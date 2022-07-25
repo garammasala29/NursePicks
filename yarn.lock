@@ -7945,6 +7945,11 @@ vue-template-compiler@^2.6.14:
     de-indent "^1.0.2"
     he "^1.1.0"
 
+vue-toast-notification@^3.0:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/vue-toast-notification/-/vue-toast-notification-3.0.4.tgz#dfd6ff37daa99be18f13c3e56dc0074fe3f3cdbe"
+  integrity sha512-rEhLtcKg8SVdBpdN7PrNst5nmY8dw0j3NkNImqurhlGurqR/QDKoou0t2PuCReEOCTKqHvfLCle2I3kwQWDWDQ==
+
 vue@^3.2.36:
   version "3.2.36"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.36.tgz#8daa996e2ced521708de97d066c7c998e8bc3378"

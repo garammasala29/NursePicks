@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import { useToast } from 'vue-toast-notification'
+const $toast = useToast()
+
 export default {
   name: 'LikeButton',
   props: {
@@ -59,6 +62,7 @@ export default {
         })
         .then((json) => {
           this.likeId = json.id
+          $toast.success('いいねしました')
         })
     },
     deleteLike() {
@@ -75,6 +79,7 @@ export default {
         }
       }).then(() => {
         this.likeId = null
+        $toast.error('いいねを外しました')
       })
     }
   }
