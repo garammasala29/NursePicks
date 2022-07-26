@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :posts, only: %i(index destroy) do
       resources :likes, only: %i(create destroy)
+      resources :comments, only: %i(destroy)
     end
     resources :users, only: %i(show)
   end

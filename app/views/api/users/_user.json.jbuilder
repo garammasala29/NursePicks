@@ -11,6 +11,7 @@ end
 json.comments user.comments do |comment|
   json.id comment.id
   json.content comment.content
+  json.post_id comment.post.id
   json.post_title comment.post.title
   json.postPath post_path(comment.post_id)
 end

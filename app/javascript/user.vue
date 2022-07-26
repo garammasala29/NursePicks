@@ -36,7 +36,7 @@ article.section
               a(:href='comment.postPath') {{ comment.content }}
             td
               | {{ comment.post_title }}
-            td(v-if='currentUserId == userId')
+            td(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
               i.fa-solid.fa-trash-can.has-text-info
               //- deleteButton(:post='comment')
             //- post_comment_path(comment.post_id, comment), method: :delete
@@ -54,7 +54,7 @@ article.section
 
 <script>
 import LikeButton from 'like_button.vue'
-import deleteButton from 'delete_button.vue'
+// import deleteButton from 'delete_button.vue'
 import { useToast } from 'vue-toast-notification'
 const $toast = useToast()
 
@@ -108,12 +108,32 @@ export default {
         })
           .then((response) => {
               if (response.ok) {
-                console.log(this.posts)
                 this.posts = this.posts.filter(
                   (post) =>  post.id !== id
                 )
-                console.log(this.posts)
                 $toast.success('記事を削除しました')
+              }
+            })
+      }
+    },
+    deleteComment(postId, commentId) {
+      if (window.confirm('本当に削除してもよろしいですか？')) {
+        fetch(`/api/posts/${postId}/comments/${commentId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': document
+              .querySelector('meta[name="csrf-token"]')
+              ?.getAttribute('content')
+          }
+        })
+          .then((response) => {
+              if (response.ok) {
+                this.comments = this.comments.filter(
+                  (comment) =>  comment.id !== commentId
+                )
+                $toast.success('コメントを削除しました')
               }
             })
       }
