@@ -24,7 +24,8 @@ article
             td
               a(:href='post.path') {{ post.title }}
             td(v-if='currentUserId == userId' @click='deletePost(post.id)')
-              i.fa-solid.fa-trash-can.has-text-info
+              button.button.is-small.is-info.delete-button
+                i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'comments'}")
       table.table.is-striped
         tbody
@@ -36,7 +37,8 @@ article
             td
               | {{ comment.post_title }}
             td(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
-              i.fa-solid.fa-trash-can.has-text-info
+              button.button.is-small.is-info.delete-button
+                i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'likes'}")
       table.table.is-striped
         tbody
@@ -46,7 +48,8 @@ article
             td
               a(:href='like.postPath') {{ like.post_title }}
             td(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
-              i.fa-solid.fa-heart.has-text-info
+              button.button.is-small.is-info.delete-button
+                i.fa-solid.fa-heart
 </template>
 
 <script>
