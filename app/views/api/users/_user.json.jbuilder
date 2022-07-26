@@ -17,6 +17,7 @@ json.comments user.comments do |comment|
 end
 json.likes user.likes do |like|
   json.id like.id
-  json.title like.post.title
+  json.post_id like.post.id
+  json.post_title like.post.title
   json.postPath post_path(like.post_id)
 end

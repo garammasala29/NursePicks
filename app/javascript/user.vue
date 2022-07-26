@@ -1,5 +1,5 @@
 <template lang='pug'>
-article.section
+article
   .tabs.is-centered.is-medium.is-boxed
     ul
       li(:class="{'is-active': isSelect == 'posts'}")
@@ -25,7 +25,6 @@ article.section
               a(:href='post.path') {{ post.title }}
             td(v-if='currentUserId == userId' @click='deletePost(post.id)')
               i.fa-solid.fa-trash-can.has-text-info
-              //- deleteButton(:post='post')
     .content(:class="{'is-active': isSelect == 'comments'}")
       table.table.is-striped
         tbody
@@ -38,8 +37,6 @@ article.section
               | {{ comment.post_title }}
             td(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
               i.fa-solid.fa-trash-can.has-text-info
-              //- deleteButton(:post='comment')
-            //- post_comment_path(comment.post_id, comment), method: :delete
     .content(:class="{'is-active': isSelect == 'likes'}")
       table.table.is-striped
         tbody
@@ -47,14 +44,12 @@ article.section
             th
               | {{ index + 1 }}
             td
-              a(:href='like.postPath') {{ like.title }}
-            //- td(v-if='currentUserId == userId')
-            //-   likeButton(:post='post', :currentUserId='currentUserId')
+              a(:href='like.postPath') {{ like.post_title }}
+            td(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
+              i.fa-solid.fa-heart.has-text-info
 </template>
 
 <script>
-import LikeButton from 'like_button.vue'
-// import deleteButton from 'delete_button.vue'
 import { useToast } from 'vue-toast-notification'
 const $toast = useToast()
 
@@ -75,9 +70,6 @@ export default {
   created() {
     this.getPosts()
   },
-  components: {
-    likeButton: LikeButton
-  },
   methods: {
     getPosts() {
       fetch(`/api/users/${this.userId}`, {
@@ -95,7 +87,7 @@ export default {
         })
     },
     deletePost(id) {
-      if (window.confirm('本当に削除してもよろしいですか？')) {
+      if (window.confirm('記事を削除してもよろしいですか？')) {
         fetch(`/api/posts/${id}`, {
           method: 'DELETE',
           headers: {
@@ -117,7 +109,7 @@ export default {
       }
     },
     deleteComment(postId, commentId) {
-      if (window.confirm('本当に削除してもよろしいですか？')) {
+      if (window.confirm('コメントを削除してもよろしいですか？')) {
         fetch(`/api/posts/${postId}/comments/${commentId}`, {
           method: 'DELETE',
           headers: {
@@ -134,6 +126,28 @@ export default {
                   (comment) =>  comment.id !== commentId
                 )
                 $toast.success('コメントを削除しました')
+              }
+            })
+      }
+    },
+    deleteLike(postId, likeId) {
+      if (window.confirm('いいねを削除してもよろしいですか？')) {
+        fetch(`/api/posts/${postId}/likes/${likeId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': document
+              .querySelector('meta[name="csrf-token"]')
+              ?.getAttribute('content')
+          }
+        })
+          .then((response) => {
+              if (response.ok) {
+                this.likes = this.likes.filter(
+                  (like) => like.id !== likeId
+                )
+                $toast.success('いいねを削除しました')
               }
             })
       }
