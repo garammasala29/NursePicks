@@ -8,14 +8,14 @@ json.posts user.posts do |post|
   json.user_id post.user_id
   json.path post_path(post)
 end
-json.comments user.comments do |comment|
+json.comments user.comments.includes(:post) do |comment|
   json.id comment.id
   json.content comment.content
   json.post_id comment.post.id
   json.post_title comment.post.title
   json.postPath post_path(comment.post_id)
 end
-json.likes user.likes do |like|
+json.likes user.likes.includes(:post) do |like|
   json.id like.id
   json.post_id like.post.id
   json.post_title like.post.title
