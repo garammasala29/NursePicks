@@ -1,0 +1,11 @@
+.tab-contents .content {
+  display: none;
+}
+
+.tab-contents .content.is-active {
+  display: block;
+}
+
+.delete-button {
+  cursor: pointer;
+}
