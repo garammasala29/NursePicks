@@ -1,4 +1,4 @@
-<template lang='pug'>
+<template lang="pug">
 article
   .tabs.is-centered.is-boxed.is-fullwidth
     ul
@@ -67,7 +67,7 @@ export default {
       posts: [],
       comments: [],
       likes: [],
-      isSelect: 'posts',
+      isSelect: 'posts'
     }
   },
   created() {
@@ -100,15 +100,12 @@ export default {
               .querySelector('meta[name="csrf-token"]')
               ?.getAttribute('content')
           }
+        }).then((response) => {
+          if (response.ok) {
+            this.posts = this.posts.filter((post) => post.id !== id)
+            $toast.success('記事を削除しました')
+          }
         })
-          .then((response) => {
-              if (response.ok) {
-                this.posts = this.posts.filter(
-                  (post) =>  post.id !== id
-                )
-                $toast.success('記事を削除しました')
-              }
-            })
       }
     },
     deleteComment(postId, commentId) {
@@ -122,15 +119,14 @@ export default {
               .querySelector('meta[name="csrf-token"]')
               ?.getAttribute('content')
           }
+        }).then((response) => {
+          if (response.ok) {
+            this.comments = this.comments.filter(
+              (comment) => comment.id !== commentId
+            )
+            $toast.success('コメントを削除しました')
+          }
         })
-          .then((response) => {
-              if (response.ok) {
-                this.comments = this.comments.filter(
-                  (comment) =>  comment.id !== commentId
-                )
-                $toast.success('コメントを削除しました')
-              }
-            })
       }
     },
     deleteLike(postId, likeId) {
@@ -144,15 +140,12 @@ export default {
               .querySelector('meta[name="csrf-token"]')
               ?.getAttribute('content')
           }
+        }).then((response) => {
+          if (response.ok) {
+            this.likes = this.likes.filter((like) => like.id !== likeId)
+            $toast.success('いいねを削除しました')
+          }
         })
-          .then((response) => {
-              if (response.ok) {
-                this.likes = this.likes.filter(
-                  (like) => like.id !== likeId
-                )
-                $toast.success('いいねを削除しました')
-              }
-            })
       }
     }
   }

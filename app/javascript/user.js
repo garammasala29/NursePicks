@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userId = user.getAttribute('data-user-id')
     const currentUserId = user.getAttribute('data-current-user-id')
     createApp(User, {
-      currentUserId, userId
+      currentUserId,
+      userId
     }).mount(selector)
   }
 })
