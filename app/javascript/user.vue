@@ -1,6 +1,6 @@
 <template lang='pug'>
 article
-  .tabs.is-centered.is-medium.is-boxed
+  .tabs.is-centered.is-boxed.is-fullwidth
     ul
       li(:class="{'is-active': isSelect == 'posts'}")
         a(@click="isSelect='posts'")
