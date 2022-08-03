@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :post do
+    id { 1 }
     title { '看護記事' }
     url { 'https://example.com' }
     site_name { '記事元サイト' }
