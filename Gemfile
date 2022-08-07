@@ -58,6 +58,7 @@ end
 gem 'dotenv-rails'
 gem 'html2slim'
 gem 'metainspector'
+gem 'meta-tags'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
