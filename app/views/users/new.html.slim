@@ -3,9 +3,22 @@
   = form_with(model: @user, local: true) do |form|
     = form.hidden_field :provider
     = form.hidden_field :uid
-    = form.hidden_field :icon_url
-    .image.is-128x128
-      = image_tag(@user.icon_url)
+    ul.select-icons
+      li.select-icon
+        = form.label :icon_url, value: @user.icon_url
+          .image.is-96x96
+            = image_tag(@user.icon_url)
+        = form.radio_button :icon_url, @user.icon_url
+      li.select-icon
+        = form.label :icon_url, value: 'logo_picks.png'
+          .image.is-96x96
+            = image_tag('logo_picks.png')
+        = form.radio_button :icon_url, 'logo_picks.png'
+      li.select-icon
+        = form.label :icon_url, value: 'logo_nurse.png'
+          .image.is-96x96
+            = image_tag('logo_nurse.png')
+        = form.radio_button :icon_url, 'logo_nurse.png'
     .field
       .label
         = form.label :name, 'アカウント名'
@@ -19,6 +32,7 @@
       .control
         = form.text_field :url, class: 'input'
     .control
-      = form.submit 'アカウント登録', class: 'button'
+      .buttons.is-right
+        = form.submit 'アカウント登録', class: 'button is-primary'
 
 = link_to '戻る', root_path

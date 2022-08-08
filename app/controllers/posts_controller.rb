@@ -15,12 +15,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
-    page = MetaInspector.new(@post.url)
-
-    @post.title = page.title
-    @post.image_url = page.meta['og:image'] || "http://www.google.com/s2/favicons?domain=#{@post.url}"
-    @post.site_name = page.meta['og:site_name']
+    @post = current_user.posts.new(post_params) do |post|
+      page = MetaInspector.new(post.url)
+      if page
+        post.title = page.title
+        post.image_url = page.meta['og:image'] || 'logo_picks.png'
+        post.site_name = page.meta['og:site_name']
+      end
+    end
 
     if @post.save
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
