@@ -2,8 +2,9 @@ doctype html
 html
   head
     title
-      | Nursepicks
+      | NursePicks
     meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = display_meta_tags(default_meta_tags)
     = csrf_meta_tags
     = favicon_link_tag('favicon.png')
     = csp_meta_tag
