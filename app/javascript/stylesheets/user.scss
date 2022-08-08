@@ -9,3 +9,21 @@
 .delete-button {
   cursor: pointer;
 }
+
+.select-icons {
+  display: flex;
+  text-align: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.select-icon {
+  padding: 10px;
+  cursor: pointer;
+  background-color: $beige-light;
+  border: solid 1px $beige-lighter;
+}
+
+.select-icon .image, input[type='radio'] {
+  cursor: pointer;
+}
