@@ -10,15 +10,15 @@
             = image_tag(@user.icon_url)
         = form.radio_button :icon_url, @user.icon_url
       li.select-icon
-        = form.label :icon_url, value: 'logo_picks.png'
+        = form.label :icon_url, value: 'icon_user_f.png'
           .image.is-96x96
-            = image_tag('logo_picks.png')
-        = form.radio_button :icon_url, 'logo_picks.png'
+            = image_tag('icon_user_f.png')
+        = form.radio_button :icon_url, 'icon_user_f.png'
       li.select-icon
-        = form.label :icon_url, value: 'logo_nurse.png'
+        = form.label :icon_url, value: 'icon_user_m.png'
           .image.is-96x96
-            = image_tag('logo_nurse.png')
-        = form.radio_button :icon_url, 'logo_nurse.png'
+            = image_tag('icon_user_m.png')
+        = form.radio_button :icon_url, 'icon_user_m.png'
     .field
       .label
         = form.label :name, 'アカウント名'
