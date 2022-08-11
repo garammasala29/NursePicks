@@ -6,8 +6,8 @@ module ApplicationHelper
       reverse: true,
       separator: '|',
       charset: 'utf-8',
-      description: '看護師さん向けの情報サイト',
-      keywords: 'キーワード',
+      description: '看護師さんのための情報収集サイト。看護に関する価値ある記事を探したり、おすすめの記事を投稿しよう',
+      keywords: '看護師,情報収集,看護記事,看護研究',
       viewport: 'width=device-width, initial-scale=1.0',
       icon: [
         { href: image_url('favicon.png') },
@@ -26,7 +26,7 @@ module ApplicationHelper
         card: 'summary_large_image',
         site: '@garammasala29',
         description: :description,
-        image: image_url('ogp.png')
+        image: image_url('ogp.png'),
         domain: 'https://nursepicks.herokuapp.com/'
       }
     }
