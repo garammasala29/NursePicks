@@ -16,10 +16,10 @@ html
       = render 'shared/header'
     main
       - if notice.presence
-        .notification.is-primary
+        .notification.is-primary.has-text-centered
           = notice
       - if alert.presence
-        .notification.is-danger
+        .notification.is-danger.has-text-centered
           = alert
       = render 'shared/description'
     .container
