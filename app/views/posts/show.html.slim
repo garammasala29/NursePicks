@@ -7,13 +7,9 @@ article.section
       .title.is-5
         = link_to @post.title, @post.url
       .sub-title
-        = link_to @post
-          i.fa-solid.fa-message
-        = link_to @post.comments.count, @post, style: 'margin-left: 3px;'
+        i.fa-solid.fa-message
+        |  #{@post.comments.count}
         |  #{@post.site_name}
-        = link_to image_tag(User.find(@post.user_id).icon_url, size: '28x28'), user_path(@post.user_id), style: 'margin-left: 3px;'
-        = link_to User.find(@post.user_id).name, user_path(@post.user_id), style: 'margin: 0px 3px 0px 3px;'
-        = l @post.created_at, format: :short
     .media-right.has-text-centered
       - if current_user
         - if current_user.liked?(@post)
@@ -27,7 +23,16 @@ article.section
       p = @post.likes.count
       - if current_user == @post.user
         = link_to '記事の削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
-  .section
+  .post-list
+    | 投稿 :
+    .post-list-item
+      = link_to image_tag(User.find(@post.user_id).icon_url, size: '28x28'), user_path(@post.user_id)
+    .post-list-item
+      = link_to User.find(@post.user_id).name, user_path(@post.user_id)
+    .post-list-item
+      = l @post.created_at, format: :short
+  hr.post-separator
+  .content
     - if @comments.presence
       - @comments.each do |comment|
         .media
@@ -42,7 +47,7 @@ article.section
     - else
       p
         | まだこの記事にコメントはありません
-  .section
+  .content
     - if signed_in?
       = form_with(model: [@post, @comment], local: true) do |form|
         .field.is-horizontal

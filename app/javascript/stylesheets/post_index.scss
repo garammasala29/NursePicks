@@ -24,3 +24,13 @@
   letter-spacing: 3px;
   margin-right: 2px;
 }
+
+.post-list {
+  display: flex;
+  column-gap: 10px;
+  margin-top: 4px;
+}
+
+.post-separator {
+  margin: 12px 0;
+}
