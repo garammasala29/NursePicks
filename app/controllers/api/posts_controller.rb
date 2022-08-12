@@ -2,7 +2,7 @@
 
 class API::PostsController < ApplicationController
   def index
-    @posts = Post.includes(:comments, :likes).sort { |a, b| b.likes.size <=> a.likes.size }
+    @posts = Post.includes(:comments, :likes)
   end
 
   def destroy

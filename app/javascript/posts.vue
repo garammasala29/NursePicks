@@ -60,6 +60,7 @@ export default {
         .then((response) => response.json())
         .then((json) => {
           this.posts = json.posts
+          this.sortPopular()
         })
     },
     sortNewest() {
@@ -70,7 +71,12 @@ export default {
     },
     sortPopular() {
       this.posts = this.posts.sort((a, b) => {
-        return a.likes_count > b.likes_count ? -1 : 1
+        if (a.likes_count > b.likes_count)
+          return -1
+        else if (a.likes_count < b.likes_count)
+          return 1
+        else
+          return new Date(a.created_at) < new Date(b.created_at) ? -1 : 1
       })
       this.isOrder = 'popular'
     }
