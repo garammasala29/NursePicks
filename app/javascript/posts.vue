@@ -71,12 +71,9 @@ export default {
     },
     sortPopular() {
       this.posts = this.posts.sort((a, b) => {
-        if (a.likes_count > b.likes_count)
-          return -1
-        else if (a.likes_count < b.likes_count)
-          return 1
-        else
-          return new Date(a.created_at) < new Date(b.created_at) ? -1 : 1
+        if (a.likes_count > b.likes_count) return -1
+        else if (a.likes_count < b.likes_count) return 1
+        else return new Date(a.created_at) < new Date(b.created_at) ? -1 : 1
       })
       this.isOrder = 'popular'
     }
