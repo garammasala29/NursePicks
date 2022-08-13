@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show; end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       sign_in(@user)
       redirect_to @user, notice: 'アカウントを登録しました'
