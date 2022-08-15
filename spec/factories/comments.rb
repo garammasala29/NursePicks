@@ -2,8 +2,9 @@
 
 FactoryBot.define do
   factory :comment do
-    content { 'MyText' }
-    user { nil }
-    post { nil }
+    id { 1 }
+    content { 'コメントテスト' }
+    post
+    user { post.user }
   end
 end
