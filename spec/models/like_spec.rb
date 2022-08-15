@@ -19,4 +19,11 @@ RSpec.describe Like, type: :model do
     like.valid?
     expect(like.errors[:post]).to include('を入力してください')
   end
+
+  it '同一記事への複数いいねが無効であること' do
+    FactoryBot.create(:like)
+    like = FactoryBot.build(:like)
+    like.valid?
+    expect(like.errors[:post_id]).to include('はすでに存在します')
+  end
 end
