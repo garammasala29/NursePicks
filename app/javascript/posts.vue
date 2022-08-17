@@ -15,15 +15,16 @@ article.section
           | {{ index + 1 }}
     .media-left
       img.image.is-64x64(:src='post.image_url')
-    .media-content
+    a.media-content(:href='post.show_url')
       .title.is-5
         a(:href='post.url') {{ post.title }}
       .sub-title
         a.comment-link(:href='post.show_url')
           i.fa-solid.fa-message
             | {{ post.comments_count }}
-        | {{ post.site_name }}
-        | {{ post.date }}
+        span
+          | {{ post.site_name }}
+          | {{ post.date }}
     .media-right
       likeButton(:post='post', :currentUserId='this.currentUserId')
 </template>
