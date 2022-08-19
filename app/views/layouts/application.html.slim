@@ -15,10 +15,10 @@ html
     header
       = render 'shared/header'
     main
-      - if notice.presence
+      - if flash.notice
         .notification.is-primary.has-text-centered
           = notice
-      - if alert.presence
+      - if flash.alert
         .notification.is-danger.has-text-centered
           = alert
       = render 'shared/description'

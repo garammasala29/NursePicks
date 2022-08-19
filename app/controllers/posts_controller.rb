@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
     else
       flash[:alert] = '記事投稿に失敗しました'
-      redirect_back(fallback_location: root_path)
+      render :index
     end
   end
 
