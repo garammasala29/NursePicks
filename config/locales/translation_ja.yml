@@ -3,6 +3,8 @@ ja:
     models:
       post: 投稿
       user: ユーザー  #g
+      comment: コメント  #g
+      like: お気に入り  #g
 
     attributes:
       post:
@@ -11,6 +13,8 @@ ja:
         title: 題名  #g
         url: URL  #g
         user: :activerecord.models.user  #g
+        comments: コメント  #g
+        likes: いいね  #g
 
       user:
         icon_url: アイコン画像
@@ -18,3 +22,15 @@ ja:
         provider: プロバイダー  #g
         uid: Uid  #g
         url: URL  #g
+        comments: コメント  #g
+        likes: いいね  #g
+        posts: 投稿  #g
+
+      comment:
+        content: コメント
+        post: :activerecord.models.post  #g
+        user: :activerecord.models.user  #g
+
+      like:
+        post: :activerecord.models.post  #g
+        user: :activerecord.models.user  #g
