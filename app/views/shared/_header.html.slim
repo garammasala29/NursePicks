@@ -1,6 +1,6 @@
 nav.navbar.is-bold
   .container
-    - unless page_category == 'posts-index'
+    - unless request.path == '/'
       .navbar-brand
         .navbar-item
           .image
