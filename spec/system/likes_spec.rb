@@ -46,5 +46,15 @@ RSpec.describe 'Likes', type: :system do
         expect(page).to have_content 'いいねを取り消しました'
       end.to change { Like.count }.by(-1)
     end
+
+    it '投稿したユーザーがユーザーページからいいねを取り消せること' do
+      visit user_path(user)
+      expect do
+        find('a', text: 'いいねした記事').click
+        find('.delete-button').click
+        page.accept_confirm 'いいねを削除してもよろしいですか？'
+        expect(page).to have_content 'いいねを削除しました'
+      end.to change { Like.count }.by(-1)
+    end
   end
 end
