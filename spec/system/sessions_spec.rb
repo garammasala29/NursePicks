@@ -13,7 +13,7 @@ RSpec.describe 'Sessions', type: :system do
     end
 
     it 'Google認証でログインできる' do
-      set_omniauth(:google_oauth2)
+      mock_auth(:google_oauth2)
       g_user
       visit root_path
       click_on 'ログイン'

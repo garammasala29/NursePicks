@@ -8,7 +8,7 @@ RSpec.describe 'Users', type: :system do
   describe 'create' do
     context 'Twitter認証を使う場合' do
       it 'ユーザーを作成できること' do
-        set_omniauth
+        mock_auth
         visit root_path
         expect do
           click_on 'ユーザー登録'
@@ -20,7 +20,7 @@ RSpec.describe 'Users', type: :system do
       end
 
       it 'デフォルト画像を使用してユーザー登録すること' do
-        set_omniauth
+        mock_auth
         visit root_path
         expect do
           click_on 'ユーザー登録'
@@ -35,7 +35,7 @@ RSpec.describe 'Users', type: :system do
 
     context 'Google認証を使う場合' do
       it 'ユーザーを作成できること' do
-        set_omniauth(:google_oauth2)
+        mock_auth(:google_oauth2)
         visit root_path
         expect do
           click_on 'ユーザー登録'
