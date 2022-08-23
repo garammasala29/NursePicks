@@ -2,10 +2,10 @@
 
 module SignInHelper
   def sign_in_as(user)
-    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
+    set_omniauth
     visit root_path
     click_on 'ログイン'
-    click_on 'Twitterでログイン'
+    click_on "#{set_omniauth.provider.capitalize}でログイン"
     @current_user = user
   end
 
