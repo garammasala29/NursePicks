@@ -10,12 +10,12 @@ FactoryBot.define do
     uid { '12345' }
   end
 
-  # factory :user do
-  #   id { 2 }
-  #   name { 'Bob' }
-  #   icon_url { 'https://example.com/image' }
-  #   url { 'https://example.com' }
-  #   provider { 'google_oauth2' }
-  #   uid { '67890' }
-  # end
+  factory :g_user, class: User do
+    id { 2 }
+    name { 'Bob' }
+    icon_url { 'https://example.com/image' }
+    url { 'https://example.com' }
+    provider { 'google_oauth2' }
+    uid { '67890' }
+  end
 end
