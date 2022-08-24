@@ -27,14 +27,14 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
     else
-      flash[:alert] = '記事投稿に失敗しました'
-      redirect_back(fallback_location: root_path)
+      flash.now[:alert] = '記事投稿に失敗しました'
+      render :index
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to root_path, notice: '記事を削除しました'
+    redirect_to root_path, notice: "「#{@post.title}」を削除しました"
   end
 
   private
@@ -48,6 +48,9 @@ class PostsController < ApplicationController
   end
 
   def signin_required
-    redirect_to root_path unless current_user
+    return if current_user
+
+    redirect_to root_path
+    flash[:alert] = '記事投稿をするにはログインが必要です'
   end
 end

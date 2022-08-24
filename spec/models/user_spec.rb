@@ -12,12 +12,12 @@ RSpec.describe User, type: :model do
     end
 
     it '無効なproviderが渡されるとnilが返ること' do
-      auth_hash = { provider: 'google_oauth2', uid: user.id }
+      auth_hash = { provider: 'google_oauth2', uid: user.uid }
       expect(User.find_from_omniauth(auth_hash)).to be nil
     end
 
     it '無効なuidが渡されるとnilが返ること' do
-      auth_hash = { provider: user.provider, uid: '12345' }
+      auth_hash = { provider: user.provider, uid: '67890' }
       expect(User.find_from_omniauth(auth_hash)).to be nil
     end
   end

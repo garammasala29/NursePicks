@@ -48,6 +48,7 @@ article.section
       p
         | まだこの記事にコメントはありません
   .content
+    = render 'shared/errors', object: @comment
     - if signed_in?
       = form_with(model: [@post, @comment], local: true) do |form|
         .field.is-horizontal

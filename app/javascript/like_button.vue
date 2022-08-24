@@ -79,7 +79,7 @@ export default {
         }
       }).then(() => {
         this.likeId = null
-        $toast.error('いいねを外しました')
+        $toast.error('いいねを取り消しました')
       })
     }
   }

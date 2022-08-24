@@ -5,3 +5,9 @@
 .v-toast__item--error {
   background-color: $orange;
 }
+
+.errors {
+  color: $orange;
+  padding: 10px;
+  font-weight: 700;
+}
