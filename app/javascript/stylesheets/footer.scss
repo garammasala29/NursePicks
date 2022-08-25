@@ -1,0 +1,25 @@
+$footer-background-color: $beige-light;
+$footer-padding: 30px;
+
+.footer {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.footer-item {
+  display: inline-block;
+  margin: 4px;
+}
+
+.footer-item a {
+  color: $black;
+  text-decoration: none;
+}
+
+.footer-item:hover {
+  text-decoration: underline;
+}
+
+.twitter-icon {
+  margin-left: 4px;
+}

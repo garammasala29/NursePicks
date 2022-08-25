@@ -15,8 +15,14 @@ $primary: $blue;
 $link: $blue;
 $info: $orange;
 $danger: $orange;
-.link-button { color: white }
-.like-button { cursor: pointer;}
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
 
 // Update some of Bulma's component variables
 $body-background-color: $white;
@@ -27,6 +33,7 @@ $section-padding: 20px;
 @import '../stylesheets/post_index.scss';
 @import '../stylesheets/modal.scss';
 @import '../stylesheets/header.scss';
+@import '../stylesheets/footer.scss';
 @import '../stylesheets/notification.scss';
 @import '../stylesheets/user.scss';
 

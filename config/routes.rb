@@ -20,4 +20,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: %i(show)
   end
+
+  get 'tos', to: 'home#tos', as: 'tos'
+  get 'privacy_policy', to: 'home#privacy_policy'
 end
