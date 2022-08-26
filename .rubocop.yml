@@ -5,3 +5,6 @@ inherit_gem:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/**/*'
