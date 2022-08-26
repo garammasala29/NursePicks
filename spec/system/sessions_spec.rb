@@ -3,21 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Sessions', type: :system do
-  let(:user) { FactoryBot.create(:user) }
-  let(:g_user) { FactoryBot.create(:g_user) }
+  let!(:user) { create(:user) }
+  let!(:g_user) { create(:g_user) }
 
   describe 'create' do
     it 'Twitter認証でログインできる' do
-      sign_in_as(user)
+      sign_in_as(user, :twitter)
       expect(page).to have_content 'ログインしました'
     end
 
     it 'Google認証でログインできる' do
-      mock_auth(:google_oauth2)
-      g_user
-      visit root_path
-      click_on 'ログイン'
-      click_on 'Googleでログイン'
+      sign_in_as(g_user, :google)
       expect(page).to have_content 'ログインしました'
     end
   end
