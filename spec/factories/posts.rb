@@ -9,4 +9,13 @@ FactoryBot.define do
     image_url { 'https://example.com/image' }
     user
   end
+
+  factory :post2, class: Post do
+    id { 2 }
+    title { '看護記事2' }
+    url { 'https://example2.com' }
+    site_name { '記事元サイト2' }
+    image_url { 'https://example2.com/image' }
+    user
+  end
 end

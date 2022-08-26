@@ -3,15 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Likes', type: :system do
-  let(:user) { FactoryBot.create(:user) }
-  let(:post) { FactoryBot.create(:post, user_id: user.id) }
+  let!(:user) { create(:user) }
+  let!(:post) { create(:post, user_id: user.id) }
+  let!(:post2) { create(:post2, user_id: user.id) }
 
   describe 'create' do
     it '記事一覧画面からいいねができること' do
-      post
       sign_in_as(user)
       expect do
-        find('.fa-regular.fa-heart').click
+        first('.fa-regular.fa-heart').click
         expect(page).to have_content 'いいねしました'
       end.to change { Like.count }.by(1)
     end
@@ -27,19 +27,21 @@ RSpec.describe 'Likes', type: :system do
   end
 
   describe 'destroy' do
+    let!(:like) { create(:like, user_id: user.id, post_id: post.id) }
+    let!(:like2) { create(:like2, user_id: user.id, post_id: 2) }
+
     before do
-      FactoryBot.create(:like, user_id: user.id, post_id: post.id)
       sign_in_as(user)
     end
 
-    it '記事一覧画面からいいねを取り消せること' do
+    it '記事一覧画面から1件のいいねを取り消せること' do
       expect do
-        find('.fa-solid.fa-heart').click
+        first('.fa-solid.fa-heart').click
         expect(page).to have_content 'いいねを取り消しました'
       end.to change { Like.count }.by(-1)
     end
 
-    it '記事詳細画面からいいねを取り消せること' do
+    it '記事詳細画面から1件のいいねを取り消せること' do
       visit post_path(post)
       expect do
         find('.fa-solid.fa-heart').click
@@ -47,11 +49,11 @@ RSpec.describe 'Likes', type: :system do
       end.to change { Like.count }.by(-1)
     end
 
-    it '投稿したユーザーがユーザーページからいいねを取り消せること' do
+    it '投稿したユーザーがユーザーページから1件のいいねを取り消せること' do
       visit user_path(user)
       expect do
         find('a', text: 'いいねした記事').click
-        find('.delete-button').click
+        first('.delete-button').click
         page.accept_confirm 'いいねを削除してもよろしいですか？'
         expect(page).to have_content 'いいねを削除しました'
       end.to change { Like.count }.by(-1)
