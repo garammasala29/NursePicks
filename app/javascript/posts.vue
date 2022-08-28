@@ -1,6 +1,6 @@
 <template lang="pug">
-article.section
-  .tabs.is-centered.is-medium
+section.section.container
+  header.tabs.is-centered.is-medium
     ul
       li(:class="{'is-active': isOrder == 'popular'}")
         a(@click='sortPopular()')

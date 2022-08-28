@@ -1,10 +1,10 @@
-article.section
+article.article.container
   .media
     .media-left
       .image.is-64x64
         = image_tag(@post.image_url)
     .media-content
-      .title.is-5
+      h2.title.is-5
         = link_to @post.title, @post.url
       .sub-title
         i.fa-solid.fa-message
@@ -32,10 +32,10 @@ article.section
     .post-list-item
       = l @post.created_at, format: :short
   hr.post-separator
-  .content
+  section.comments
     - if @comments.presence
       - @comments.each do |comment|
-        .media
+        .comment.media
           .media-left
             = link_to image_tag(comment.user.icon_url, size: '32x32'), comment.user
             p = link_to comment.user.name, user_path(comment.user_id)
@@ -47,7 +47,7 @@ article.section
     - else
       p
         | まだこの記事にコメントはありません
-  .content
+  section.section
     = render 'shared/errors', object: @comment
     - if signed_in?
       = form_with(model: [@post, @comment], local: true) do |form|
@@ -67,4 +67,5 @@ article.section
     - else
       p
         | ログインするとコメントすることができます
-    p = link_to '戻る', posts_path
+
+  = link_to '戻る', posts_path
