@@ -29,7 +29,7 @@ RSpec.describe 'Posts', type: :system do
   describe 'show' do
     it '作成した記事の詳細ページが存在すること' do
       sign_in_as(user)
-      find('.media-content').click # ホバーをつけて再テスト
+      find('.card-link').click
       expect(page).to have_content '看護記事'
     end
   end

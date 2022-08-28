@@ -16,7 +16,7 @@ section.section.container
             | {{ index + 1 }}
       .media-left
         img.image.is-64x64(:src='post.image_url')
-      a.media-content(:href='post.show_url')
+      .media-content
         .title.is-5
           a(:href='post.url') {{ post.title }}
         .sub-title
@@ -28,6 +28,7 @@ section.section.container
             | {{ post.date }}
       .media-right
         likeButton(:post='post', :currentUserId='this.currentUserId')
+      a.card-link(:href='post.show_url')
 </template>
 
 <script>
