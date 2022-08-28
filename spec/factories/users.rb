@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :user do
-    id { 1 }
     name { 'Alice' }
     icon_url { 'https://example.com/image' }
     url { 'https://example.com' }
@@ -11,7 +10,6 @@ FactoryBot.define do
   end
 
   factory :g_user, class: User do
-    id { 2 }
     name { 'Bob' }
     icon_url { 'https://example.com/image' }
     url { 'https://example.com' }

@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :post do
-    id { 1 }
     title { '看護記事' }
     url { 'https://example.com' }
     site_name { '記事元サイト' }
@@ -11,7 +10,6 @@ FactoryBot.define do
   end
 
   factory :post2, class: Post do
-    id { 2 }
     title { '10分前の記事' }
     url { 'https://example.net' }
     site_name { '記事元サイト2' }
@@ -21,7 +19,6 @@ FactoryBot.define do
   end
 
   factory :post3, class: Post do
-    id { 3 }
     title { '1日前の記事' }
     url { 'example.org' }
     site_name { '記事元サイト3' }
@@ -31,7 +28,6 @@ FactoryBot.define do
   end
 
   factory :post4, class: Post do
-    id { 4 }
     title { '2日前の記事' }
     url { 'example.edu' }
     site_name { '記事元サイト4' }
