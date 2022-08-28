@@ -28,7 +28,7 @@ RSpec.describe 'Likes', type: :system do
 
   describe 'destroy' do
     let!(:like) { create(:like, user_id: user.id, post_id: post.id) }
-    let!(:like2) { create(:like2, user_id: user.id, post_id: 2) }
+    let!(:like2) { create(:like2, user_id: user.id, post_id: post2.id) }
 
     before do
       sign_in_as(user)
