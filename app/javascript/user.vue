@@ -1,6 +1,6 @@
 <template lang="pug">
-article
-  .tabs.is-centered.is-boxed.is-fullwidth
+section.user-tabs
+  nav.tabs.is-centered.is-boxed.is-fullwidth
     ul
       li(:class="{'is-active': isSelect == 'posts'}")
         a(@click="isSelect='posts'")
@@ -14,7 +14,7 @@ article
         a(@click="isSelect='likes'")
           | いいねした記事
           i.fa-solid.fa-thumbs-up
-  .tab-contents
+  section.tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
       table.table.is-striped
         tbody

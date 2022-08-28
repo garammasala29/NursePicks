@@ -1,5 +1,5 @@
-.section
-  h3.title.is-3
+article.article.container
+  h2.title.is-3
     | アカウント編集
   = form_with(model: @user, local: true) do |form|
     .image.is-128x128
@@ -17,7 +17,7 @@
       .control
         = form.text_field :url, class: 'input'
     .control
-      = form.submit 'アカウント更新', class: 'button'
+      = form.submit 'アカウント更新', class: 'button is-primary'
   = button_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？' }, class: 'button'
 
-p = link_to '戻る', @user
+  = link_to '戻る', @user

@@ -1,11 +1,11 @@
-.section
-  .media
+article.container
+  .media.profile
     .media-left
       .image.is-128x128
         = image_tag @user.icon_url, alt: 'user_icon'
     .media-content
       .content
-        .title.is-4
+        h2.title.is-4
           = @user.name
         .sub-title
           = link_to @user.url, @user.url
@@ -13,9 +13,9 @@
         - if current_user == @user
           = link_to 'アカウント編集', current_user_edit_path, class: 'button'
 
-- if current_user
-  #js-user-posts(data-user-id=params[:id] data-current-user-id=current_user.id)
-- else
-  #js-user-posts(data-user-id=params[:id])
+  - if current_user
+    #js-user-posts(data-user-id=params[:id] data-current-user-id=current_user.id)
+  - else
+    #js-user-posts(data-user-id=params[:id])
 
-= link_to '戻る', root_path
+  = link_to '戻る', root_path
