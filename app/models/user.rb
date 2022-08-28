@@ -4,6 +4,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  with_options presence: true do
+    validates :uid
+    validates :provider
+    validates :name
+  end
+  validates :uid, uniqueness: { scope: :provider }
 
   def self.find_from_omniauth(auth_hash)
     provider = auth_hash[:provider]
