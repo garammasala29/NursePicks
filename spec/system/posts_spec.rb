@@ -3,22 +3,34 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :system do
-  let(:user) { FactoryBot.create(:user) }
-  let(:post) { FactoryBot.create(:post, user_id: user.id) }
+  let(:user) { create(:user) }
+  let!(:post) { create(:post, user_id: user.id) }
 
   describe 'index' do
-    it '作成した記事が表示されていること' do
-      post
+    let!(:post2) { create(:post2, user_id: user.id) }
+    let!(:post3) { create(:post3, user_id: user.id) }
+    let!(:post4) { create(:post4, user_id: user.id) }
+
+    it '標準では人気順で記事が並んでいること' do
+      skip
       visit posts_path
-      expect(page).to have_content '看護記事'
+    end
+
+    it 'タブから記事を新着順に並び替えること' do
+      visit posts_path
+      find('a', text: '新着順').click
+      within '.posts' do
+        post_title = all('.title').map(&:text)
+        expect(post_title).to eq %w[看護記事 10分前の記事 1日前の記事 2日前の記事]
+      end
     end
   end
 
   describe 'show' do
     it '作成した記事の詳細ページが存在すること' do
-      post
       sign_in_as(user)
-      visit post_path(post)
+      find('.media-content').click # ホバーをつけて再テスト
+      expect(page).to have_content '看護記事'
     end
   end
 
@@ -28,10 +40,21 @@ RSpec.describe 'Posts', type: :system do
       visit posts_path
       expect do
         click_on '記事を投稿する'
-        fill_in 'URL',	with: 'https://example.com'
+        fill_in 'URL',	with: 'https://example.net'
         click_on '記事の投稿'
         expect(page).to have_content '「Example Domain」を登録しました'
       end.to change { Post.count }.by(1)
+    end
+
+    it '重複したURL記事では投稿できないこと' do
+      sign_in_as(user)
+      visit posts_path
+      expect do
+        click_on '記事を投稿する'
+        fill_in 'URL',	with: 'https://example.com'
+        click_on '記事の投稿'
+        expect(page).to have_content '記事投稿に失敗しました'
+      end.to change { Post.count }.by(0)
     end
 
     it 'サインインしていないユーザーは記事投稿ができないこと' do
@@ -44,11 +67,13 @@ RSpec.describe 'Posts', type: :system do
   end
 
   describe 'destroy' do
+    let!(:post2) { create(:post2, user_id: user.id) }
+
     before do
       sign_in_as(user)
     end
 
-    it '記事詳細画面から記事を削除できること' do
+    it '記事詳細画面から記事を1件削除できること' do
       visit post_path(post)
       expect do
         click_on '記事の削除'
@@ -57,11 +82,10 @@ RSpec.describe 'Posts', type: :system do
       end.to change { Post.count }.by(-1)
     end
 
-    it '投稿したユーザーがユーザーページから記事を削除できること' do
-      post
+    it '投稿したユーザーがユーザーページから記事を1件削除できること' do
       visit user_path(user)
       expect do
-        find('.delete-button').click
+        first('.delete-button').click
         page.accept_confirm '記事を削除してもよろしいですか？'
         expect(page).to have_content '記事を削除しました'
       end.to change { Post.count }.by(-1)
