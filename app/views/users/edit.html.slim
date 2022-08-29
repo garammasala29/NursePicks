@@ -3,7 +3,7 @@ article.article.container
     | アカウント編集
   = form_with(model: @user, local: true) do |form|
     .image.is-128x128
-      = image_tag(@user.icon_url)
+      = image_tag(@user.icon_url, alt: 'user_icon')
     .field
       .label
         = form.label :name, 'アカウント名'
