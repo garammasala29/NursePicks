@@ -58,11 +58,11 @@ export default {
         }
       })
         .then((response) => {
+          $toast.success('いいねしました')
           return response.json()
         })
         .then((json) => {
           this.likeId = json.id
-          $toast.success('いいねしました')
         })
     },
     deleteLike() {

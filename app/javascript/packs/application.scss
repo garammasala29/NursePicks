@@ -23,6 +23,9 @@ body {
 main {
   flex: 1;
 }
+.article {
+  padding: 20px;
+}
 
 // Update some of Bulma's component variables
 $body-background-color: $white;
@@ -30,7 +33,7 @@ $control-border-width: 2px;
 $input-shadow: none;
 $section-padding: 20px;
 @import '../stylesheets/description.scss';
-@import '../stylesheets/post_index.scss';
+@import '../stylesheets/post.scss';
 @import '../stylesheets/modal.scss';
 @import '../stylesheets/header.scss';
 @import '../stylesheets/footer.scss';

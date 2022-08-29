@@ -1,0 +1,79 @@
+.rank-icon {
+  position: relative;
+  font-size: 50px;
+  color: $blue;
+  margin-top: 10px;
+  z-index: 0;
+}
+
+.rank-number {
+  position: absolute;
+  font-size: 15px;
+  color: $white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.sub-title {
+  margin-top: -10px;
+}
+
+.sub-title span {
+  color: $black;
+}
+
+.comment-link {
+  letter-spacing: 3px;
+  margin-right: 2px;
+}
+
+.post-list {
+  display: flex;
+  column-gap: 10px;
+  margin-top: 4px;
+}
+
+.post {
+  position: relative;
+}
+
+.post
+  .title,
+  .like-button,
+  .comment-link {
+  position: relative;
+  z-index: 5;
+}
+
+.post .card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height:100%;
+  width: 100%;
+}
+
+.card-link:hover {
+  background-color: $blue;
+  opacity: 0.2;
+  border-radius: 4px;
+  background-image: linear-gradient(45deg,#fff 50%,hsla(0,0%,100%,0));
+}
+
+.post-separator {
+  margin: 12px 0;
+}
+
+.comments {
+  margin: 30px 0 0 30px;
+}
+
+.link-button {
+  color: white
+}
+
+.like-button {
+  cursor: pointer;
+}

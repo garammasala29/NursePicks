@@ -1,11 +1,11 @@
-nav.navbar.is-bold
+header.navbar.is-bold
   .container
     - unless request.path == '/'
       .navbar-brand
         .navbar-item
-          .image
-            = link_to image_tag('nursepicks_head.png', size: '172x28'), root_path
-    .navbar-menu
+          h1.image
+            = link_to image_tag('nursepicks_head.png', alt: 'header_logo'), root_path
+    nav.navbar-menu
       .navbar-end
         - if signed_in?
           .navbar-item.is-white

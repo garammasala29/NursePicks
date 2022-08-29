@@ -1,6 +1,6 @@
 <template lang="pug">
-article.section
-  .tabs.is-centered.is-medium
+section.section.container
+  header.tabs.is-centered.is-medium
     ul
       li(:class="{'is-active': isOrder == 'popular'}")
         a(@click='sortPopular()')
@@ -15,8 +15,8 @@ article.section
           .rank-number
             | {{ index + 1 }}
       .media-left
-        img.image.is-64x64(:src='post.image_url')
-      a.media-content(:href='post.show_url')
+        img.image.is-64x64(:src='post.image_url', alt='post_image')
+      .media-content
         .title.is-5
           a(:href='post.url') {{ post.title }}
         .sub-title
@@ -28,6 +28,7 @@ article.section
             | {{ post.date }}
       .media-right
         likeButton(:post='post', :currentUserId='this.currentUserId')
+      a.card-link(:href='post.show_url')
 </template>
 
 <script>
