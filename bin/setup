@@ -33,4 +33,7 @@ FileUtils.chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   system! 'bin/rails restart'
+
+  puts "\n== Running Webpacker in Development =="
+  system! 'bin/webpack'
 end
