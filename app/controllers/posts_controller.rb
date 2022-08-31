@@ -15,19 +15,23 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params) do |post|
-      page = MetaInspector.new(post.url)
-      if page
-        post.title = page.title
-        post.image_url = page.meta['og:image'] || 'logo_picks.png'
-        post.site_name = page.meta['og:site_name']
-      end
+    @post = current_user.posts.create(post_params)
+
+    begin
+      page = MetaInspector.new(@post.url)
+      @post.title = page.title
+      @post.image_url = page.meta['og:image'] || 'logo_picks.png'
+      @post.site_name = page.meta['og:site_name']
+    rescue StandardError
+      flash.now[:alert] = 'この記事(URL)の投稿はできませんでした'
+      render :index
+      return
     end
 
     if @post.save
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
     else
-      flash.now[:alert] = '記事投稿に失敗しました'
+      flash.now[:alert] = "記事投稿に失敗しました。#{@post.errors.full_messages[0]}。"
       render :index
     end
   end

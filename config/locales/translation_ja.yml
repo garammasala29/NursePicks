@@ -10,7 +10,7 @@ ja:
       post:
         image_url: 画像のURL  #g
         site_name: サイト名  #g
-        title: 題名  #g
+        title: 記事
         url: URL  #g
         user: :activerecord.models.user  #g
         comments: コメント  #g
@@ -34,3 +34,12 @@ ja:
       like:
         post: :activerecord.models.post  #g
         user: :activerecord.models.user  #g
+
+    errors:
+      # format: '%{message}'
+      models:
+        post:
+          attributes:
+            title:
+              format: '%{message}'
+              blank: この記事の投稿は難しいようです
