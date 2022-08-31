@@ -1,8 +1,13 @@
-$navbar-breakpoint: 0px;
+$navbar-breakpoint: 370px;
 $navbar-background-color: none;
-$navbar-height: 4rem;
+$navbar-item-img-max-height: 56px;
 
-.navbar-end {
-  position: absolute;
-  right: 0px;
+.header-log {
+  width: 180px;
+  height: 28px;
+}
+
+.signout-button {
+  margin-right: 0.5rem;
+  margin-bottom: 0px;
 }
