@@ -7,9 +7,21 @@ RSpec.describe 'Posts', type: :system do
   let!(:post) { create(:post, user_id: user.id) }
 
   describe 'index' do
+    let(:user2) { create(:g_user) }
     let!(:post2) { create(:post2, user_id: user.id) }
     let!(:post3) { create(:post3, user_id: user.id) }
     let!(:post4) { create(:post4, user_id: user.id) }
+    let!(:like) { create(:like, user_id: user.id, post_id: post2.id) }
+    let!(:like2) { create(:like2, user_id: user.id, post_id: post3.id) }
+    let!(:like3) { create(:like, user_id: user2.id, post_id: post3.id) }
+
+    it '標準では人気順で記事が並んでいること' do
+      visit root_path
+      within '.posts' do
+        post_title = all('.title').map(&:text)
+        expect(post_title).to eq %w[1日前の記事 10分前の記事 2日前の記事 看護記事]
+      end
+    end
 
     it 'タブから記事を新着順に並び替えること' do
       visit root_path
