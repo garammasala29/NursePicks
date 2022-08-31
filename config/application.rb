@@ -22,6 +22,7 @@ Bundler.require(*Rails.groups)
 module Nursepicks
   class Application < Rails::Application
     config.i18n.default_locale = :ja
+    config.active_model.i18n_customize_full_message = true
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
