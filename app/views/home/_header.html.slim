@@ -3,8 +3,8 @@ nav.navbar role="navigation" aria-label="main navigation"
     .navbar-brand
       .navbar-item
         - unless request.path == '/'
-          h1.image
-            = link_to image_tag('nursepicks_head.png', alt: 'header_logo', size: '180x28'), root_path
+          h1.image.header-log
+            = link_to image_tag('nursepicks_head.png', alt: 'header_logo'), root_path
       a.navbar-burger#js-menu data-target='nav-menu' role="button" aria-label="menu" aria-expanded="false"
         span aria-hidden="true"
         span aria-hidden="true"
@@ -14,11 +14,10 @@ nav.navbar role="navigation" aria-label="main navigation"
       .navbar-end
         - if signed_in?
           .navbar-item.is-white
-            .buttons
-              button.button
-                = link_to 'ログアウト', signout_path, method: :delete
-              .image.is-64x64
-                = link_to image_tag(current_user.icon_url, alt: 'nav_user_icon'), current_user
+            button.button.signout-button
+              = link_to 'ログアウト', signout_path, method: :delete
+            .icon-image
+              = link_to image_tag(current_user.icon_url, alt: 'nav_user_icon'), current_user
         - else
           .navbar-item.is-white
             .buttons
