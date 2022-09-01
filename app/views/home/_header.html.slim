@@ -31,11 +31,17 @@ nav.navbar role="navigation" aria-label="main navigation"
                       | ユーザー登録
                     button.delete#js-modal aria-label="close" data-modal='signup'
                   .modal-card-body
+                    .signup-description.notification.is-info.is-light
+                      .content
+                        p
+                          | GoogleやTwitterでアカウント登録をしても、自分の名前や画像は使用せずにサービズを利用できます<br>
+                          | 匿名性は担保されますので、安心してお使いください
                     .buttons.is-centered
                       .button.is-large
                         = link_to 'Googleで新規登録', '/auth/google_oauth2', method: :post, data: { turbo: false }
                       .button.is-large
                         = link_to 'Twitterで新規登録', '/auth/twitter', method: :post, data: { turbo: false }
+
               button.button.is-info#js-modal data-modal='signin'
                 | ログイン
               .modal#signin

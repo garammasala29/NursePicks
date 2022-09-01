@@ -29,8 +29,18 @@ article.description
           p.modal-card-title
             | 記事を投稿する
           button.delete#js-modal aria-label="close" data-modal='post-modal'
-        = form_with(model: @post, local: true) do |form|
-          .modal-card-body
+        .modal-card-body
+          .post-description.notification.is-info.is-light
+            .content
+              ul
+                li
+                  | 看護記事のURLをこちらに入れて「記事の投稿」をクリック
+                li
+                  | URLがある記事であれば投稿できます<br>(twitterにはまだ対応できていません)
+                li
+                  | PDFファイルは登録できないので、論文を投稿する際には、<br>
+                  | J-StageやCiNiiなどリンクされている論文検索サービスのURLを投稿してください
+          = form_with(model: @post, local: true) do |form|
             .content
               = render 'shared/errors', object: @post
               .field.has-text-left
