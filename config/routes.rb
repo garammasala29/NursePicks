@@ -2,11 +2,11 @@
 
 Rails.application.routes.draw do
   root 'posts#index'
-  resources :posts, only: %i[show create destroy] do
+  resources :posts, only: %i(show create destroy) do
     resources :comments, only: %i(create destroy)
     resource :likes, only: %i(create destroy)
   end
-  resources :users, except: %i[index new edit]
+  resources :users, except: %i(index new edit)
   get '/current_user/edit', to: 'users#edit'
   get '/signup', to: 'users#new'
   delete '/signout', to: 'sessions#destroy'
