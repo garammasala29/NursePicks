@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
   def sign_out
     session.delete(:user_id)
   end
+
+  def require_signin
+    return if current_user
+
+    redirect_to root_path
+    flash[:alert] = 'ログインしてください'
+  end
 end

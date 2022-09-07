@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class API::LikesController < ApplicationController
+  before_action :require_signin
+
   def create
     @like = current_user.likes.create!(post_id: params[:post_id])
     render status: :created, json: @like

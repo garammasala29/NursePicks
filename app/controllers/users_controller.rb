@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :signin_required, only: %i[new edit update destroy]
+  before_action :require_signin, only: %i[new edit update destroy]
   before_action :set_user, only: %i[show update destroy]
 
   def new; end
@@ -43,9 +43,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :url, :provider, :uid, :icon_url)
-  end
-
-  def signin_required
-    redirect_to root_path unless current_user
   end
 end
