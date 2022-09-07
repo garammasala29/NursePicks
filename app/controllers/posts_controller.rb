@@ -18,10 +18,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.create(post_params)
 
     begin
-      page = MetaInspector.new(@post.url)
-      @post.title = page.title
-      @post.image_url = page.meta['og:image'] || 'logo_picks.png'
-      @post.site_name = page.meta['og:site_name']
+      Post.get_scraped_data(@post)
     rescue StandardError
       flash.now[:alert] = 'この記事(URL)の投稿はできませんでした'
       render :index

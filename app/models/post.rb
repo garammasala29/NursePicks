@@ -8,4 +8,11 @@ class Post < ApplicationRecord
   validates :title, presence: true
 
   after_create TweetNotifier.new
+
+  def self.get_scraped_data(post)
+    page = MetaInspector.new(post.url)
+    post.title = page.title
+    post.image_url = page.meta['og:image'] || 'logo_picks.png'
+    post.site_name = page.meta['og:site_name']
+  end
 end

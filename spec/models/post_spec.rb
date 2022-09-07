@@ -33,4 +33,13 @@ RSpec.describe Post, type: :model do
     post.valid?
     expect(post.errors[:url]).to include('はすでに存在します')
   end
+
+  describe '#get_scraped_data' do
+    it 'URLから記事のタイトルが取得でき、画像がなければ標準画像を返すこと' do
+      post = Post.new(user_id: user.id, url: 'https://example.com')
+      Post.get_scraped_data(post)
+      expect(post.title).to eq 'Example Domain'
+      expect(post.image_url).to eq 'logo_picks.png'
+    end
+  end
 end
