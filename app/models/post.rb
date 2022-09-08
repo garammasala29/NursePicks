@@ -6,4 +6,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   validates :url, presence: true, uniqueness: true
   validates :title, presence: true
+
+  after_create TweetNotifier.new
 end
