@@ -29,7 +29,6 @@ class PostsController < ApplicationController
     end
 
     if @post.save
-      @post.twitter_bot
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
     else
       flash.now[:alert] = "記事投稿に失敗しました。#{@post.errors.full_messages[0]}。"
