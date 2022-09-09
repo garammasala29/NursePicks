@@ -3,7 +3,6 @@
 module MetaTagsHelper
   def default_meta_tags # rubocop:disable Metrics/MethodLength
     {
-      site: 'NursePicks',
       reverse: true,
       charset: 'utf-8',
       description: '看護師向けの価値ある情報サイト。価値ある看護記事を探したり、おすすめの看護記事を投稿しよう',
@@ -13,21 +12,20 @@ module MetaTagsHelper
         { href: image_url('favicon.png') }
       ],
       og: {
-        site_name: :site,
-        title: :title,
+        site_name: 'NursePicks',
         description: :description,
         type: 'website',
-        url: 'https://www.nursepicks.com/',
-        image: 'https://www.nursepicks.com/ogp/ogp.png',
+        url: 'https://www.nursepicks.jp/',
+        image: 'https://www.nursepicks.jp/ogp/ogp.png',
         locale: 'ja_JP'
       },
       twitter: {
-        title: :title,
+        title: 'NursePicks',
         card: 'summary_large_image',
         site: '@garammasala29',
         description: :description,
-        image: 'https://www.nursepicks.com/ogp/ogp.png',
-        domain: 'https://www.nursepicks.com/'
+        image: 'https://www.nursepicks.jp/ogp/ogp.png',
+        domain: 'https://www.nursepicks.jp/'
       }
     }
   end
