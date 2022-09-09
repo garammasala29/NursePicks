@@ -36,11 +36,15 @@ nav.navbar role="navigation" aria-label="main navigation"
                         p
                           | GoogleやTwitterでアカウント登録をしても、自分の名前や画像は使用せずにサービズを利用できます<br>
                           | 匿名性は担保されますので、安心してお使いください
-                    .buttons.is-centered
-                      .button.is-large
-                        = link_to 'Googleで新規登録', '/auth/google_oauth2', method: :post, data: { turbo: false }
-                      .button.is-large
-                        = link_to 'Twitterで新規登録', '/auth/twitter', method: :post, data: { turbo: false }
+                    .buttons.sns-buttons.is-centered
+                      a.button.google-button href='/auth/google_oauth2' data-method='post'
+                        = image_tag('logo_google.png', alt: 'google_logo')
+                        span
+                          | Googleで新規登録
+                      a.button.twitter-button href='/auth/twitter' data-method='post'
+                        i.fa-brands.fa-twitter
+                        span
+                          | Twitterで新規登録
 
               button.button.is-info#js-modal data-modal='signin'
                 | ログイン
