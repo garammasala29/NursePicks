@@ -56,8 +56,12 @@ nav.navbar role="navigation" aria-label="main navigation"
                       | ログイン
                     button.delete#js-modal aria-label="close" data-modal='signin'
                   .modal-card-body
-                    .buttons.is-centered
-                      .button.is-large.is-primary
-                        = link_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false }, class: 'link-button'
-                      .button.is-large.is-primary
-                        = link_to 'Twitterでログイン', '/auth/twitter', method: :post, data: { turbo: false }, class: 'link-button'
+                    .buttons.sns-buttons.is-centered
+                      a.button.google-button href='/auth/google_oauth2' data-method='post'
+                        = image_tag('logo_google.png', alt: 'google_logo')
+                        span
+                          | Googleでログイン
+                      a.button.twitter-button href='/auth/twitter' data-method='post'
+                        i.fa-brands.fa-twitter
+                        span
+                          | Twitterでログイン
