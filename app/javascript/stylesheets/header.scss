@@ -11,3 +11,36 @@ $navbar-item-img-max-height: 56px;
   margin-right: 0.5rem;
   margin-bottom: 0px;
 }
+
+.sns-buttons {
+  font-weight: 700;
+}
+
+.sns-buttons .google-button {
+  padding: 26px 0px;
+  font-size: 18px;
+  min-width: 260px;
+  img {
+    width: 26px;
+    margin-right: 6px;
+  }
+}
+
+.sns-buttons .twitter-button {
+  padding: 26px 0px;
+  min-width: 260px;
+  border: none;
+  background-color: #55acee;
+  color: $white;
+  font-size: 18px;
+  background-repeat: no-repeat;
+  i {
+    font-size: 26px;
+    margin-right: 6px;
+    color: $white;
+  }
+  &:hover {
+    color: $white;
+    background-color: #3c98e4;
+  }
+}
