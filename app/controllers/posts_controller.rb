@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.create(post_params)
 
     begin
-      Post.get_scraped_data(@post)
+      Post.scrape(@post)
     rescue StandardError
       flash.now[:alert] = 'この記事(URL)の投稿はできませんでした'
       render :index
