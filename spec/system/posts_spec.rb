@@ -69,6 +69,35 @@ RSpec.describe 'Posts', type: :system do
       click_on '記事の投稿'
       expect(page).to have_content 'ログインしてください'
     end
+
+    context 'MetaInspectorで記事が作れない場合' do
+      before do
+        sign_in_as(user)
+        click_on '記事を投稿する'
+      end
+
+      it 'Twitterなどメタ情報はあるが、タイトルがとれない記事を投稿すること' do
+        expect do
+          fill_in 'URL',	with: 'https://twitter.com/nurse_picks'
+          click_on '記事の投稿'
+          expect(page).to have_content '新規記事登録'
+          fill_in 'post_title', with: 'NursePicks公式Twitter'
+          click_on '記事の登録'
+          expect(page).to have_content '「NursePicks公式Twitter」を登録しました'
+        end.to change { Post.count }.by(1)
+      end
+
+      it 'pdfなどメタ情報がとれない記事を投稿すること' do
+        expect do
+          fill_in 'URL',	with: 'https://www.kansaigaidai.ac.jp/asp/img/pdf/82/7a79c35f7ce0704dec63be82440c8182.pdf'
+          click_on '記事の投稿'
+          expect(page).to have_content '新規記事登録'
+          fill_in 'post_title', with: 'サンプルPDF'
+          click_on '記事の登録'
+          expect(page).to have_content '「サンプルPDF」を登録しました'
+        end.to change { Post.count }.by(1)
+      end
+    end
   end
 
   describe 'destroy' do

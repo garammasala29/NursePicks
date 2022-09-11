@@ -1,1 +1,27 @@
-h1 Post#new
+article.article.container
+  h2.title.is-3 新規記事登録
+  = form_with(model: @post, local: true) do |form|
+    = form.hidden_field :image_url, value: 'logo_picks.png'
+    = form.hidden_field :url
+    .field
+      .label
+        = form.label :title, 'サイトURL'
+      .control
+        = @post.url
+    .field
+      .label
+        = form.label :title, '記事の題名'
+    .field
+      .control
+        = form.text_field :title, class: 'input'
+    .field
+      .label
+        = form.label :site_name, 'サイト元(任意)'
+    .field
+      .control
+        = form.text_field :site_name, class: 'input'
+    .control
+      .buttons.is-right
+        = form.submit '記事の登録', class: 'button is-primary'
+
+  = link_to '戻る', root_path

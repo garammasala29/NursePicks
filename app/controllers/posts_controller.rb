@@ -9,6 +9,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def new
+    @post = Post.new
+  end
+
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
@@ -17,12 +21,13 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
 
-    begin
-      @post.scrape
-    rescue StandardError
-      flash.now[:alert] = 'この記事(URL)の投稿はできませんでした'
-      render :index
-      return
+    unless @post.title
+      begin
+        @post.scrape
+        return render :new if @post.title.empty?
+      rescue StandardError
+        return render :new
+      end
     end
 
     if @post.save
@@ -45,6 +50,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:url)
+    params.require(:post).permit(:url, :title, :site_name, :image_url)
   end
 end
