@@ -15,10 +15,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
+    @post = current_user.posts.new(post_params)
 
     begin
-      Post.scrape(@post)
+      @post.scrape
     rescue StandardError
       flash.now[:alert] = 'この記事(URL)の投稿はできませんでした'
       render :index

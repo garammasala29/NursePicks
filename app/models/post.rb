@@ -9,10 +9,10 @@ class Post < ApplicationRecord
 
   after_create TweetNotifier.new
 
-  def self.scrape(post)
-    page = MetaInspector.new(post.url)
-    post.title = page.title
-    post.image_url = page.meta['og:image'] || 'logo_picks.png'
-    post.site_name = page.meta['og:site_name']
+  def scrape
+    page = MetaInspector.new(url)
+    self.title = page.title
+    self.image_url = page.meta['og:image'].presence || 'logo_picks.png'
+    self.site_name = page.meta['og:site_name']
   end
 end
