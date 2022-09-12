@@ -37,7 +37,7 @@ RSpec.describe Post, type: :model do
   describe '#scrape' do
     it 'URLから記事のタイトルが取得でき、画像がなければ標準画像を返すこと' do
       post = Post.new(user_id: user.id, url: 'https://example.com')
-      Post.scrape(post)
+      post.scrape
       expect(post.title).to eq 'Example Domain'
       expect(post.image_url).to eq 'logo_picks.png'
     end
