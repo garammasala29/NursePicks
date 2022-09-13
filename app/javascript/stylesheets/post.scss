@@ -33,13 +33,21 @@
   margin-top: -10px;
 }
 
-.sub-title span {
+.sub-title-text {
   color: $black;
 }
 
 .comment-link {
-  letter-spacing: 3px;
-  margin-right: 2px;
+  margin-right: 4px;
+  font-weight: 600;
+  color: #777777;
+  i {
+    margin-right: 4px;
+  }
+}
+
+.has-comment {
+  color: $blue;
 }
 
 .post-list {
