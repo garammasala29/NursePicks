@@ -4,7 +4,7 @@
 $blue: #1B67B2;
 $orange: #ED6C00;
 $white: #fff;
-$black: #000;
+$black: #444444;
 $beige-light: #F7F7F7;
 $beige-lighter: #EFEFEF;
 
@@ -32,6 +32,7 @@ $body-background-color: $white;
 $control-border-width: 2px;
 $input-shadow: none;
 $section-padding: 20px;
+$tabs-link-color: #808080;
 @import '../stylesheets/description.scss';
 @import '../stylesheets/post.scss';
 @import '../stylesheets/modal.scss';
