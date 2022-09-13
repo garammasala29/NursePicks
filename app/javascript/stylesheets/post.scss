@@ -16,6 +16,12 @@
   z-index: 1;
 }
 
+.post-image {
+  .image {
+    object-fit: contain;
+  }
+}
+
 .sub-title {
   margin-top: -10px;
 }

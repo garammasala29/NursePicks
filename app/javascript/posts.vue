@@ -15,7 +15,8 @@ section.section.container
           .rank-number
             | {{ index + 1 }}
       .media-left
-        img.image.is-64x64(:src='post.image_url', alt='post_image')
+        .post-image
+          img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
         .title.is-5
           a(:href='post.url') {{ post.title }}
