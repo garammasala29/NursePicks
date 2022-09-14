@@ -14,10 +14,17 @@ class ApplicationController < ActionController::Base
   end
 
   def signed_in?
-    !current_user.nil?
+    current_user.present?
   end
 
   def sign_out
     session.delete(:user_id)
+  end
+
+  def require_signin
+    return if current_user
+
+    redirect_to root_path
+    flash[:alert] = 'ログインしてください'
   end
 end

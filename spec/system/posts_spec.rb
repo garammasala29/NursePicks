@@ -67,7 +67,7 @@ RSpec.describe 'Posts', type: :system do
       click_on '記事を投稿する'
       fill_in 'URL',	with: 'https://example.com'
       click_on '記事の投稿'
-      expect(page).to have_content '記事投稿をするにはログインが必要です'
+      expect(page).to have_content 'ログインしてください'
     end
   end
 

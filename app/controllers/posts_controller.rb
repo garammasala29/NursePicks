@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
-  before_action :signin_required, only: %i[create destroy]
+  before_action :require_signin, only: %i[create destroy]
 
   def index
     @post = Post.new
@@ -15,13 +15,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
+    @post = current_user.posts.new(post_params)
 
     begin
-      page = MetaInspector.new(@post.url)
-      @post.title = page.title
-      @post.image_url = page.meta['og:image'] || 'logo_picks.png'
-      @post.site_name = page.meta['og:site_name']
+      @post.scrape
     rescue StandardError
       flash.now[:alert] = 'この記事(URL)の投稿はできませんでした'
       render :index
@@ -49,12 +46,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:url)
-  end
-
-  def signin_required
-    return if current_user
-
-    redirect_to root_path
-    flash[:alert] = '記事投稿をするにはログインが必要です'
   end
 end

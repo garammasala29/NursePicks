@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  before_action :require_signin
+
   def create
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.build(comment_params)
