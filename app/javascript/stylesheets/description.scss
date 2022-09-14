@@ -35,10 +35,14 @@
   border-color: $blue;
   border-width: 2px;
   padding: 20px;
-}
-
-.using-image{
-  margin-bottom: 1.5rem;
+  overflow: auto; 
+  .subtitle {
+    line-height: 1.6;
+  }
+  img {
+    float: right;
+    border-radius: 8px;
+  }
 }
 
 .post-button {
