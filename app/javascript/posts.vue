@@ -1,5 +1,5 @@
 <template lang="pug">
-section.section.container
+section.container
   header.tabs.is-centered.is-medium
     ul
       li(:class="{'is-active': isOrder == 'popular'}")
