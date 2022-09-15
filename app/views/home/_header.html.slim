@@ -1,67 +1,68 @@
-nav.navbar role="navigation" aria-label="main navigation"
-  .container
-    .navbar-brand
-      .navbar-item
-        - unless request.path == '/'
-          h1.image.header-log
-            = link_to image_tag('nursepicks_head.png', alt: 'header_logo'), root_path
-      a.navbar-burger#js-menu data-target='nav-menu' role="button" aria-label="menu" aria-expanded="false"
-        span aria-hidden="true"
-        span aria-hidden="true"
-        span aria-hidden="true"
+nav
+  .navbar role="navigation" aria-label="main navigation"
+    .container
+      .navbar-brand
+        .navbar-item
+          - unless request.path == '/'
+            h1.image.header-log
+              = link_to image_tag('nursepicks_head.png', alt: 'header_logo'), root_path
+        a.navbar-burger#js-menu data-target='nav-menu' role="button" aria-label="menu" aria-expanded="false"
+          span aria-hidden="true"
+          span aria-hidden="true"
+          span aria-hidden="true"
 
-    .navbar-menu#nav-menu
-      .navbar-end
-        - if signed_in?
-          .navbar-item.is-white
-            button.button.signout-button
-              = link_to 'ログアウト', signout_path, method: :delete
-            .icon-image
-              = link_to image_tag(current_user.icon_url, alt: 'nav_user_icon'), current_user
-        - else
-          .navbar-item.is-white
-            .buttons
-              button.button.mr-1#js-modal data-modal='signup'
-                | ユーザー登録
-              .modal#signup
-                .modal-background#js-modal data-modal='signup'
-                .modal-card
-                  .modal-card-head
-                    p.modal-card-title
-                      | ユーザー登録
-                    button.delete#js-modal aria-label="close" data-modal='signup'
-                  .modal-card-body
-                    .signup-description.notification.is-info.is-light
-                      .content
-                        p
-                          | GoogleやTwitterでアカウント登録をしても、自分の名前や画像は使用せずにサービズを利用できます<br>
-                          | 匿名性は担保されますので、安心してお使いください
-                    .buttons.sns-buttons.is-centered
-                      a.button.google-button href='/auth/google_oauth2' data-method='post'
-                        = image_tag('logo_google.png', alt: 'google_logo')
-                        span
-                          | Googleで新規登録
-                      a.button.twitter-button href='/auth/twitter' data-method='post'
-                        i.fa-brands.fa-twitter
-                        span
-                          | Twitterで新規登録
+      .navbar-menu#nav-menu
+        .navbar-end
+          - if signed_in?
+            .navbar-item.is-white
+              button.button.signout-button
+                = link_to 'ログアウト', signout_path, method: :delete
+              .icon-image
+                = link_to image_tag(current_user.icon_url, alt: 'nav_user_icon'), current_user
+          - else
+            .navbar-item.is-white
+              .buttons
+                button.button.mr-1#js-modal data-modal='signup'
+                  | ユーザー登録
+                .modal#signup
+                  .modal-background#js-modal data-modal='signup'
+                  .modal-card
+                    .modal-card-head
+                      p.modal-card-title
+                        | ユーザー登録
+                      button.delete#js-modal aria-label="close" data-modal='signup'
+                    .modal-card-body
+                      .signup-description.notification.is-info.is-light
+                        .content
+                          p
+                            | GoogleやTwitterでアカウント登録をしても、自分の名前や画像は使用せずにサービズを利用できます<br>
+                            | 匿名性は担保されますので、安心してお使いください
+                      .buttons.sns-buttons.is-centered
+                        a.button.google-button href='/auth/google_oauth2' data-method='post'
+                          = image_tag('logo_google.png', alt: 'google_logo')
+                          span
+                            | Googleで新規登録
+                        a.button.twitter-button href='/auth/twitter' data-method='post'
+                          i.fa-brands.fa-twitter
+                          span
+                            | Twitterで新規登録
 
-              button.button.is-info#js-modal data-modal='signin'
-                | ログイン
-              .modal#signin
-                .modal-background#js-modal data-modal='signin'
-                .modal-card
-                  .modal-card-head
-                    p.modal-card-title
-                      | ログイン
-                    button.delete#js-modal aria-label="close" data-modal='signin'
-                  .modal-card-body
-                    .buttons.sns-buttons.is-centered
-                      a.button.google-button href='/auth/google_oauth2' data-method='post'
-                        = image_tag('logo_google.png', alt: 'google_logo')
-                        span
-                          | Googleでログイン
-                      a.button.twitter-button href='/auth/twitter' data-method='post'
-                        i.fa-brands.fa-twitter
-                        span
-                          | Twitterでログイン
+                button.button.is-info#js-modal data-modal='signin'
+                  | ログイン
+                .modal#signin
+                  .modal-background#js-modal data-modal='signin'
+                  .modal-card
+                    .modal-card-head
+                      p.modal-card-title
+                        | ログイン
+                      button.delete#js-modal aria-label="close" data-modal='signin'
+                    .modal-card-body
+                      .buttons.sns-buttons.is-centered
+                        a.button.google-button href='/auth/google_oauth2' data-method='post'
+                          = image_tag('logo_google.png', alt: 'google_logo')
+                          span
+                            | Googleでログイン
+                        a.button.twitter-button href='/auth/twitter' data-method='post'
+                          i.fa-brands.fa-twitter
+                          span
+                            | Twitterでログイン

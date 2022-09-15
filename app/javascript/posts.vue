@@ -1,5 +1,5 @@
 <template lang="pug">
-section.section.container
+section.container
   header.tabs.is-centered.is-medium
     ul
       li(:class="{'is-active': isOrder == 'popular'}")
@@ -15,15 +15,17 @@ section.section.container
           .rank-number
             | {{ index + 1 }}
       .media-left
-        img.image.is-64x64(:src='post.image_url', alt='post_image')
+        .post-image
+          img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
         .title.is-5
           a(:href='post.url') {{ post.title }}
         .sub-title
-          a.comment-link(:href='post.show_url')
+          a.comment-link(:href='post.show_url')(:class="{'has-comment': post.comments_count != 0}")
             i.fa-solid.fa-message
+            span.comments-count
               | {{ post.comments_count }}
-          span
+          span.sub-title-text
             | {{ post.site_name }}
             | {{ post.date }}
       .media-right

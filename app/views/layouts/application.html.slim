@@ -14,11 +14,12 @@ html
   body
     = render 'home/header'
     main
-      - if flash.notice
-        .notification.is-primary.has-text-centered
-          = notice
-      - if flash.alert
-        .notification.is-danger.has-text-centered
-          = alert
+      .flash-message
+        - if flash.notice
+          .notification.is-primary.has-text-centered
+            = notice
+        - if flash.alert
+          .notification.is-danger.has-text-centered
+            = alert
       = yield
     = render 'home/footer'

@@ -1,19 +1,30 @@
 .description {
   background: url('../../assets/images/top_bg.png');
-  background-size: cover;
-  padding: 80px 0px 50px 0px;
-  margin-top: -20px;
+  background-size: 830px;
+  padding: 120px 0px 60px 0px;
+  margin-bottom: 20px;
   position: relative;
 }
 
 .top-title{
   text-align: center;
+  margin-top: 24px;
+  img {
+    max-height: 56px;
+  }
+}
+
+.top-subtitle{
+  text-align: center;
+  font-weight: 600;;
+  color: $blue;
+  font-size: 24px;
+  margin-top: 10px;
 }
 
 .description-content {
   max-width: 1280px;
-  padding: 50px;
-  margin: 20px auto;
+  padding: 40px 20px;
 }
 
 .using {
@@ -24,10 +35,14 @@
   border-color: $blue;
   border-width: 2px;
   padding: 20px;
-}
-
-.using-image{
-  margin-bottom: 1.5rem;
+  overflow: auto; 
+  .subtitle {
+    line-height: 1.6;
+  }
+  img {
+    float: right;
+    border-radius: 8px;
+  }
 }
 
 .post-button {

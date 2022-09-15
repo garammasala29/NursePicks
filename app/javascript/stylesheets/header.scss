@@ -7,6 +7,11 @@ $navbar-item-img-max-height: 56px;
   height: 28px;
 }
 
+nav .navbar {
+  position: absolute;
+  width: 100%;
+}
+
 .signout-button {
   margin-right: 0.5rem;
   margin-bottom: 0px;

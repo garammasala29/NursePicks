@@ -1,8 +1,9 @@
 article.article.container
   .media
     .media-left
-      .image.is-64x64
-        = image_tag(@post.image_url, alt: 'post_image')
+      .post-image
+        .image.is-64x64
+          = image_tag(@post.image_url, alt: 'post_image')
     .media-content
       h2.title.is-5
         = link_to @post.title, @post.url
