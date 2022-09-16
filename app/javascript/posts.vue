@@ -23,7 +23,7 @@ section.container
         .post-image
           img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
-        .title.is-5
+        .title.is-6
           a(:href='post.url') {{ post.title }}
         .sub-title
           span.sub-title-text
