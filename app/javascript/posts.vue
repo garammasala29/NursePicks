@@ -11,9 +11,14 @@ section.container
   .posts
     .post.media(v-for='(post, index) in posts' :key='post.id')
       .media-left
-        i.fa-solid.fa-circle.rank-icon
-          .rank-number
-            | {{ index + 1 }}
+        .rank-crown(v-if='index < 3')
+          i.fa-solid.fa-crown.rank-icon(:class="['is-rank-' + index]")
+            .rank-number
+              | {{ index + 1 }}
+        .rank-circle(v-else)
+          i.fa-regular.fa-circle.rank-icon(:class="['is-rank-' + index]")
+            .rank-number
+              | {{ index + 1 }}
       .media-left
         .post-image
           img.image.is-64x64(:src='post.image_url', alt='post_image')
