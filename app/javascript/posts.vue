@@ -21,13 +21,14 @@ section.container
         .title.is-5
           a(:href='post.url') {{ post.title }}
         .sub-title
-          a.comment-link(:href='post.show_url')(:class="{'has-comment': post.comments_count != 0}")
-            i.fa-solid.fa-message
-            span.comments-count
-              | {{ post.comments_count }}
           span.sub-title-text
             | {{ post.site_name }}
             | {{ post.date }}
+      .media-right
+        a.comment-link(:href='post.show_url')(:class="{'has-comment': post.comments_count != 0}")
+          i.fa-regular.fa-message.fa-2x
+          .post_comments_count
+            | {{ post.comments_count }}
       .media-right
         likeButton(:post='post', :currentUserId='this.currentUserId')
       a.card-link(:href='post.show_url')

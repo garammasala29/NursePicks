@@ -30,7 +30,7 @@
 }
 
 .sub-title {
-  margin-top: -10px;
+  margin-top: -20px;
 }
 
 .sub-title-text {
@@ -38,16 +38,16 @@
 }
 
 .comment-link {
-  margin-right: 4px;
-  font-weight: 600;
   color: #777777;
-  i {
-    margin-right: 4px;
-  }
 }
 
 .has-comment {
-  color: $blue;
+  color: $orange;
+}
+
+.post_comments_count {
+  text-align: center;
+  color: $black;
 }
 
 .post-list {
