@@ -1,19 +1,47 @@
+.post-tabs{
+  font-weight: 700;
+}
+
 .rank-icon {
   position: relative;
-  font-size: 50px;
-  color: $blue;
-  margin-top: 10px;
+  font-size: 40px;
+  color: #c9c9c9;
   z-index: 0;
+  margin-top: 14px;
 }
 
 .rank-number {
   position: absolute;
-  font-size: 15px;
-  color: $white;
+  font-size: 12px;
+  color: $gray;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+
+.rank-crown .rank-icon {
+  &.is-rank-0 {
+    color: #cfbe26;
+  }
+  &.is-rank-1 {
+    color: #c9caca;
+  }
+  &.is-rank-2 {
+    color: #cd985e;
+  }
+  .rank-number {
+    color: $white;
+    margin-top: 6px;
+  }
+}
+
+.sub-title {
+  font-size: 14px;
+  margin-top: -20px;
+  .sub-title-text {
+    color: $black;
+  }
 }
 
 .post-image {
@@ -29,25 +57,17 @@
   }
 }
 
-.sub-title {
-  margin-top: -10px;
-}
-
-.sub-title-text {
-  color: $black;
-}
-
 .comment-link {
-  margin-right: 4px;
-  font-weight: 600;
-  color: #777777;
-  i {
-    margin-right: 4px;
-  }
+  color: $gray;
 }
 
 .has-comment {
-  color: $blue;
+  color: $orange;
+}
+
+.post_comments_count {
+  text-align: center;
+  color: $black;
 }
 
 .post-list {
@@ -58,14 +78,15 @@
 
 .post {
   position: relative;
-}
-
-.post
+  .title {
+    line-height: 1.5;
+  }
   .title,
   .like-button,
   .comment-link {
-  position: relative;
-  z-index: 5;
+    position: relative;
+    z-index: 5;
+  }
 }
 
 .post .card-link {
@@ -87,6 +108,13 @@
   margin: 12px 0;
 }
 
+.media .media-right {
+  margin: 6px 0px 0px 12px;
+  i {
+    font-size: 28px;
+  }
+}
+
 .comments {
   margin: 30px 0 0 30px;
 }
@@ -97,4 +125,8 @@
 
 .like-button {
   cursor: pointer;
+}
+
+.show-post {
+  margin-top: 30px;
 }

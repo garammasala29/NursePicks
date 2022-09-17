@@ -1,6 +1,6 @@
 <template lang="pug">
 section.container
-  header.tabs.is-centered.is-medium
+  header.tabs.post-tabs.is-centered.is-medium
     ul
       li(:class="{'is-active': isOrder == 'popular'}")
         a(@click='sortPopular()')
@@ -11,23 +11,29 @@ section.container
   .posts
     .post.media(v-for='(post, index) in posts' :key='post.id')
       .media-left
-        i.fa-solid.fa-circle.rank-icon
-          .rank-number
-            | {{ index + 1 }}
+        .rank-crown(v-if='index < 3')
+          i.fa-solid.fa-crown.rank-icon(:class="['is-rank-' + index]")
+            .rank-number
+              | {{ index + 1 }}
+        .rank-circle(v-else)
+          i.fa-regular.fa-circle.rank-icon(:class="['is-rank-' + index]")
+            .rank-number
+              | {{ index + 1 }}
       .media-left
         .post-image
           img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
-        .title.is-5
+        .title.is-6
           a(:href='post.url') {{ post.title }}
         .sub-title
-          a.comment-link(:href='post.show_url')(:class="{'has-comment': post.comments_count != 0}")
-            i.fa-solid.fa-message
-            span.comments-count
-              | {{ post.comments_count }}
           span.sub-title-text
             | {{ post.site_name }}
             | {{ post.date }}
+      .media-right
+        a.comment-link(:href='post.show_url')(:class="{'has-comment': post.comments_count != 0}")
+          i.fa-regular.fa-message.fa-2x
+          .post_comments_count
+            | {{ post.comments_count }}
       .media-right
         likeButton(:post='post', :currentUserId='this.currentUserId')
       a.card-link(:href='post.show_url')
