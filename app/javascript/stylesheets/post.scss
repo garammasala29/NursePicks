@@ -80,6 +80,11 @@
   position: relative;
   .title {
     line-height: 1.5;
+    cursor: pointer;
+    :hover {
+      color: #1178de;
+      text-decoration: underline;
+    }
   }
   .title,
   .like-button,
