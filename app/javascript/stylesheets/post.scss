@@ -47,13 +47,18 @@
 .post-image {
   .image {
     object-fit: contain;
+    border-radius: 8px;
+  }
+  :hover {
+    box-shadow: $orange 0 0 0 2px;
+    transition: all .2s ease-out;
+    opacity: 0.8;
   }
   img[src*='logo_picks'] {
     filter: grayscale(100%);
     background: #c9c9c9;
     padding: 10px;
     opacity: .6;
-    border-radius: 8px;
   }
 }
 
@@ -100,13 +105,6 @@
   left: 0;
   height:100%;
   width: 100%;
-}
-
-.card-link:hover {
-  background-color: $blue;
-  opacity: 0.2;
-  border-radius: 4px;
-  background-image: linear-gradient(45deg,#fff 50%,hsla(0,0%,100%,0));
 }
 
 .post-separator {

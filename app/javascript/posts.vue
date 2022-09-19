@@ -20,7 +20,7 @@ section.container
             .rank-number
               | {{ index + 1 }}
       .media-left
-        .post-image
+        a.post-image(:href='post.url')
           img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
         .title.is-6
@@ -36,7 +36,6 @@ section.container
             | {{ post.comments_count }}
       .media-right
         likeButton(:post='post', :currentUserId='this.currentUserId')
-      a.card-link(:href='post.show_url')
 </template>
 
 <script>
