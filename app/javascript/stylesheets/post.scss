@@ -63,16 +63,22 @@
 }
 
 .comment-link {
-  color: $gray;
+  a {
+    color: #c9c9c9;
+  }
+  :hover {
+    transition: all .2s ease-out;
+    color: #ff8f32;
+    opacity: 0.8;
+  }
+  .post_comments_count {
+    text-align: center;
+    color: $black;
+  }
 }
 
-.has-comment {
+.has-comment a {
   color: $orange;
-}
-
-.post_comments_count {
-  text-align: center;
-  color: $black;
 }
 
 .post-list {
@@ -112,7 +118,6 @@
 }
 
 .media .media-right {
-  margin: 6px 0px 0px 12px;
   i {
     font-size: 28px;
   }

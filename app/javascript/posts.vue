@@ -29,9 +29,9 @@ section.container
           span.sub-title-text
             | {{ post.site_name }}
             | {{ post.date }}
-      .media-right
-        a.comment-link(:href='post.show_url')(:class="{'has-comment': post.comments_count != 0}")
-          i.fa-regular.fa-message.fa-2x
+      .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
+        a(:href='post.show_url')
+          i.fa-solid.fa-message.fa-2x
           .post_comments_count
             | {{ post.comments_count }}
       .media-right
