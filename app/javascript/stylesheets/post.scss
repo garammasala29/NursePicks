@@ -68,7 +68,7 @@
   }
   :hover {
     transition: all .2s ease-out;
-    color: #ff8f32;
+    color: #ff9800;
     opacity: 0.8;
   }
   .post_comments_count {
@@ -127,12 +127,14 @@
   margin: 30px 0 0 30px;
 }
 
-.link-button {
-  color: white
-}
-
 .like-button {
+  color: $orange;
   cursor: pointer;
+  :hover {
+    transition: all .2s ease-out;
+    color: #ff9800;
+    opacity: 0.8;
+  }
 }
 
 .show-post {
