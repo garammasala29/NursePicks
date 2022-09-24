@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.top-title{
+.top-title {
   text-align: center;
   margin-top: 24px;
   img {
@@ -14,7 +14,7 @@
   }
 }
 
-.top-subtitle{
+.top-subtitle {
   text-align: center;
   font-weight: 600;;
   font-size: 24px;
@@ -49,4 +49,27 @@
 
 .post-button {
   text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .description {
+    padding-top: 40px;
+    padding-bottom: 16px;
+    margin-bottom: 10px;
+  }
+  .top-title img {
+    max-width: calc(100vw - 3rem);
+  }
+  .top-subtitle {
+    font-size: 16px;
+  }
+  .description-content {
+    padding: 20px;
+    .column {
+      padding: 0.25rem;
+    }
+  }
+  .post-button button {
+    min-width: calc(100vw - 2rem);
+  }
 }
