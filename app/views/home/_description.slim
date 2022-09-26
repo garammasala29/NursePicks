@@ -51,6 +51,6 @@ article.description
               .field-body.is-grouped
                 .field.is-expanded
                   .control
-                    = form.text_field :url, class: 'input'
+                    = form.text_field :url, class: 'input', placeholder: 'https://www.example.com'
                 .control
                   = form.submit '記事の投稿', class: 'button is-right is-primary'
