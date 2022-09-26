@@ -20,23 +20,22 @@ section.container
             .rank-number
               | {{ index + 1 }}
       .media-left
-        .post-image
+        a.post-image(:href='post.url', target='_blank', rel='noopener')
           img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
         .title.is-6
-          a(:href='post.url') {{ post.title }}
+          a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
         .sub-title
           span.sub-title-text
             | {{ post.site_name }}
             | {{ post.date }}
-      .media-right
-        a.comment-link(:href='post.show_url')(:class="{'has-comment': post.comments_count != 0}")
-          i.fa-regular.fa-message.fa-2x
+      .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
+        a(:href='post.show_url')
+          i.fa-solid.fa-message.fa-2x
           .post_comments_count
             | {{ post.comments_count }}
       .media-right
         likeButton(:post='post', :currentUserId='this.currentUserId')
-      a.card-link(:href='post.show_url')
 </template>
 
 <script>

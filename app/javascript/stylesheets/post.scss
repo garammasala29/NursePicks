@@ -47,27 +47,38 @@
 .post-image {
   .image {
     object-fit: contain;
+    border-radius: 8px;
+  }
+  :hover {
+    box-shadow: $orange 0 0 0 2px;
+    transition: all .2s ease-out;
+    opacity: 0.8;
   }
   img[src*='logo_picks'] {
     filter: grayscale(100%);
     background: #c9c9c9;
     padding: 10px;
     opacity: .6;
-    border-radius: 8px;
   }
 }
 
 .comment-link {
-  color: $gray;
+  a {
+    color: #c9c9c9;
+  }
+  :hover {
+    transition: all .2s ease-out;
+    color: #ff9800;
+    opacity: 0.8;
+  }
+  .post_comments_count {
+    text-align: center;
+    color: $black;
+  }
 }
 
-.has-comment {
+.has-comment a {
   color: $orange;
-}
-
-.post_comments_count {
-  text-align: center;
-  color: $black;
 }
 
 .post-list {
@@ -80,6 +91,11 @@
   position: relative;
   .title {
     line-height: 1.5;
+    cursor: pointer;
+    :hover {
+      color: #1178de;
+      text-decoration: underline;
+    }
   }
   .title,
   .like-button,
@@ -97,19 +113,11 @@
   width: 100%;
 }
 
-.card-link:hover {
-  background-color: $blue;
-  opacity: 0.2;
-  border-radius: 4px;
-  background-image: linear-gradient(45deg,#fff 50%,hsla(0,0%,100%,0));
-}
-
 .post-separator {
   margin: 12px 0;
 }
 
 .media .media-right {
-  margin: 6px 0px 0px 12px;
   i {
     font-size: 28px;
   }
@@ -119,12 +127,14 @@
   margin: 30px 0 0 30px;
 }
 
-.link-button {
-  color: white
-}
-
 .like-button {
+  color: $orange;
   cursor: pointer;
+  :hover {
+    transition: all .2s ease-out;
+    color: #ff9800;
+    opacity: 0.8;
+  }
 }
 
 .show-post {
