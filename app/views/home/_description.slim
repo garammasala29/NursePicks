@@ -37,12 +37,9 @@ article.description
             .content
               ul
                 li
-                  | 看護記事のURLをこちらに入れて「記事の投稿」をクリック
+                  | 看護記事のURLをこちらに入れて「記事の投稿」をクリック。
                 li
-                  | URLがある記事であれば投稿できます<br>(twitterにはまだ対応できていません)
-                li
-                  | PDFファイルは登録できないので、論文を投稿する際には、<br>
-                  | J-StageやCiNiiなどリンクされている論文検索サービスのURLを投稿してください
+                  | PDFファイルの論文もURLがあれば投稿可能です。
           = form_with(model: @post, local: true) do |form|
             .content
               = render 'shared/errors', object: @post
