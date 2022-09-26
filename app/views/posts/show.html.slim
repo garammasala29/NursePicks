@@ -7,7 +7,7 @@ article.article.container
             = image_tag(@post.image_url, alt: 'post_image')
       .media-content
         h2.title.is-5
-          = link_to @post.title, @post.url
+          = link_to @post.title, @post.url, target: :_blank
         .sub-title
           i.fa-solid.fa-message
           |  #{@post.comments.count}

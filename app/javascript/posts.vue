@@ -20,11 +20,11 @@ section.container
             .rank-number
               | {{ index + 1 }}
       .media-left
-        a.post-image(:href='post.url')
+        a.post-image(:href='post.url', target='_blank')
           img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
         .title.is-6
-          a(:href='post.url') {{ post.title }}
+          a(:href='post.url', target='_blank') {{ post.title }}
         .sub-title
           span.sub-title-text
             | {{ post.site_name }}
