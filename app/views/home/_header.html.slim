@@ -6,12 +6,7 @@ nav
           - unless request.path == '/'
             h1.image.header-log
               = link_to image_tag('nursepicks_head.png', alt: 'header_logo'), root_path
-        a.navbar-burger#js-menu data-target='nav-menu' role="button" aria-label="menu" aria-expanded="false"
-          span aria-hidden="true"
-          span aria-hidden="true"
-          span aria-hidden="true"
-
-      .navbar-menu#nav-menu
+      .navbar-menu
         .navbar-end
           - if signed_in?
             .navbar-item.is-white
