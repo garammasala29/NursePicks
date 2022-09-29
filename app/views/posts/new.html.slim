@@ -22,9 +22,9 @@ article.article.container
         = form.text_field :site_name, class: 'input'
     .field
       .label
-        = form.label :tag_list, 'タグ(循環器、小児、終末期、論文など)'
+        = form.label :tag_list, 'タグ(循環器、小児、終末期、論文など)', for: 'js-post-tags'
       .control
-        = text_field_tag 'post[tag_list]', @post.tag_list.join(",")
+        = text_field_tag 'post[tag_list]', @post.tag_list.join(","), type: 'text', id: 'js-post-tags' 
     .control
       .buttons.is-right
         = form.submit '記事の登録', class: 'button is-primary'
