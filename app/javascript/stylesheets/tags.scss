@@ -1,0 +1,23 @@
+.choices__inner {
+  background-color: $white;
+  border-color: hsl(0deg, 0%, 86%);
+  border-radius: 4px;
+  border: 2px solid hsl(0deg, 0%, 86%);
+}
+
+.choices__list--multiple .choices__item {
+  border-radius: 6px;
+  background-color: $orange;
+  border: 1px solid $white;
+  .choices__button {
+    border-left: 1px solid $white;
+  }
+  &.is-highlighted {
+    background-color: $orange;
+    border: 1px solid $white;
+  }
+}
+
+.choices__input {
+  background-color: $white;
+}

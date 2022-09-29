@@ -23,6 +23,7 @@ article.article.container
     .field
       .label
         = form.label :tag_list, 'タグ(循環器、小児、終末期、論文など)', for: 'js-post-tags'
+    .field
       .control
         = text_field_tag 'post[tag_list]', @post.tag_list.join(","), type: 'text', id: 'js-post-tags' 
     .control
