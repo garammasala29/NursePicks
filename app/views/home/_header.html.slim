@@ -10,8 +10,6 @@ nav
         .navbar-end
           - if signed_in?
             .navbar-item.is-white
-              button.button.signout-button
-                = link_to 'ログアウト', signout_path, method: :delete
               .icon-image
                 = link_to image_tag(current_user.icon_url, alt: 'nav_user_icon'), current_user
           - else

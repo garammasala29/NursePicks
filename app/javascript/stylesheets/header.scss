@@ -49,3 +49,9 @@ nav .navbar {
     background-color: #3c98e4;
   }
 }
+
+@media screen and (max-width: 767px) {
+  nav .navbar {
+    padding-right: 10px;
+  }
+}
