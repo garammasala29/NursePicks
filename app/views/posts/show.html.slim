@@ -8,10 +8,10 @@ article.article.container
       .media-content
         h2.title.is-5
           = link_to @post.title, @post.url, target: :_blank, rel: 'noopener'
-        .sub-title
-          i.fa-solid.fa-message
-          |  #{@post.comments.count}
-          |  #{@post.site_name}
+        .sub-title.issue-tag-container
+          = @post.site_name
+          - @post.tag_list.each do |tag_name|
+            = tag_name
       .media-right.has-text-centered
         - if current_user
           - if current_user.liked?(@post)
