@@ -10,8 +10,10 @@ article.article.container
           = link_to @post.title, @post.url, target: :_blank, rel: 'noopener'
         .sub-title
           = @post.site_name
-          - @post.tag_list.each do |tag_name|
-            = tag_name
+          span.post-tags
+            - @post.tag_list.each do |tag|
+              span.post-tag
+                = tag
       .media-right.has-text-centered
         - if current_user
           - if current_user.liked?(@post)
