@@ -1,10 +1,9 @@
 article.article.container
-  section.show-post
-    .media
+  section
+    .post.media
       .media-left
-        .post-image
-          .image.is-64x64
-            = image_tag(@post.image_url, alt: 'post_image')
+        = link_to @post.url, target: :_blank, rel: 'noopener', class: 'post-image'
+          = image_tag @post.image_url, alt: 'post_image', class: 'image is-64x64'
       .media-content
         h2.title.is-5
           = link_to @post.title, @post.url, target: :_blank, rel: 'noopener'
