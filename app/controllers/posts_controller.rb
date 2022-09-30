@@ -26,6 +26,7 @@ class PostsController < ApplicationController
         @post.scrape
         return render :new
       rescue StandardError
+        @post.image_url = 'logo_picks.png'
         return render :new
       end
     end
