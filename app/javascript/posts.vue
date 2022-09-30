@@ -26,9 +26,12 @@ section.container
         .title.is-6
           a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
         .sub-title
-          span.sub-title-text
+          span
             | {{ post.site_name }}
             | {{ post.date }}
+          span.post-tags
+            span.post-tag(v-for='tag in post.tags')
+              | {{ tag }}
       .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
         a(:href='post.show_url')
           i.fa-solid.fa-message.fa-2x

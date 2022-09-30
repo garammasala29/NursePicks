@@ -39,8 +39,17 @@
 .sub-title {
   font-size: 14px;
   margin-top: -20px;
-  .sub-title-text {
-    color: $black;
+}
+
+.post-tags {
+  margin: 2px;
+  .post-tag {
+    color: $white;
+    border-radius: 6px;
+    background-color: $orange;
+    border: 1px solid $white;
+    font-size: 12px;
+    padding: 2px;
   }
 }
 
