@@ -1,0 +1,7 @@
+.flash-message
+  - if flash.notice
+    .notification.is-primary.has-text-centered
+      = notice
+  - if flash.alert
+    .notification.is-danger.has-text-centered
+      = alert

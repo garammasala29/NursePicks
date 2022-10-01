@@ -12,14 +12,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css', media: 'all'
   body
+    = render 'shared/flash'
     = render 'home/header'
     main
-      .flash-message
-        - if flash.notice
-          .notification.is-primary.has-text-centered
-            = notice
-        - if flash.alert
-          .notification.is-danger.has-text-centered
-            = alert
       = yield
     = render 'home/footer'
