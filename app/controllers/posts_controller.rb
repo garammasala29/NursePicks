@@ -24,8 +24,9 @@ class PostsController < ApplicationController
     unless @post.title
       begin
         @post.scrape
-        return render :new if @post.title.empty?
+        return render :new
       rescue StandardError
+        @post.image_url = 'logo_picks.png'
         return render :new
       end
     end
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
     else
       flash.now[:alert] = "記事投稿に失敗しました。#{@post.errors.full_messages[0]}。"
-      render :index
+      render :new
     end
   end
 
@@ -50,6 +51,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:url, :title, :site_name, :image_url)
+    params.require(:post).permit(:url, :title, :site_name, :image_url, :tag_list)
   end
 end

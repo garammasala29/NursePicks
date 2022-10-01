@@ -48,6 +48,8 @@ RSpec.describe 'Posts', type: :system do
         click_on '記事を投稿する'
         fill_in 'URL',	with: 'https://example.net'
         click_on '記事の投稿'
+        expect(page).to have_field '記事のタイトル', with: 'Example Domain'
+        click_on '記事の登録'
         expect(page).to have_content '「Example Domain」を登録しました'
       end.to change { Post.count }.by(1)
     end
@@ -58,7 +60,9 @@ RSpec.describe 'Posts', type: :system do
         click_on '記事を投稿する'
         fill_in 'URL',	with: 'https://example.com'
         click_on '記事の投稿'
-        expect(page).to have_content '記事投稿に失敗しました'
+        expect(page).to have_field '記事のタイトル', with: 'Example Domain'
+        click_on '記事の登録'
+        expect(page).to have_content '記事投稿に失敗しました。URLはすでに存在します。'
       end.to change { Post.count }.by(0)
     end
 
@@ -80,7 +84,6 @@ RSpec.describe 'Posts', type: :system do
         expect do
           fill_in 'URL', with: 'https://twitter.com/nurse_picks'
           click_on '記事の投稿'
-          expect(page).to have_content '新規記事登録'
           expect(page).to have_content 'https://twitter.com/nurse_picks'
           expect(page).to have_field 'サイト元(任意)', with: 'Twitter'
           fill_in 'post_title', with: 'NursePicks公式Twitter'
@@ -93,7 +96,6 @@ RSpec.describe 'Posts', type: :system do
         expect do
           fill_in 'URL', with: 'https://www.kansaigaidai.ac.jp/asp/img/pdf/82/7a79c35f7ce0704dec63be82440c8182.pdf'
           click_on '記事の投稿'
-          expect(page).to have_content '新規記事登録'
           expect(page).to have_content 'https://www.kansaigaidai.ac.jp/asp/img/pdf/82/7a79c35f7ce0704dec63be82440c8182.pdf'
           fill_in 'post_title', with: 'サンプルPDF'
           click_on '記事の登録'

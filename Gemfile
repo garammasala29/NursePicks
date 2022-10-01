@@ -50,6 +50,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'acts-as-taggable-on'
 gem 'dotenv-rails'
 gem 'html2slim'
 gem 'metainspector'

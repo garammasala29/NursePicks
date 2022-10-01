@@ -24,7 +24,7 @@ RSpec.describe Post, type: :model do
   it 'タイトルがなければ記事投稿が無効であること' do
     post = build(:post, user_id: user.id, title: nil)
     post.valid?
-    expect(post.errors[:title]).to include('この記事の投稿は難しいようです')
+    expect(post.errors[:title]).to include('を入力してください')
   end
 
   it '重複したURLが存在するなら記事投稿が無効であること' do

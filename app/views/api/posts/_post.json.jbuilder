@@ -13,3 +13,6 @@ json.likes post.likes
 json.likes_id post.likes.pluck(:id)
 json.like_users post.likes.pluck(:user_id)
 json.likes_count post.likes.size
+json.tags post.tags do |tag|
+  json.name tag.name
+end

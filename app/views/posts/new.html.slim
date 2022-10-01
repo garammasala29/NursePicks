@@ -1,7 +1,12 @@
 article.article.container
   h2.title.is-3 新規記事登録
   = form_with(model: @post, local: true) do |form|
-    = form.hidden_field :image_url, value: 'logo_picks.png'
+    .field
+      .label
+        = form.label :image_url, 'このサイトの画像'
+      .new-post-image
+        = image_tag(@post.image_url, alt: 'post_image')
+    = form.hidden_field :image_url
     = form.hidden_field :url
     .field
       .label
@@ -10,7 +15,7 @@ article.article.container
         = @post.url
     .field
       .label
-        = form.label :title, '記事の題名'
+        = form.label :title, '記事のタイトル'
     .field
       .control
         = form.text_field :title, class: 'input'
@@ -20,6 +25,12 @@ article.article.container
     .field
       .control
         = form.text_field :site_name, class: 'input'
+    .field
+      .label
+        = form.label :tag_list, 'タグ(循環器、小児、終末期、論文など)', for: 'js-post-tags'
+    .field
+      .control
+        = text_field_tag 'post[tag_list]', @post.tag_list.join(','), type: 'text', id: 'js-post-tags'
     .control
       .buttons.is-right
         = form.submit '記事の登録', class: 'button is-primary'

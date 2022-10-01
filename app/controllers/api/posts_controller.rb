@@ -4,7 +4,7 @@ class API::PostsController < ApplicationController
   before_action :require_signin, only: %i[destroy]
 
   def index
-    @posts = Post.includes(:comments, :likes)
+    @posts = Post.includes(:comments, :likes, :tags, :tag_taggings)
   end
 
   def destroy
