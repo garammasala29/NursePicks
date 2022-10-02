@@ -8,14 +8,15 @@ nav
               = link_to image_tag('nursepicks_head.png', alt: 'header_logo'), root_path
       .navbar-menu
         .navbar-end
-          - unless request.path.match(/user/)
-            - if signed_in?
+          - if signed_in?
+            - unless request.path.match(/user/)
               .navbar-item
                 .icon-image
                   = link_to image_tag(current_user.icon_url, alt: 'nav_user_icon'), current_user
-            - else
-              .navbar-item
-                .buttons
+          - else
+            .navbar-item
+              .buttons
+                - if request.path == '/'
                   button.button.mr-1#js-modal data-modal='signup'
                     | ユーザー登録
                   .modal#signup
@@ -41,22 +42,22 @@ nav
                             span
                               | Twitterで新規登録
 
-                  button.button.is-info#js-modal data-modal='signin'
-                    | ログイン
-                  .modal#signin
-                    .modal-background#js-modal data-modal='signin'
-                    .modal-card
-                      .modal-card-head
-                        p.modal-card-title
-                          | ログイン
-                        button.delete#js-modal aria-label="close" data-modal='signin'
-                      .modal-card-body
-                        .buttons.sns-buttons.is-centered
-                          a.button.google-button href='/auth/google_oauth2' data-method='post'
-                            = image_tag('logo_google.png', alt: 'google_logo')
-                            span
-                              | Googleでログイン
-                          a.button.twitter-button href='/auth/twitter' data-method='post'
-                            i.fa-brands.fa-twitter
-                            span
-                              | Twitterでログイン
+                button.button.is-info#js-modal data-modal='signin'
+                  | ログイン
+                .modal#signin
+                  .modal-background#js-modal data-modal='signin'
+                  .modal-card
+                    .modal-card-head
+                      p.modal-card-title
+                        | ログイン
+                      button.delete#js-modal aria-label="close" data-modal='signin'
+                    .modal-card-body
+                      .buttons.sns-buttons.is-centered
+                        a.button.google-button href='/auth/google_oauth2' data-method='post'
+                          = image_tag('logo_google.png', alt: 'google_logo')
+                          span
+                            | Googleでログイン
+                        a.button.twitter-button href='/auth/twitter' data-method='post'
+                          i.fa-brands.fa-twitter
+                          span
+                            | Twitterでログイン
