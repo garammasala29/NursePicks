@@ -21,7 +21,8 @@ RSpec.describe 'Sessions', type: :system do
   describe 'destroy' do
     it 'ユーザーがログアウトできる' do
       sign_in_as(user)
-      click_button 'ログアウト'
+      visit user_path(user)
+      click_on 'ログアウト'
       expect(page).to have_content 'ログアウトしました'
     end
   end

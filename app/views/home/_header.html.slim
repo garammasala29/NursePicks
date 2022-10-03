@@ -9,7 +9,7 @@ nav
       .navbar-menu
         .navbar-end
           - if signed_in?
-            - unless request.path.match(/user/)
+            - unless request.path.match?(/user/)
               .navbar-item
                 .icon-image
                   = link_to image_tag(current_user.icon_url, alt: 'nav_user_icon'), current_user
