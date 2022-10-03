@@ -1,4 +1,4 @@
-$navbar-breakpoint: 370px;
+$navbar-breakpoint: 0px;
 $navbar-background-color: none;
 $navbar-item-img-max-height: 56px;
 
@@ -10,11 +10,6 @@ $navbar-item-img-max-height: 56px;
 nav .navbar {
   position: absolute;
   width: 100%;
-}
-
-.signout-button {
-  margin-right: 0.5rem;
-  margin-bottom: 0px;
 }
 
 .sns-buttons {
@@ -47,5 +42,11 @@ nav .navbar {
   &:hover {
     color: $white;
     background-color: #3c98e4;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  nav .navbar {
+    padding: 0px 10px;
   }
 }
