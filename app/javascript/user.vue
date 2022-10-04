@@ -16,7 +16,11 @@ section.user-tabs
           | いいねした記事
   section.tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
-      table.table.is-striped
+      .empty-message(v-if='posts.length === 0')
+        | 記事はまだありません。
+        span(v-if='currentUserId == userId')
+          | おすすめの記事を投稿しましょう。
+      table.table.is-striped(v-else)
         tbody
           tr(v-for='(post, index) in posts' :key='post.id')
             th
@@ -27,7 +31,11 @@ section.user-tabs
               button.button.is-small.is-info.delete-button
                 i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'comments'}")
-      table.table.is-striped
+      .empty-message(v-if='comments.length === 0')
+        | コメントはまだありません。
+        span(v-if='currentUserId == userId')
+          | 気になる記事にコメントしましょう。
+      table.table.is-striped(v-else)
         tbody
           tr(v-for='(comment, index) in comments')
             th
@@ -40,7 +48,11 @@ section.user-tabs
               button.button.is-small.is-info.delete-button
                 i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'likes'}")
-      table.table.is-striped
+      .empty-message(v-if='comments.length === 0')
+        | いいねはまだありません。
+        span(v-if='currentUserId == userId')
+          | 気になる記事にいいねしましょう。
+      table.table.is-striped(v-else)
         tbody
           tr(v-for='(like, index) in likes')
             th
