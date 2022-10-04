@@ -4,16 +4,16 @@ section.user-tabs
     ul
       li(:class="{'is-active': isSelect == 'posts'}")
         a(@click="isSelect='posts'")
-          | 投稿した記事
           i.fa-solid.fa-file-medical
+          | 投稿した記事
       li(:class="{'is-active': isSelect == 'comments'}")
         a(@click="isSelect='comments'")
-          | コメント
           i.fa-solid.fa-message
+          | コメント
       li(:class="{'is-active': isSelect == 'likes'}")
         a(@click="isSelect='likes'")
-          | いいねした記事
           i.fa-solid.fa-thumbs-up
+          | いいねした記事
   section.tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
       table.table.is-striped

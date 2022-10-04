@@ -1,19 +1,28 @@
+.profile {
+  margin-bottom: 20px;
+}
+
 .profile-button {
   a {
     color: $black;
   }
 }
 
-.user-tabs {
-  padding: 20px 4px;
+.tabs.is-boxed {
+  a {
+    font-weight: 700;
+    padding: 12px;
+  }
+  i {
+    margin-right: 6px;
+  }
 }
 
 .tab-contents .content {
   display: none;
-}
-
-.tab-contents .content.is-active {
-  display: block;
+  &.is-active {
+    display: block;
+  }
 }
 
 .delete-button {
