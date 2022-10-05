@@ -18,8 +18,8 @@ section.user-tabs
     .content(:class="{'is-active': isSelect == 'posts'}")
       .empty-message(v-if='posts.length === 0')
         | 投稿した記事はまだありません。
-        span(v-if='currentUserId == userId')
-          | おすすめの記事を投稿しましょう。
+        p(v-if='currentUserId == userId')
+          | おすすめの記事を投稿してみましょう！
       .posts(v-else)
         .post.media(v-for='post in posts' :key='post.id')
           .media-left
@@ -45,26 +45,28 @@ section.user-tabs
 
     .content(:class="{'is-active': isSelect == 'comments'}")
       .empty-message(v-if='comments.length === 0')
-        | コメントはまだありません。
-        span(v-if='currentUserId == userId')
-          | 気になる記事にコメントしましょう。
-      table.table.is-striped(v-else)
-        tbody
-          tr(v-for='(comment, index) in comments')
-            th
-              | {{ index + 1 }}
-            td
-              a(:href='comment.postPath') {{ comment.content }}
-            td
+        | 投稿したコメントはまだありません。
+        p(v-if='currentUserId == userId')
+          | 気になる記事にコメントしてみましょう！
+      .posts(v-else)
+        .post.media(v-for='comment in comments' :key='comment.id')
+          .media-left
+            a.post-image(:href='comment.post_url', target='_blank', rel='noopener')
+              img.image.is-64x64(:src='comment.post_image_url', alt='post_image')
+          .media-content
+            .title.is-6
+              a(:href='comment.show_url') {{ comment.content }}
+            .sub-title
               | {{ comment.post_title }}
-            td(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
-              button.button.is-small.is-info.delete-button
-                i.fa-solid.fa-trash-can
+          .media-right.delete-button(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
+            .comment-delete
+              i.fa-solid.fa-trash-can
+
     .content(:class="{'is-active': isSelect == 'likes'}")
       .empty-message(v-if='comments.length === 0')
-        | いいねはまだありません。
-        span(v-if='currentUserId == userId')
-          | 気になる記事にいいねしましょう。
+        | いいねした記事はまだありません。
+        p(v-if='currentUserId == userId')
+          | 気になる記事にいいねしてみましょう！
       table.table.is-striped(v-else)
         tbody
           tr(v-for='(like, index) in likes')

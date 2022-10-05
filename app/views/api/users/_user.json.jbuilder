@@ -21,7 +21,9 @@ json.comments user.comments.includes(:post) do |comment|
   json.content comment.content
   json.post_id comment.post.id
   json.post_title comment.post.title
-  json.postPath post_path(comment.post_id)
+  json.post_url comment.post.url
+  json.post_image_url comment.post.image_url
+  json.show_url post_path(comment.post_id)
 end
 json.likes user.likes.includes(:post) do |like|
   json.id like.id
