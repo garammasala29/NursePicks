@@ -29,5 +29,8 @@ json.likes user.likes.includes(:post) do |like|
   json.id like.id
   json.post_id like.post.id
   json.post_title like.post.title
-  json.postPath post_path(like.post_id)
+  json.post_url like.post.url
+  json.post_site_name like.post.site_name
+  json.post_image_url like.post.image_url
+  json.show_url post_path(like.post_id)
 end
