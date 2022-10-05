@@ -5,8 +5,16 @@ json.icon_url user.icon_url
 json.posts user.posts do |post|
   json.id post.id
   json.title post.title
+  json.url post.url
+  json.site_name post.site_name
+  json.image_url post.image_url
+  json.date l(post.created_at, format: :short)
   json.user_id post.user_id
-  json.path post_path(post)
+  json.show_url post_url(post)
+  json.comments_count post.comments.size
+  json.tags post.tags do |tag|
+    json.name tag.name
+  end
 end
 json.comments user.comments.includes(:post) do |comment|
   json.id comment.id

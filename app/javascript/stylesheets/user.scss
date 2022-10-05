@@ -27,6 +27,12 @@
 
 .delete-button {
   cursor: pointer;
+  color: $orange;
+  :hover {
+    transition: all .2s ease-out;
+    color: #ff9800;
+    opacity: 0.8;
+  }
 }
 
 .select-icons {

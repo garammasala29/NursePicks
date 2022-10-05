@@ -17,19 +17,32 @@ section.user-tabs
   section.tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
       .empty-message(v-if='posts.length === 0')
-        | 記事はまだありません。
+        | 投稿した記事はまだありません。
         span(v-if='currentUserId == userId')
           | おすすめの記事を投稿しましょう。
-      table.table.is-striped(v-else)
-        tbody
-          tr(v-for='(post, index) in posts' :key='post.id')
-            th
-              | {{ index + 1 }}
-            td
-              a(:href='post.path') {{ post.title }}
-            td(v-if='currentUserId == userId' @click='deletePost(post.id)')
-              button.button.is-small.is-info.delete-button
-                i.fa-solid.fa-trash-can
+      .posts(v-else)
+        .post.media(v-for='post in posts' :key='post.id')
+          .media-left
+            a.post-image(:href='post.url', target='_blank', rel='noopener')
+              img.image.is-64x64(:src='post.image_url', alt='post_image')
+          .media-content
+            .title.is-6
+              a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
+            .sub-title
+              span
+                | {{ post.site_name }}
+                | {{ post.date }}
+              span.post-tags
+                span.post-tag(v-for='tag in post.tags')
+                  | {{ tag.name }}
+          .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
+            a(:href='post.show_url')
+              i.fa-solid.fa-message
+              .post_comments_count
+                | {{ post.comments_count }}
+          .media-right.delete-button(v-if='currentUserId == userId' @click='deletePost(post.id)')
+            i.fa-solid.fa-trash-can
+
     .content(:class="{'is-active': isSelect == 'comments'}")
       .empty-message(v-if='comments.length === 0')
         | コメントはまだありません。
