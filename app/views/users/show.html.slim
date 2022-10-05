@@ -11,10 +11,8 @@ article.article.container
           = link_to @user.url, @user.url
       - if current_user == @user
         .buttons.profile-button
-          .button
-            = link_to 'アカウント編集', current_user_edit_path
-          .button
-            = link_to 'ログアウト', signout_path, method: :delete
+          = link_to 'アカウント編集', current_user_edit_path, class: 'button'
+          = link_to 'ログアウト', signout_path, method: :delete, class: 'button'
 
   - if current_user
     #js-user-posts(data-user-id=params[:id] data-current-user-id=current_user.id)

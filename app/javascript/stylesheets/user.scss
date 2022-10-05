@@ -55,3 +55,15 @@
 .select-icon .image, input[type='radio'] {
   cursor: pointer;
 }
+
+.delete-account {
+  margin: 16px;
+  font-size: 14px;
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+  :hover {
+    text-decoration: underline;
+  }
+}
