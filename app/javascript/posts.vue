@@ -1,5 +1,13 @@
 <template lang="pug">
 section.container
+  .field.is-horizontal
+    .field-label.is-normal
+      .label
+        | 検索
+    .field-body
+      .field
+        .control
+          input(v-model.trim='keyword', placeholder='タイトル、サイト元、タグで記事を検索', class='input', type='text')
   header.tabs.post-tabs.is-centered.is-medium
     ul
       li(:class="{'is-active': isOrder == 'popular'}")
@@ -9,7 +17,7 @@ section.container
         a(@click='sortNewest()')
           | 新着順
   .posts
-    .post.media(v-for='(post, index) in posts' :key='post.id')
+    .post.media(v-for='(post, index) in filterPosts' :key='post.id')
       .media-left
         .rank-crown(v-if='index < 3')
           i.fa-solid.fa-crown.rank-icon(:class="['is-rank-' + index]")
@@ -55,11 +63,22 @@ export default {
   data() {
     return {
       posts: [],
+      keyword: '',
       isOrder: 'popular'
     }
   },
   created() {
     this.getPosts()
+  },
+  computed: {
+    filterPosts() {
+      return this.posts.filter((post) => {
+        if (post.title.indexOf(this.keyword) !== -1)
+          return true
+        else
+          return false
+      })
+    }
   },
   methods: {
     getPosts() {
