@@ -17,9 +17,11 @@ section.user-tabs
   section.tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
       .empty-message(v-if='posts.length === 0')
-        | 投稿した記事はまだありません。
-        p(v-if='currentUserId == userId')
-          | おすすめの記事を投稿してみましょう！
+        i.fa-regular.fa-face-sad-tear
+        .empty-message-text
+          | 投稿した記事はまだありません。
+          p(v-if='currentUserId == userId')
+            | おすすめの記事を投稿してみましょう！
       .posts(v-else)
         .post.media(v-for='post in posts' :key='post.id')
           .media-left
@@ -44,9 +46,11 @@ section.user-tabs
             i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'comments'}")
       .empty-message(v-if='comments.length === 0')
-        | 投稿したコメントはまだありません。
-        p(v-if='currentUserId == userId')
-          | 気になる記事にコメントしてみましょう！
+        i.fa-regular.fa-face-sad-tear
+        .empty-message-text
+          | 投稿したコメントはまだありません。
+          p(v-if='currentUserId == userId')
+            | 気になる記事にコメントしてみましょう！
       .posts(v-else)
         .post.media(v-for='comment in comments' :key='comment.id')
           .media-left
@@ -61,10 +65,12 @@ section.user-tabs
             .delete-button-icon
               i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'likes'}")
-      .empty-message(v-if='comments.length === 0')
-        | いいねした記事はまだありません。
-        p(v-if='currentUserId == userId')
-          | 気になる記事にいいねしてみましょう！
+      .empty-message(v-if='likes.length === 0')
+        i.fa-regular.fa-face-sad-tear
+        .empty-message-text
+          | いいねした記事はまだありません。
+          p(v-if='currentUserId == userId')
+            | 気になる記事にいいねしてみましょう！
       .posts(v-else)
         .post.media(v-for='like in likes' :key='like.id')
           .media-left

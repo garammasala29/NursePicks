@@ -67,3 +67,12 @@
     text-decoration: underline;
   }
 }
+
+.empty-message {
+  color: $gray;
+  text-align: center;
+  i {
+    font-size: 50px;
+    padding: 14px 0 20px 0;
+  }
+}
