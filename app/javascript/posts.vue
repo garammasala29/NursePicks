@@ -73,10 +73,8 @@ export default {
   computed: {
     filterPosts() {
       return this.posts.filter((post) => {
-        if (post.title.indexOf(this.keyword) !== -1)
-          return true
-        else
-          return false
+        const searchWord = post.title.toLowerCase()
+        return searchWord.indexOf(this.keyword.toLowerCase()) !== -1
       })
     }
   },
