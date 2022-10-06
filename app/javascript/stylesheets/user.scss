@@ -1,23 +1,41 @@
+.profile {
+  margin-bottom: 20px;
+}
+
 .profile-button {
   a {
-    color: $black;
+    color: $gray;
   }
 }
 
-.user-tabs {
-  padding: 20px 4px;
+.tabs.is-boxed {
+  a {
+    font-weight: 700;
+    padding: 12px;
+  }
+  i {
+    margin-right: 6px;
+  }
 }
 
 .tab-contents .content {
   display: none;
-}
-
-.tab-contents .content.is-active {
-  display: block;
+  &.is-active {
+    display: block;
+  }
 }
 
 .delete-button {
   cursor: pointer;
+  color: $orange;
+  :hover {
+    transition: all .2s ease-out;
+    color: #ff9800;
+    opacity: 0.8;
+  }
+  .delete-button-icon {
+    margin-top: 10px;
+  }
 }
 
 .select-icons {
@@ -36,4 +54,25 @@
 
 .select-icon .image, input[type='radio'] {
   cursor: pointer;
+}
+
+.delete-account {
+  margin: 16px;
+  font-size: 14px;
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+  :hover {
+    text-decoration: underline;
+  }
+}
+
+.empty-message {
+  color: $gray;
+  text-align: center;
+  i {
+    font-size: 50px;
+    padding: 14px 0 20px 0;
+  }
 }

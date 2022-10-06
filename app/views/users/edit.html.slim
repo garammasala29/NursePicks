@@ -17,7 +17,9 @@ article.article.container
       .control
         = form.text_field :url, class: 'input'
     .control
-      = form.submit 'アカウント更新', class: 'button is-primary'
-  = button_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？' }, class: 'button'
+      .buttons
+        = form.submit 'アカウント更新', class: 'button is-primary'
+  .delete-account
+    = link_to 'アカウント削除', @user, method: :delete, data: { confirm: 'アカウントを削除してもよろしいですか？' }
 
-  = link_to '戻る', @user
+  = link_to 'マイページへ戻る', @user

@@ -4,52 +4,87 @@ section.user-tabs
     ul
       li(:class="{'is-active': isSelect == 'posts'}")
         a(@click="isSelect='posts'")
-          | 投稿した記事
           i.fa-solid.fa-file-medical
+          | 投稿した記事
       li(:class="{'is-active': isSelect == 'comments'}")
         a(@click="isSelect='comments'")
-          | コメント
           i.fa-solid.fa-message
+          | コメント
       li(:class="{'is-active': isSelect == 'likes'}")
         a(@click="isSelect='likes'")
-          | いいねした記事
           i.fa-solid.fa-thumbs-up
+          | いいねした記事
   section.tab-contents
     .content(:class="{'is-active': isSelect == 'posts'}")
-      table.table.is-striped
-        tbody
-          tr(v-for='(post, index) in posts' :key='post.id')
-            th
-              | {{ index + 1 }}
-            td
-              a(:href='post.path') {{ post.title }}
-            td(v-if='currentUserId == userId' @click='deletePost(post.id)')
-              button.button.is-small.is-info.delete-button
-                i.fa-solid.fa-trash-can
+      .empty-message(v-if='posts.length === 0')
+        i.fa-regular.fa-face-sad-tear
+        .empty-message-text
+          | 投稿した記事はまだありません。
+          p(v-if='currentUserId == userId')
+            | おすすめの記事を投稿してみましょう！
+      .posts(v-else)
+        .post.media(v-for='post in posts' :key='post.id')
+          .media-left
+            a.post-image(:href='post.url', target='_blank', rel='noopener')
+              img.image.is-64x64(:src='post.image_url', alt='post_image')
+          .media-content
+            .title.is-6
+              a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
+            .sub-title
+              span
+                | {{ post.site_name }}
+                | {{ post.date }}
+              span.post-tags
+                span.post-tag(v-for='tag in post.tags')
+                  | {{ tag.name }}
+          .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
+            a(:href='post.show_url')
+              i.fa-solid.fa-message
+              .post_comments_count
+                | {{ post.comments_count }}
+          .media-right.delete-button(v-if='currentUserId == userId' @click='deletePost(post.id)')
+            i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'comments'}")
-      table.table.is-striped
-        tbody
-          tr(v-for='(comment, index) in comments')
-            th
-              | {{ index + 1 }}
-            td
-              a(:href='comment.postPath') {{ comment.content }}
-            td
+      .empty-message(v-if='comments.length === 0')
+        i.fa-regular.fa-face-sad-tear
+        .empty-message-text
+          | 投稿したコメントはまだありません。
+          p(v-if='currentUserId == userId')
+            | 気になる記事にコメントしてみましょう！
+      .posts(v-else)
+        .post.media(v-for='comment in comments' :key='comment.id')
+          .media-left
+            a.post-image(:href='comment.post_url', target='_blank', rel='noopener')
+              img.image.is-64x64(:src='comment.post_image_url', alt='post_image')
+          .media-content
+            .title.is-6
+              a(:href='comment.show_url') {{ comment.content }}
+            .sub-title
               | {{ comment.post_title }}
-            td(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
-              button.button.is-small.is-info.delete-button
-                i.fa-solid.fa-trash-can
+          .media-right.delete-button(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
+            .delete-button-icon
+              i.fa-solid.fa-trash-can
     .content(:class="{'is-active': isSelect == 'likes'}")
-      table.table.is-striped
-        tbody
-          tr(v-for='(like, index) in likes')
-            th
-              | {{ index + 1 }}
-            td
-              a(:href='like.postPath') {{ like.post_title }}
-            td(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
-              button.button.is-small.is-info.delete-button
-                i.fa-solid.fa-heart
+      .empty-message(v-if='likes.length === 0')
+        i.fa-regular.fa-face-sad-tear
+        .empty-message-text
+          | いいねした記事はまだありません。
+          p(v-if='currentUserId == userId')
+            | 気になる記事にいいねしてみましょう！
+      .posts(v-else)
+        .post.media(v-for='like in likes' :key='like.id')
+          .media-left
+            a.post-image(:href='like.post_url', target='_blank', rel='noopener')
+              img.image.is-64x64(:src='like.post_image_url', alt='post_image')
+          .media-content
+            .title.is-6
+              a(:href='like.post_url', target='_blank', rel='noopener') {{ like.post_title }}
+            .sub-title
+              span
+                | {{ like.post_site_name }}
+          .media-right.delete-button(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
+            .delete-button-icon
+              i.fa-solid.fa-heart-circle-xmark
 </template>
 
 <script>

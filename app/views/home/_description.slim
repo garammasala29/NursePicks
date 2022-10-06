@@ -3,7 +3,7 @@ article.description
     = image_tag('nursepicks_top.png', alt: 'top_logo')
   h2.top-subtitle
     p
-      | みんなで作る看護記事ブックマークサイト
+      | 看護師で作る、看護記事ブックマークサイト
   section.description-content.container
     .columns
       .column
@@ -22,8 +22,8 @@ article.description
             = image_tag('icon_post.png', size: '96x96', alt: 'post_icon')
           .subtitle.is-6
             p 看護に役立つ記事・論文のURLを登録してください。<br>自分で書いた記事やYouTubeもURLがあれば投稿できます。<br>記事を投稿したりコメントするにはアカウント登録が必要です。
-  section.post-button
-    button.button.is-primary.is-large#js-modal data-modal='post-modal'
+  section.description-button
+    button.button.is-primary.is-large.post-button#js-modal data-modal='post-modal'
       | 記事を投稿する
     .modal#post-modal
       .modal-background#js-modal data-modal='post-modal'
