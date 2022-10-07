@@ -7,19 +7,27 @@ $footer-padding: 30px;
 }
 
 .footer-item {
-  display: inline-block;
   margin: 4px;
-}
-
-.footer-item a {
-  color: $black;
-  text-decoration: none;
-}
-
-.footer-item:hover {
-  text-decoration: underline;
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+  :hover {
+    text-decoration: underline;
+  }
 }
 
 .twitter-icon {
-  margin-left: 4px;
+  display: inline-block;
+  margin-right: 10px;
+  i {
+    color: #55acee;
+  }
+}
+
+.github-icon {
+  display: inline-block;
+  i {
+    color: #171515;
+  }
 }
