@@ -18,7 +18,16 @@ $footer-padding: 30px;
 }
 
 .twitter-icon {
+  display: inline-block;
+  margin-right: 10px;
   i {
     color: #55acee;
+  }
+}
+
+.github-icon {
+  display: inline-block;
+  i {
+    color: #171515;
   }
 }

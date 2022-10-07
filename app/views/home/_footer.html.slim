@@ -6,8 +6,12 @@ footer.footer
           = link_to '利用規約', tos_path
         li.footer-item
           = link_to 'プライバシーポリシー', privacy_policy_path
-      .twitter-icon
-        = link_to 'https://twitter.com/nurse_picks', target: :_blank, rel: 'noopener'
-          i.fa-brands.fa-square-twitter.fa-2x
+      .footer-icons
+        .twitter-icon
+          = link_to 'https://twitter.com/nurse_picks', target: :_blank, rel: 'noopener'
+            i.fa-brands.fa-square-twitter.fa-2x
+        .github-icon
+          = link_to 'https://github.com/garammasala29', target: :_blank, rel: 'noopener'
+            i.fa-brands.fa-square-github.fa-2x
       p
         | &copy;NursePicks 2022
