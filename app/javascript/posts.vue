@@ -73,8 +73,22 @@ export default {
   computed: {
     filterPosts() {
       return this.posts.filter((post) => {
-        const searchWord = post.title.toLowerCase()
-        return searchWord.indexOf(this.keyword.toLowerCase()) !== -1
+        if (post.title.toLowerCase().indexOf(this.keyword.toLowerCase()) !== -1) {
+          return true
+        } 
+        if (post.site_name) {
+          if (post.site_name.toLowerCase().indexOf(this.keyword.toLowerCase()) !== -1) {
+            return true
+          }
+        }
+        if (post.tags) {
+          for (const tag of post.tags) {
+            if (tag.name.toLowerCase().indexOf(this.keyword.toLowerCase()) !== -1) {
+              return true
+            }
+          }
+        }
+        return false
       })
     }
   },
