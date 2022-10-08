@@ -158,3 +158,18 @@
     opacity: .6;
   }
 }
+
+.search-post {
+  padding: 10px;
+  input {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search-post {
+    input {
+      width: 100%;
+    }
+  }
+}

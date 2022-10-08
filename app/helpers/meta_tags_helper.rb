@@ -5,7 +5,7 @@ module MetaTagsHelper
     {
       reverse: true,
       charset: 'utf-8',
-      description: '看護師向けの価値ある情報サイト。価値ある看護記事を探したり、おすすめの看護記事を投稿しよう',
+      description: '看護師で作る、看護記事ブックマークサイト。価値ある看護記事を探したり、おすすめの看護記事を投稿しよう',
       keywords: '看護師,情報収集,看護記事,看護研究',
       viewport: 'width=device-width, initial-scale=1.0',
       icon: [

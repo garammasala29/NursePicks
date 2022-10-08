@@ -13,7 +13,7 @@ article.description
           .using-image.has-text-centered
             = image_tag('icon_read.png', size: '96x96', alt: 'read_icon')
           .subtitle.is-6
-            p 投稿された価値ある看護記事や論文を気軽に読むことができます。<br>記事に付けられたコメントも読むことができます。
+            p 投稿された価値ある看護記事や論文を、簡単に読むことができます。<br>記事に付けられたコメントも確認できます。
       .column
         .using
           h3.title.is-5.has-text-centered
@@ -21,7 +21,7 @@ article.description
           .using-image.has-text-centered
             = image_tag('icon_post.png', size: '96x96', alt: 'post_icon')
           .subtitle.is-6
-            p 看護に役立つ記事・論文のURLを登録してください。<br>自分で書いた記事やYouTubeもURLがあれば投稿できます。<br>記事を投稿したりコメントするにはアカウント登録が必要です。
+            p 看護に役立つ記事・論文のURLを登録してください。<br>自分で書いた記事やYouTubeもURLがあれば投稿できます。<br>記事を投稿したりコメントするには、アカウント登録が必要です。
   section.description-button
     button.button.is-primary.is-large.post-button#js-modal data-modal='post-modal'
       | 記事を投稿する
@@ -39,7 +39,9 @@ article.description
                 li
                   | 看護記事のURLをこちらに入れて「記事の投稿」をクリック。
                 li
-                  | PDFファイルの論文もURLがあれば投稿可能です。
+                  | PDFファイルの論文も、URLがあれば投稿可能です。
+                li
+                  | メディカルオンラインの論文など、URLに自身のIDが入っているページも投稿できますが、他者に共有できない可能性があります。
           = form_with(model: @post, local: true) do |form|
             .content
               = render 'shared/errors', object: @post

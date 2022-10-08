@@ -6,7 +6,7 @@ if Rails.env.development?
   end
 
   Post.create(
-    title: 'Example Domain', url: 'https://www.example.com', user_id: 1, image_url: 'logo_picks.png'
+    title: 'Example Domain', url: 'https://www.example.com', user_id: 1, site_name: '', image_url: 'logo_picks.png'
   )
 
   Post.create(
