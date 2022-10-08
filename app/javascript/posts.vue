@@ -71,22 +71,13 @@ export default {
     this.getPosts()
   },
   computed: {
+    // prettier-ignore
     filterPosts() {
       return this.posts.filter((post) => {
-        if (post.title.toLowerCase().indexOf(this.keyword.toLowerCase()) !== -1) {
-          return true
-        } 
-        if (post.site_name) {
-          if (post.site_name.toLowerCase().indexOf(this.keyword.toLowerCase()) !== -1) {
-            return true
-          }
-        }
-        if (post.tags) {
-          for (const tag of post.tags) {
-            if (tag.name.toLowerCase().indexOf(this.keyword.toLowerCase()) !== -1) {
-              return true
-            }
-          }
+        if (post.title.toLowerCase().includes(this.keyword.toLowerCase())) return true
+        if (post.site_name.toLowerCase().includes(this.keyword.toLowerCase())) return true
+        for (const tag of post.tags) {
+          if (tag.name.toLowerCase().includes(this.keyword.toLowerCase())) return true
         }
         return false
       })
