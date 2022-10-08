@@ -1,9 +1,9 @@
 <template lang="pug">
 section.container
-  .field.is-horizontal
+  .search-post.field.is-horizontal
     .field-label.is-normal
       .label
-        | 検索
+        | 記事の検索
     .field-body
       .field
         .control
