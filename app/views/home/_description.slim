@@ -5,23 +5,25 @@ article.description
     p
       | 看護師で作る、看護記事ブックマークサイト
   section.description-content.container
-    .columns
-      .column
-        .using
-          h3.title.is-5.has-text-centered
-            | 探す・読む
-          .using-image.has-text-centered
-            = image_tag('icon_read.png', size: '96x96', alt: 'read_icon')
-          .subtitle.is-6
-            p 投稿された価値ある看護記事や論文を、簡単に読むことができます。<br>記事に付けられたコメントも確認できます。
-      .column
-        .using
-          h3.title.is-5.has-text-centered
-            | 投稿する
-          .using-image.has-text-centered
-            = image_tag('icon_post.png', size: '96x96', alt: 'post_icon')
-          .subtitle.is-6
-            p 看護に役立つ記事・論文のURLを登録してください。<br>自分で書いた記事やYouTubeもURLがあれば投稿できます。<br>記事を投稿したりコメントするには、アカウント登録が必要です。
+    .usage
+      button.delete.is-large#js-hide-usage
+      .columns
+        .column
+          .using
+            h3.title.is-5.has-text-centered
+              | 探す・読む
+            .using-image.has-text-centered
+              = image_tag('icon_read.png', size: '96x96', alt: 'read_icon')
+            .subtitle.is-6
+              p 投稿された価値ある看護記事や論文を、簡単に読むことができます。<br>記事に付けられたコメントも確認できます。
+        .column
+          .using
+            h3.title.is-5.has-text-centered
+              | 投稿する
+            .using-image.has-text-centered
+              = image_tag('icon_post.png', size: '96x96', alt: 'post_icon')
+            .subtitle.is-6
+              p 看護に役立つ記事・論文のURLを登録してください。<br>自分で書いた記事やYouTubeもURLがあれば投稿できます。<br>記事を投稿したりコメントするには、アカウント登録が必要です。
   section.description-button
     button.button.is-primary.is-large.post-button#js-modal data-modal='post-modal'
       | 記事を投稿する
