@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       usage.classList.toggle('is-hidden')
       message.classList.toggle('is-hidden')
       if (document.cookie === 'nursepicks_usage=hide') {
-        document.cookie = "nursepicks_usage="
+        document.cookie = 'nursepicks_usage='
       } else {
         document.cookie = 'nursepicks_usage=hide'
       }
