@@ -47,7 +47,7 @@ end
 
 group :test do
   gem 'capybara', github: 'teamcapybara/capybara'
-  gem 'webdrivers'
+  gem 'webdrivers', '~> 5.2.0'
 end
 
 gem 'acts-as-taggable-on'
