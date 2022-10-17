@@ -72,3 +72,16 @@
     min-width: calc(100vw - 2rem);
   }
 }
+
+.hide-usage-message {
+  text-align: right;
+  a {
+    color: #444444;
+    text-decoration: underline;
+  }
+}
+
+.hide-usage-button {
+  text-align: right;
+  margin-bottom: 10px;
+}

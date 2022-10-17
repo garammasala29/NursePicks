@@ -7,10 +7,11 @@ article.description
   section.description-content.container
     - if cookies[:nursepicks_usage] == 'hide'
       .hide-usage-message
-        button#js-hide-usage
+        a#js-hide-usage
           | このサイトの使い方
       .usage.is-hidden
-        button.delete.is-large#js-hide-usage
+        .hide-usage-button
+          button.delete.is-large#js-hide-usage
         .columns
           .column
             .using
@@ -30,10 +31,11 @@ article.description
                 p 看護に役立つ記事・論文のURLを登録してください。<br>自分で書いた記事やYouTubeもURLがあれば投稿できます。<br>記事を投稿したりコメントするには、アカウント登録が必要です。
     - else
       .hide-usage-message.is-hidden
-        button#js-hide-usage
+        a#js-hide-usage
           | このサイトの使い方
       .usage
-        button.delete.is-large#js-hide-usage
+        .hide-usage-button      
+          button.delete.is-large#js-hide-usage
         .columns
           .column
             .using
