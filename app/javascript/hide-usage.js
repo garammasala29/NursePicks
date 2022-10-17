@@ -6,21 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     element.addEventListener('click', () => {
       usage.classList.toggle('is-hidden')
       message.classList.toggle('is-hidden')
+      if (document.cookie === 'nursepicks_usage=hide') {
+        document.cookie = "nursepicks_usage="
+      } else {
+        document.cookie = 'nursepicks_usage=hide'
+      }
     })
-
-
-    // if (document.cookie === 'nursepicks_usage=hide') {
-    //   element.addEventListener('click', () => {
-    //     document.cookie = "nursepicks_usage=''"
-    //     message.style.display = 'none'
-    //     usage.style.display = 'block'
-    //   })
-    // } else {
-    //   element.addEventListener('click', () => {
-    //     document.cookie = 'nursepicks_usage=hide'
-    //     usage.style.display = 'none'
-    //     message.style.display = 'block'
-    //   })
-    // }
   }
 })
