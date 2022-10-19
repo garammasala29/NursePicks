@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return `Enterを押すと<b>「${value}」</b>のタグが追加されます`
       },
       maxItemText: (maxItemCount) => {
-        return `タグは最大${maxItemCount}つまでです。`;
-      },
+        return `タグは最大${maxItemCount}つまでです。`
+      }
     })
   }
 })

@@ -22,7 +22,7 @@ article.article.container
             = link_to post_likes_path(@post), method: :post
               i.fa-regular.fa-heart.fa-2x.has-text-info
         - else
-          i.fa-solid.fa-heart.fa-2x
+          i.fa-solid.fa-heart.fa-2x.has-text-info
         p = @post.likes.count
         - if current_user == @post.user
           = link_to '記事の削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
@@ -48,9 +48,13 @@ article.article.container
             - if current_user == comment.user
               = link_to '削除', [@post, comment], method: :delete, data: { confirm: "「#{comment.content}」を削除してもよろしいですか？" }
     - else
-      p
-        | まだこの記事にコメントはありません
-  section.section
+      .empty-message
+        i.fa-regular.fa-face-sad-tear
+        .empty-message-text
+          | 投稿されているコメントはまだありません。
+        p
+          | 記事の感想を投稿してみましょう！
+  section.comment-area
     = render 'shared/errors', object: @comment
     - if signed_in?
       = form_with(model: [@post, @comment], local: true) do |form|
@@ -68,7 +72,8 @@ article.article.container
               .control
                 = form.submit 'コメントの投稿', class: 'button'
     - else
-      p
-        | ログインするとコメントすることができます
+      hr.post-separator
+      p.notification.is-info.is-light
+        | ログインするとコメントできます
 
   = link_to 'トップページへ戻る', root_path
