@@ -43,7 +43,7 @@ article.article.container
             = link_to image_tag(comment.user.icon_url, size: '32x32', alt: 'user_icon'), comment.user
             p = link_to comment.user.name, user_path(comment.user_id)
           .media-content
-            = comment.content
+            = simple_format(comment.content)
           .media-right
             - if current_user == comment.user
               = link_to '削除', [@post, comment], method: :delete, data: { confirm: "「#{comment.content}」を削除してもよろしいですか？" }
