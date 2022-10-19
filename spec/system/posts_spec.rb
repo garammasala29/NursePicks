@@ -62,7 +62,7 @@ RSpec.describe 'Posts', type: :system do
         click_on '記事の投稿'
         expect(page).to have_field '記事のタイトル', with: 'Example Domain'
         click_on '記事の登録'
-        expect(page).to have_content '記事投稿に失敗しました。URLはすでに存在します。'
+        expect(page).to have_content 'URLはすでに存在します'
       end.to change { Post.count }.by(0)
     end
 

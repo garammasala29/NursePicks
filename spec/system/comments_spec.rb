@@ -29,7 +29,7 @@ RSpec.describe 'Comments', type: :system do
 
     it 'サインインしていないユーザーはコメント投稿できないこと' do
       visit post_path(post)
-      expect(page).to have_content 'ログインするとコメントすることができます'
+      expect(page).to have_content 'ログインするとコメントできます'
     end
   end
 
