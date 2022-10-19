@@ -7,7 +7,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :uid
     validates :provider
-    validates :name
+    validates :name, length: { maximum: 28 }
   end
   validates :uid, uniqueness: { scope: :provider }
 
