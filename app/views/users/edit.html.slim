@@ -1,6 +1,7 @@
 article.article.container
   h2.title.is-3
     | アカウント編集
+  = render 'shared/errors', object: @user
   = form_with(model: @user, local: true) do |form|
     .image.is-128x128
       = image_tag(@user.icon_url, alt: 'user_icon')

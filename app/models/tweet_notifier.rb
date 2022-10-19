@@ -13,7 +13,7 @@ class TweetNotifier
       client.update(<<~TEXT
         新たに「#{post.title}」が投稿されました！
         URL：https://www.nursepicks.jp/posts/#{post.id}
-        #NursePicks
+        #NursePicks #看護師
       TEXT
                    )
     else

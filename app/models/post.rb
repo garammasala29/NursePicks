@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   validates :url, presence: true, uniqueness: true
-  validates :title, presence: true
+  validates :title, length: { maximum: 100 }, presence: true
   acts_as_taggable_on :tags
 
   after_create TweetNotifier.new

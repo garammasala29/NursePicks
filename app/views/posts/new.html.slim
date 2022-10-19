@@ -1,5 +1,6 @@
 article.article.container
   h2.title.is-3 新規記事登録
+  = render 'shared/errors', object: @post
   = form_with(model: @post, local: true) do |form|
     .field
       .label

@@ -1,4 +1,5 @@
 - if object.errors.any?
-  .errors.has-text-right
-    - object.errors.full_messages.each do |message|
-      p = message
+  .errors.notification.is-info.is-light
+    ul
+      - object.errors.full_messages.each do |message|
+        li = message
