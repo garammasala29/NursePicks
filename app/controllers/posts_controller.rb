@@ -34,7 +34,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "「#{@post.title}」を登録しました"
     else
-      flash.now[:alert] = "記事投稿に失敗しました。#{@post.errors.full_messages[0]}。"
       render :new
     end
   end

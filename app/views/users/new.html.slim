@@ -1,5 +1,6 @@
 article.article.container
   h2.title.is-3 アカウント登録
+  = render 'shared/errors', object: @user
   = form_with(model: @user, local: true) do |form|
     = form.hidden_field :provider
     = form.hidden_field :uid
