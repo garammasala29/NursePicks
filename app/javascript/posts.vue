@@ -27,7 +27,7 @@ section.container
           i.fa-regular.fa-circle.rank-icon(:class="['is-rank-' + index]")
             .rank-number
               | {{ index + 1 }}
-      .media-left
+      .media-left.media-image
         a.post-image(:href='post.url', target='_blank', rel='noopener')
           img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content
