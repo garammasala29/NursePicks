@@ -35,6 +35,10 @@
 }
 
 // mediaクラス内にあるもの
+.media-left {
+  position: relative;
+}
+
 .rank-icon {
   position: relative;
   font-size: 40px;
@@ -178,9 +182,6 @@
 
 .has-comment a {
   color: $orange;
-}
-
-.post-like {
 }
 
 .like-button {
