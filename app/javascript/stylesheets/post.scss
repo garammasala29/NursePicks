@@ -69,6 +69,22 @@
   }
 }
 
+.rank-circle {
+  position: relative;
+  font-size: 40px;
+  color: #c9c9c9;
+  z-index: 0;
+  margin-top: 14px;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border: solid 2px #c9c9c9;
+  border-radius: 50%;
+  background-color: $white;
+  align-items: center;
+  justify-content: center;
+}
+
 .rank-circle, .rank-crown {
   @include mobile {
     position: absolute;
