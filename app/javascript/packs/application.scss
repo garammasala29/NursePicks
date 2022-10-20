@@ -36,14 +36,6 @@ $input-shadow: none;
 $section-padding: 20px;
 $tabs-link-color: #808080;
 $button-border-width: 1px;
-@import '../stylesheets/description.scss';
-@import '../stylesheets/post.scss';
-@import '../stylesheets/modal.scss';
-@import '../stylesheets/header.scss';
-@import '../stylesheets/footer.scss';
-@import '../stylesheets/notification.scss';
-@import '../stylesheets/user.scss';
-@import '../stylesheets/tags.scss';
 
 // Import only what you need from Bulma
 @import "~bulma/sass/utilities/all";
@@ -54,6 +46,15 @@ $button-border-width: 1px;
 @import "~bulma/sass/grid/all";
 @import "~bulma/sass/helpers/all";
 @import "~bulma/sass/layout/all";
+
+@import '../stylesheets/description.scss';
+@import '../stylesheets/post.scss';
+@import '../stylesheets/modal.scss';
+@import '../stylesheets/header.scss';
+@import '../stylesheets/footer.scss';
+@import '../stylesheets/notification.scss';
+@import '../stylesheets/user.scss';
+@import '../stylesheets/tags.scss';
 
 @import 'vue-toast-notification/dist/theme-sugar.css';
 @import 'choices.js/public/assets/styles/choices.min.css';
