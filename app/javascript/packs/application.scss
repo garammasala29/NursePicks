@@ -36,6 +36,12 @@ $input-shadow: none;
 $section-padding: 20px;
 $tabs-link-color: #808080;
 $button-border-width: 1px;
+$navbar-breakpoint: 0px;
+$navbar-background-color: none;
+$navbar-item-img-max-height: 56px;
+$modal-card-body-padding: 50px;
+$footer-background-color: $beige-light;
+$footer-padding: 30px;
 
 // Import only what you need from Bulma
 @import "~bulma/sass/utilities/all";

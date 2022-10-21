@@ -1,7 +1,3 @@
-$navbar-breakpoint: 0px;
-$navbar-background-color: none;
-$navbar-item-img-max-height: 56px;
-
 .header-log {
   width: 180px;
   height: 28px;
@@ -10,6 +6,9 @@ $navbar-item-img-max-height: 56px;
 nav .navbar {
   position: absolute;
   width: 100%;
+  @include mobile {
+    padding: 0px 10px;
+  }
 }
 
 .sns-buttons {
@@ -42,11 +41,5 @@ nav .navbar {
   &:hover {
     color: $white;
     background-color: #3c98e4;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  nav .navbar {
-    padding: 0px 10px;
   }
 }

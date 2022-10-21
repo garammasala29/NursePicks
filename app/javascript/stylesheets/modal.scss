@@ -1,5 +1,3 @@
-$modal-card-body-padding: 50px;
-
 .post-description {
   text-align: left;
 }
@@ -7,7 +5,7 @@ $modal-card-body-padding: 50px;
 .modal-card {
   max-width: calc(100vw - 2rem);
   .modal-card-body {
-    @media screen and (max-width: 767px) {
+    @include mobile {
       padding: 16px;
     }
   }
