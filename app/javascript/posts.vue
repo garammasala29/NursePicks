@@ -23,11 +23,10 @@ section.container
           i.fa-solid.fa-crown.rank-icon(:class="['is-rank-' + index]")
             .rank-number
               | {{ index + 1 }}
-        .rank-circle(v-else)
-          i.fa-regular.fa-circle.rank-icon(:class="['is-rank-' + index]")
-            .rank-number
-              | {{ index + 1 }}
-      .media-left
+        i.fa-solid.rank-circle(v-else)
+          .rank-number
+            | {{ index + 1 }}
+      .media-left.media-image
         a.post-image(:href='post.url', target='_blank', rel='noopener')
           img.image.is-64x64(:src='post.image_url', alt='post_image')
       .media-content

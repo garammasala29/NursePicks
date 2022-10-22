@@ -1,10 +1,10 @@
 <template lang="pug">
-.page-body
+.post-like
   .like-button(v-if='isLiked' @click='deleteLike()')
     i.fa-solid.fa-heart.fa-2x
   .like-button(v-else @click='addLike()')
     i.fa-regular.fa-heart.fa-2x
-  .has-text-centered
+  .like_count.has-text-centered
     |  {{ likeCount }}
 </template>
 
