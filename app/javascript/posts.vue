@@ -18,34 +18,42 @@ section.container
           | 新着順
   .posts
     .post.media(v-for='(post, index) in filterPosts' :key='post.id')
-      .media-left
-        .rank-crown(v-if='index < 3')
-          i.fa-solid.fa-crown.rank-icon(:class="['is-rank-' + index]")
+      .post-start
+        .media-left
+          .rank-crown(v-if='index < 3')
+            i.fa-solid.fa-crown.rank-icon(:class="['is-rank-' + index]")
+              .rank-number
+                | {{ index + 1 }}
+          i.fa-solid.rank-circle(v-else)
             .rank-number
               | {{ index + 1 }}
-        i.fa-solid.rank-circle(v-else)
-          .rank-number
-            | {{ index + 1 }}
-      .media-left.media-image
-        a.post-image(:href='post.url', target='_blank', rel='noopener')
-          img.image.is-64x64(:src='post.image_url', alt='post_image')
-      .media-content
-        .title.is-6
-          a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
-        .sub-title
-          span
-            | {{ post.site_name }}
-            | {{ post.date }}
-          span.post-tags
-            span.post-tag(v-for='tag in post.tags')
-              | {{ tag.name }}
-      .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
-        a(:href='post.show_url')
-          i.fa-solid.fa-message.fa-2x
-          .post_comments_count
-            | {{ post.comments_count }}
-      .media-right
-        likeButton(:post='post', :currentUserId='this.currentUserId')
+        .media-left.media-image
+          a.post-image(:href='post.url', target='_blank', rel='noopener')
+            img.image.is-64x64(:src='post.image_url', alt='post_image')
+        .media-content
+          .title.is-6
+            a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
+          .sub-title
+            span
+              | {{ post.site_name }}
+              | {{ post.date }}
+            span.post-tags
+              span.post-tag(v-for='tag in post.tags')
+                | {{ tag.name }}
+        .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
+          a(:href='post.show_url')
+            i.fa-solid.fa-message.fa-2x
+            .post_comments_count
+              | {{ post.comments_count }}
+        .media-right
+          likeButton(:post='post', :currentUserId='this.currentUserId')
+      .is-mobile-sub-title
+        span
+          | {{ post.site_name }}
+          | {{ post.date }}
+        span.post-tags
+          span.post-tag(v-for='tag in post.tags')
+            | {{ tag.name }}
 </template>
 
 <script>

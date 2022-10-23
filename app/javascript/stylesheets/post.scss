@@ -25,6 +25,9 @@
   .title {
     line-height: 1.5;
     cursor: pointer;
+    @include mobile {
+      margin-bottom: 0px;
+    }
     :hover {
       color: #1178de;
       text-decoration: underline;
@@ -37,7 +40,21 @@
   }
 }
 
+.posts .media {
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
 // mediaクラス内にあるもの
+.post-start {
+  display: flex;
+  flex: 1;
+  @include mobile {
+    width: 100%;
+  }
+}
+
 .media-left {
   position: relative;
 }
@@ -133,13 +150,36 @@
   }
 }
 
-.sub-title {
+.post .media-content {
+  @include mobile {
+    overflow-x: hidden;
+  }
+}
+
+.post .sub-title {
   font-size: 14px;
   margin-top: -20px;
+  @include mobile {
+    display: none;
+  }
+}
+
+.post .is-mobile-sub-title {
+  display: none;
+  @include mobile {
+    font-size: 14px;
+    display: block;
+    margin: 4px 8px 0px;
+  }
 }
 
 .post-tags {
-  margin: 2px;
+  @include mobile {
+    margin-left: 2px;
+  }
+  @include tablet {
+    margin: 2px;
+  }
   .post-tag {
     color: $white;
     border-radius: 6px;
@@ -147,6 +187,7 @@
     border: 1px solid $white;
     font-size: 12px;
     padding: 2px;
+    white-space: nowrap;
   }
 }
 
