@@ -15,7 +15,8 @@ if Rails.env.development?
     site_name: 'J-STAGE',
     image_url: 'https://www.jstage.jst.go.jp/html/images/common/SNS/J-STAGE_logo_sns.png',
     user_id: 1,
-    created_at: Time.zone.now.yesterday
+    created_at: Time.zone.now.yesterday,
+    tag_list: %w[心電図 論文 循環器]
   )
 
   Post.create(
@@ -24,7 +25,8 @@ if Rails.env.development?
     site_name: '看護roo!',
     image_url: 'https://img.kango-roo.com/sn/thumbnail/phpEUoKA520161226013859.jpg',
     user_id: 2,
-    created_at: Time.zone.now.ago(3.days)
+    created_at: Time.zone.now.ago(3.days),
+    tag_list: ['人工呼吸器']
   )
   Post.create(
     title: 'RASS（Richmond Agitation- Sedation Scale） | ナース専科',
@@ -32,7 +34,8 @@ if Rails.env.development?
     site_name: 'ナース専科',
     image_url: 'https://cdn-knowledge-assets.nurse-senka.jp/wp-content/uploads/2021/11/24100339/scales.jpg',
     user_id: 3,
-    created_at: Time.zone.now.ago(10.minutes)
+    created_at: Time.zone.now.ago(10.minutes),
+    tag_list: ['スケール']
   )
 
   (1..30).each do |i|

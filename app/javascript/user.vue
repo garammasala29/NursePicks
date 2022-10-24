@@ -24,26 +24,33 @@ section.user-tabs
             | おすすめの記事を投稿してみましょう！
       .posts(v-else)
         .post.media(v-for='post in posts' :key='post.id')
-          .media-left
-            a.post-image(:href='post.url', target='_blank', rel='noopener')
-              img.image.is-64x64(:src='post.image_url', alt='post_image')
-          .media-content
-            .title.is-6
-              a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
-            .sub-title
-              span
-                | {{ post.site_name }}
-                | {{ post.date }}
-              span.post-tags
-                span.post-tag(v-for='tag in post.tags')
-                  | {{ tag.name }}
-          .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
-            a(:href='post.show_url')
-              i.fa-solid.fa-message
-              .post_comments_count
-                | {{ post.comments_count }}
-          .media-right.delete-button(v-if='currentUserId == userId' @click='deletePost(post.id)')
-            i.fa-solid.fa-trash-can
+          .post-start
+            .media-left
+              a.post-image(:href='post.url', target='_blank', rel='noopener')
+                img.image.is-64x64(:src='post.image_url', alt='post_image')
+            .media-content
+              .title.is-6
+                a(:href='post.url', target='_blank', rel='noopener') {{ post.title }}
+              .sub-title
+                span
+                  | {{ post.site_name }}
+                  | {{ post.date }}
+                span.post-tags
+                  span.post-tag(v-for='tag in post.tags')
+                    | {{ tag.name }}
+            .media-right.comment-link(:class="{'has-comment': post.comments_count != 0}")
+              a(:href='post.show_url')
+                i.fa-solid.fa-message
+                .post_comments_count
+                  | {{ post.comments_count }}
+            .media-right.delete-button(v-if='currentUserId == userId' @click='deletePost(post.id)')
+              i.fa-solid.fa-trash-can
+          .is-mobile-sub-title
+            | {{ post.site_name }}
+            | {{ post.date }}
+            span.post-tags
+              span.post-tag(v-for='tag in post.tags')
+                | {{ tag.name }}
     .content(:class="{'is-active': isSelect == 'comments'}")
       .empty-message(v-if='comments.length === 0')
         i.fa-regular.fa-face-sad-tear
@@ -53,17 +60,20 @@ section.user-tabs
             | 気になる記事にコメントしてみましょう！
       .posts(v-else)
         .post.media(v-for='comment in comments' :key='comment.id')
-          .media-left
-            a.post-image(:href='comment.post_url', target='_blank', rel='noopener')
-              img.image.is-64x64(:src='comment.post_image_url', alt='post_image')
-          .media-content
-            .title.is-6
-              a(:href='comment.show_url') {{ comment.content }}
-            .sub-title
-              | {{ comment.post_title }}
-          .media-right.delete-button(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
-            .delete-button-icon
-              i.fa-solid.fa-trash-can
+          .post-start
+            .media-left.media-image
+              a.post-image(:href='comment.post_url', target='_blank', rel='noopener')
+                img.image.is-64x64(:src='comment.post_image_url', alt='post_image')
+            .media-content
+              .title.is-6
+                a(:href='comment.show_url') {{ comment.content }}
+              .sub-title
+                | {{ comment.post_title }}
+            .media-right.delete-button(v-if='currentUserId == userId' @click='deleteComment(comment.post_id, comment.id)')
+              .delete-button-icon
+                i.fa-solid.fa-trash-can
+          .is-mobile-sub-title
+            | {{ comment.post_title }}
     .content(:class="{'is-active': isSelect == 'likes'}")
       .empty-message(v-if='likes.length === 0')
         i.fa-regular.fa-face-sad-tear
@@ -73,18 +83,19 @@ section.user-tabs
             | 気になる記事にいいねしてみましょう！
       .posts(v-else)
         .post.media(v-for='like in likes' :key='like.id')
-          .media-left
-            a.post-image(:href='like.post_url', target='_blank', rel='noopener')
-              img.image.is-64x64(:src='like.post_image_url', alt='post_image')
-          .media-content
-            .title.is-6
-              a(:href='like.post_url', target='_blank', rel='noopener') {{ like.post_title }}
-            .sub-title
-              span
-                | {{ like.post_site_name }}
-          .media-right.delete-button(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
-            .delete-button-icon
-              i.fa-solid.fa-heart-circle-xmark
+          .post-start
+            .media-left.media-image
+              a.post-image(:href='like.post_url', target='_blank', rel='noopener')
+                img.image.is-64x64(:src='like.post_image_url', alt='post_image')
+            .media-content
+              .title.is-6
+                a(:href='like.post_url', target='_blank', rel='noopener') {{ like.post_title }}
+              .sub-title
+                span
+                  | {{ like.post_site_name }}
+            .media-right.delete-button(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
+              .delete-button-icon
+                i.fa-solid.fa-heart-circle-xmark
 </template>
 
 <script>
