@@ -25,6 +25,12 @@
   }
 }
 
+.delete-link {
+  @include mobile {
+    padding-left: 8px;
+  }
+}
+
 .delete-button {
   cursor: pointer;
   color: $orange;
@@ -32,9 +38,6 @@
     transition: all .2s ease-out;
     color: #ff9800;
     opacity: 0.8;
-  }
-  .delete-button-icon {
-    margin-top: 10px;
   }
 }
 

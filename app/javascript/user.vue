@@ -43,8 +43,10 @@ section.user-tabs
                 i.fa-solid.fa-message
                 .post_comments_count
                   | {{ post.comments_count }}
-            .media-right.delete-button(v-if='currentUserId == userId' @click='deletePost(post.id)')
-              i.fa-solid.fa-trash-can
+            .media-right
+              .delete-link
+                .delete-button(v-if='currentUserId == userId' @click='deletePost(post.id)')
+                  i.fa-solid.fa-trash-can
           .is-mobile-sub-title
             | {{ post.site_name }}
             | {{ post.date }}
@@ -93,9 +95,10 @@ section.user-tabs
               .sub-title
                 span
                   | {{ like.post_site_name }}
-            .media-right.delete-button(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
-              .delete-button-icon
-                i.fa-solid.fa-heart-circle-xmark
+            .media-right
+              .delete-link
+                .delete-button(v-if='currentUserId == userId' @click='deleteLike(like.post_id, like.id)')
+                  i.fa-solid.fa-heart-circle-xmark
 </template>
 
 <script>
