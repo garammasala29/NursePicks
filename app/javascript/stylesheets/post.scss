@@ -196,7 +196,6 @@
     font-size: 28px;
   }
   @include mobile {
-    padding: 4px;
     margin: 0px;
   }
 }
@@ -212,6 +211,10 @@
   z-index: 5;
   a {
     color: #c9c9c9;
+    @include mobile {
+      display: block;
+      padding: 0 4px 0 12px;
+    }
   }
   :hover {
     transition: all .2s ease-out;
@@ -226,6 +229,12 @@
 
 .has-comment a {
   color: $orange;
+}
+
+.post-like {
+  @include mobile {
+    padding: 0 12px 0 8px;
+  }
 }
 
 .like-button {
@@ -244,6 +253,16 @@
   column-gap: 10px;
   margin-top: 10px;
   line-height: 28px;
+  @include mobile {
+    font-size: 14px;
+    column-gap: 6px;
+  }
+}
+
+.delete-post-message {
+  @include mobile {
+    font-size: 14px;
+  }
 }
 
 .comment-area {

@@ -25,7 +25,8 @@ article.article.container
           i.fa-solid.fa-heart.fa-2x.has-text-info
         p = @post.likes.count
         - if current_user == @post.user
-          = link_to '記事の削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
+          .delete-post-message
+            = link_to '記事の削除', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除してもよろしいですか？" }
     .post-list
       | 投稿 :
       .post-list-item
