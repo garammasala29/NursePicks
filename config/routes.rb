@@ -23,4 +23,5 @@ Rails.application.routes.draw do
 
   get 'tos', to: 'home#tos', as: 'tos'
   get 'privacy_policy', to: 'home#privacy_policy'
+  match '*path' => 'application#error404', via: :all
 end
