@@ -5,17 +5,16 @@ class ApplicationController < ActionController::Base
 
   rescue_from Exception, with: :error500
   rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
-  
-  def error404(e)
-    logger.error [e, *e.backtrace].join('\n')
-    render 'errors/404', status: 404, formats: [:html]
+
+  def error404
+    render 'errors/404', status: :not_found, formats: [:html]
   end
 
   def error500(e)
     logger.error [e, *e.backtrace].join('\n')
-    render 'errors/500', status: 500, formats: [:html]
+    render 'errors/500', status: :internal_server_error, formats: [:html]
   end
-  
+
   private
 
   def current_user
