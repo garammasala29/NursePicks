@@ -8,3 +8,5 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - 'spec/**/*'
+Naming/MethodParameterName:
+  MinNameLength: 1
