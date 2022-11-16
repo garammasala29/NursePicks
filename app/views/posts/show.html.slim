@@ -2,11 +2,11 @@ article.article.container
   section
     .post.media
       .media-left.media-image
-        = link_to @post.url, target: :_blank, rel: 'noopener', class: 'post-image'
+        = link_to @post.url, target: :_blank, rel: 'noopener noreferrer', class: 'post-image'
           = image_tag @post.image_url, alt: 'post_image', class: 'image is-64x64'
       .media-content
         h2.title.is-6
-          = link_to @post.title, @post.url, target: :_blank, rel: 'noopener'
+          = link_to @post.title, @post.url, target: :_blank, rel: 'noopener noreferrer'
         .sub-title
           = @post.site_name
           span.post-tags
