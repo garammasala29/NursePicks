@@ -49,3 +49,6 @@ jobs:
 
     - name: JS Lint
       run: bin/yarn lint
+
+    - name: Breakeman
+      run: bundle exec brakeman --url-safe-methods url
