@@ -36,19 +36,19 @@ end
 group :development do
   gem 'bullet'
   gem 'i18n_generators'
-  gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'listen'
+  gem 'rack-mini-profiler'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'slim_lint', require: false
   gem 'spring'
-  gem 'web-console', '>= 4.1.0'
+  gem 'web-console'
 end
 
 group :test do
   gem 'capybara', github: 'teamcapybara/capybara'
-  gem 'webdrivers', '~> 5.2.0'
+  gem 'webdrivers'
 end
 
 gem 'acts-as-taggable-on'
