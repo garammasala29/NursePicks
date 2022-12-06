@@ -51,7 +51,7 @@ RSpec.describe 'Posts', type: :system do
         expect(page).to have_field '記事のタイトル', with: 'Example Domain'
         click_on '記事の登録'
         expect(page).to have_content '「Example Domain」を登録しました'
-      end.to change { Post.count }.by(1)
+      end.to change(Post, :count).by(1)
     end
 
     it '重複したURL記事では投稿できないこと' do
@@ -63,7 +63,7 @@ RSpec.describe 'Posts', type: :system do
         expect(page).to have_field '記事のタイトル', with: 'Example Domain'
         click_on '記事の登録'
         expect(page).to have_content 'URLはすでに存在します'
-      end.to change { Post.count }.by(0)
+      end.to change(Post, :count).by(0)
     end
 
     it 'サインインしていないユーザーは記事投稿ができないこと' do
@@ -89,7 +89,7 @@ RSpec.describe 'Posts', type: :system do
           fill_in 'post_title', with: 'NursePicks公式Twitter'
           click_on '記事の登録'
           expect(page).to have_content '「NursePicks公式Twitter」を登録しました'
-        end.to change { Post.count }.by(1)
+        end.to change(Post, :count).by(1)
       end
 
       it 'pdfファイルでもリンクがあれば投稿できること' do
@@ -100,7 +100,7 @@ RSpec.describe 'Posts', type: :system do
           fill_in 'post_title', with: 'サンプルPDF'
           click_on '記事の登録'
           expect(page).to have_content '「サンプルPDF」を登録しました'
-        end.to change { Post.count }.by(1)
+        end.to change(Post, :count).by(1)
       end
     end
   end
@@ -118,7 +118,7 @@ RSpec.describe 'Posts', type: :system do
         click_on '記事の削除'
         page.accept_confirm '「看護記事」を削除してもよろしいですか？'
         expect(page).to have_content '「看護記事」を削除しました'
-      end.to change { Post.count }.by(-1)
+      end.to change(Post, :count).by(-1)
     end
 
     it '投稿したユーザーがユーザーページから記事を1件削除できること' do
@@ -127,7 +127,7 @@ RSpec.describe 'Posts', type: :system do
         first('.delete-button').click
         page.accept_confirm '記事を削除してもよろしいですか？'
         expect(page).to have_content '記事を削除しました'
-      end.to change { Post.count }.by(-1)
+      end.to change(Post, :count).by(-1)
     end
   end
 end

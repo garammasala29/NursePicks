@@ -14,7 +14,7 @@ class User < ApplicationRecord
   def self.find_from_omniauth(auth_hash)
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
-    User.where(provider: provider, uid: uid).first
+    User.where(provider:, uid:).first
   end
 
   def self.new_from_omniauth(auth_hash)

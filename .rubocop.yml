@@ -1,7 +1,9 @@
+require:
+  - rubocop-rspec
 inherit_gem:
   rubocop-fjord:
-    - "config/rubocop.yml"
-    - "config/rails.yml"
+    - 'config/rubocop.yml'
+    - 'config/rails.yml'
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
@@ -10,3 +12,15 @@ Metrics/MethodLength:
     - 'spec/**/*'
 Naming/MethodParameterName:
   MinNameLength: 1
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/LetSetup:
+  Enabled: false
+RSpec/ContextWording:
+  AllowedPatterns:
+    - とき$
+    - 場合$
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

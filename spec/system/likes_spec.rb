@@ -13,7 +13,7 @@ RSpec.describe 'Likes', type: :system do
       expect do
         first('.fa-regular.fa-heart').click
         expect(page).to have_content 'いいねしました'
-      end.to change { Like.count }.by(1)
+      end.to change(Like, :count).by(1)
     end
 
     it '記事詳細画面からいいねができること' do
@@ -22,7 +22,7 @@ RSpec.describe 'Likes', type: :system do
       expect do
         find('.fa-regular.fa-heart').click
         expect(page).to have_content 'いいねしました'
-      end.to change { Like.count }.by(1)
+      end.to change(Like, :count).by(1)
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe 'Likes', type: :system do
       expect do
         first('.fa-solid.fa-heart').click
         expect(page).to have_content 'いいねを取り消しました'
-      end.to change { Like.count }.by(-1)
+      end.to change(Like, :count).by(-1)
     end
 
     it '記事詳細画面から1件のいいねを取り消せること' do
@@ -46,7 +46,7 @@ RSpec.describe 'Likes', type: :system do
       expect do
         find('.fa-solid.fa-heart').click
         expect(page).to have_content 'いいねを取り消しました'
-      end.to change { Like.count }.by(-1)
+      end.to change(Like, :count).by(-1)
     end
 
     it '投稿したユーザーがユーザーページから1件のいいねを取り消せること' do
@@ -56,7 +56,7 @@ RSpec.describe 'Likes', type: :system do
         first('.delete-button').click
         page.accept_confirm 'いいねを削除してもよろしいですか？'
         expect(page).to have_content 'いいねを削除しました'
-      end.to change { Like.count }.by(-1)
+      end.to change(Like, :count).by(-1)
     end
   end
 end

@@ -6,7 +6,7 @@ FactoryBot.define do
     user { post.user }
   end
 
-  factory :like2, class: Like do
+  factory :like2, class: 'Like' do
     post { 2 }
     user { post.user }
   end
