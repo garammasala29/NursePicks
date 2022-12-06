@@ -24,7 +24,7 @@ RSpec.describe 'Users', type: :system do
           click_on 'アカウント登録'
           expect(page).to have_content 'アカウントを登録しました'
           expect(page).to have_content 'Alice'
-        end.to change { User.count }.by(1)
+        end.to change(User, :count).by(1)
       end
 
       it 'デフォルト画像を使用してユーザー登録すること' do
@@ -37,7 +37,7 @@ RSpec.describe 'Users', type: :system do
           click_on 'アカウント登録'
           expect(page).to have_content 'アカウントを登録しました'
           expect(page).to have_selector "img[src*='icon_user_m']"
-        end.to change { User.count }.by(1)
+        end.to change(User, :count).by(1)
       end
     end
 
@@ -51,7 +51,7 @@ RSpec.describe 'Users', type: :system do
           click_on 'アカウント登録'
           expect(page).to have_content 'アカウントを登録しました'
           expect(page).to have_content 'Bob'
-        end.to change { User.count }.by(1)
+        end.to change(User, :count).by(1)
       end
     end
   end
@@ -65,7 +65,7 @@ RSpec.describe 'Users', type: :system do
       click_on 'アカウント更新'
       expect(page).to have_content 'ユーザー情報を編集しました'
       expect(page).to have_content 'Carol'
-      expect(page).to_not have_content 'Alice'
+      expect(page).not_to have_content 'Alice'
     end
   end
 
@@ -78,7 +78,7 @@ RSpec.describe 'Users', type: :system do
         click_on 'アカウント削除'
         page.accept_confirm 'アカウントを削除してもよろしいですか？'
         expect(page).to have_content 'アカウントを削除しました'
-      end.to change { User.count }.by(-1)
+      end.to change(User, :count).by(-1)
     end
   end
 end

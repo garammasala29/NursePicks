@@ -37,17 +37,17 @@ RSpec.describe User, type: :model do
 
     it '有効なproviderとuidに対応するuserが存在すること' do
       auth_hash = { provider: user.provider, uid: user.uid }
-      expect(User.find_from_omniauth(auth_hash)).to eq user
+      expect(described_class.find_from_omniauth(auth_hash)).to eq user
     end
 
     it '無効なproviderが渡されるとnilが返ること' do
       auth_hash = { provider: 'google_oauth2', uid: user.uid }
-      expect(User.find_from_omniauth(auth_hash)).to be nil
+      expect(described_class.find_from_omniauth(auth_hash)).to be nil
     end
 
     it '無効なuidが渡されるとnilが返ること' do
       auth_hash = { provider: user.provider, uid: '67890' }
-      expect(User.find_from_omniauth(auth_hash)).to be nil
+      expect(described_class.find_from_omniauth(auth_hash)).to be nil
     end
   end
 
@@ -61,7 +61,7 @@ RSpec.describe User, type: :model do
           image: 'https://example.com/image'
         }
       }
-      user = User.new_from_omniauth(auth_hash)
+      user = described_class.new_from_omniauth(auth_hash)
       expect(user.provider).to eq 'twitter'
       expect(user.uid).to eq '12345'
       expect(user.name).to eq 'Alice'
@@ -76,11 +76,11 @@ RSpec.describe User, type: :model do
 
     it 'ユーザーが特定の記事をいいね済みであること' do
       create(:like, user_id: user.id, post_id: post.id)
-      expect(user.liked?(post)).to be_truthy
+      expect(user).to be_liked(post)
     end
 
     it 'ユーザーが特定の記事をいいね済みではないこと' do
-      expect(user.liked?(post)).to be_falsy
+      expect(user).not_to be_liked(post)
     end
   end
 end

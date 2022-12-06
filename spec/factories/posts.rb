@@ -9,7 +9,7 @@ FactoryBot.define do
     user
   end
 
-  factory :post2, class: Post do
+  factory :post2, class: 'Post' do
     title { '10分前の記事' }
     url { 'https://example.net' }
     site_name { '記事元サイト2' }
@@ -18,7 +18,7 @@ FactoryBot.define do
     created_at { 10.minutes.ago }
   end
 
-  factory :post3, class: Post do
+  factory :post3, class: 'Post' do
     title { '1日前の記事' }
     url { 'example.org' }
     site_name { '記事元サイト3' }
@@ -27,7 +27,7 @@ FactoryBot.define do
     created_at { 1.day.ago }
   end
 
-  factory :post4, class: Post do
+  factory :post4, class: 'Post' do
     title { '2日前の記事' }
     url { 'example.edu' }
     site_name { '記事元サイト4' }

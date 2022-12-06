@@ -13,7 +13,7 @@ RSpec.describe 'Comments', type: :system do
       expect do
         fill_in 'コメント', with: 'コメントのテスト'
         click_on 'コメントの投稿'
-      end.to change { Comment.count }.by(1)
+      end.to change(Comment, :count).by(1)
     end
 
     it '空欄ではコメントができないこと' do
@@ -24,7 +24,7 @@ RSpec.describe 'Comments', type: :system do
         click_on 'コメントの投稿'
         expect(page).to have_content 'コメント投稿に失敗しました'
         expect(page).to have_content 'コメントを入力してください'
-      end.to change { Comment.count }.by(0)
+      end.to change(Comment, :count).by(0)
     end
 
     it 'サインインしていないユーザーはコメント投稿できないこと' do
@@ -44,7 +44,7 @@ RSpec.describe 'Comments', type: :system do
         all('a', text: '削除')[1].click
         page.accept_confirm '「コメントテスト」を削除してもよろしいですか？'
         expect(page).to have_content 'コメントを削除しました'
-      end.to change { Comment.count }.by(-1)
+      end.to change(Comment, :count).by(-1)
     end
 
     it '投稿したユーザーがユーザーページから1件目のコメントを削除できること' do
@@ -55,7 +55,7 @@ RSpec.describe 'Comments', type: :system do
         first('.delete-button').click
         page.accept_confirm 'コメントを削除してもよろしいですか？'
         expect(page).to have_content 'コメントを削除しました'
-      end.to change { Comment.count }.by(-1)
+      end.to change(Comment, :count).by(-1)
     end
   end
 end

@@ -9,7 +9,7 @@ FactoryBot.define do
     uid { '12345' }
   end
 
-  factory :g_user, class: User do
+  factory :g_user, class: 'User' do
     name { 'Bob' }
     icon_url { 'https://example.com/image' }
     url { 'https://example.com' }
