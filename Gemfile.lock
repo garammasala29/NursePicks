@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/teamcapybara/capybara.git
-  revision: 5c8674713fa964211de43138180edfab1cc041ce
+  revision: 69abf9e24cc225aca1ef7e25b1bfb7b61017f017
   specs:
     capybara (3.38.0)
       addressable
@@ -192,9 +192,9 @@ GEM
     naught (1.1.0)
     nesty (1.0.2)
     nio4r (2.5.8)
-    nokogiri (1.13.9-arm64-darwin)
+    nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -234,11 +234,11 @@ GEM
     parser (3.1.3.0)
       ast (~> 2.4.1)
     pg (1.4.5)
-    public_suffix (5.0.0)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
-    racc (1.6.0)
-    rack (2.2.4)
+    racc (1.6.2)
+    rack (2.2.5)
     rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
     rack-protection (3.0.4)
