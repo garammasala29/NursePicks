@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   before_action :require_signin
 
   def create
-    @like = current_user.likes.create(post_id: params[:post_id])
+    @like = current_user.likes.create!(post_id: params[:post_id])
     redirect_back(fallback_location: root_path)
     flash[:notice] = 'いいねしました'
   end
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
   def destroy
     @post = Post.find(params[:post_id])
     @like = current_user.likes.find_by(post_id: @post.id)
-    @like.destroy
+    @like.destroy!
     redirect_back(fallback_location: root_path)
     flash[:notice] = 'いいねを取り消しました'
   end

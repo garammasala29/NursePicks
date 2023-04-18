@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    @post.destroy!
     redirect_to root_path, notice: "「#{@post.title}」を削除しました"
   end
 
